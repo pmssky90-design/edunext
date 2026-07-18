@@ -1,0 +1,12 @@
+audit
+verification
+output_*
+data/source_snapshot
+.agents
+.codex
+.git
+.vercel
+**/__pycache__
+*.pyc
+.env
+.env.*
