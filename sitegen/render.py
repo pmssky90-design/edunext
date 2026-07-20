@@ -432,6 +432,7 @@ def render_home(page: Page, page_map: dict[str, Page]) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="{escape(NAVER_SITE_VERIFICATION)}" />
   <title>{escape(search_title)}</title>
   <meta name="description" content="{escape(page.meta_description)}">
   <meta name="robots" content="index,follow">
@@ -476,11 +477,6 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     search_title = page.seo_title or page.title
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
-    verification = (
-        f'\n  <meta name="naver-site-verification" content="{escape(NAVER_SITE_VERIFICATION)}">'
-        if NAVER_SITE_VERIFICATION
-        else ""
-    )
     sections = render_related_navigation(page, page_map)
     nav = "".join(
         f'<a href="{escape(page_map[slug].url)}">{escape(page_map[slug].title)}</a>'
@@ -509,7 +505,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{escape(search_title)}">
   <meta name="twitter:description" content="{escape(page.meta_description)}">
-  <meta name="twitter:image" content="{escape(page.search_thumbnail_url)}">{verification}
+  <meta name="twitter:image" content="{escape(page.search_thumbnail_url)}">
   <link rel="stylesheet" href="/assets/css/style.css">
   {schema(page)}
 </head>

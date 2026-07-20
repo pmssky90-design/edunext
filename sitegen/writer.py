@@ -20,6 +20,10 @@ def write_text(path: Path, text: str) -> None:
 def active_output_dir() -> Path:
     import os
 
+    explicit_output = os.environ.get("EDUNEXT_OUTPUT_DIR")
+    if explicit_output:
+        return PROJECT_ROOT / explicit_output
+
     if os.environ.get("EDUNEXT_OUTPUT") == "content_fixed":
         return CONTENT_FIXED_OUTPUT_DIR
     if os.environ.get("EDUNEXT_OUTPUT") == "school_fixed":
