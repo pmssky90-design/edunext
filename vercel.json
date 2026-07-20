@@ -10,10 +10,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.edunext.kr"
+          "value": "www.edunext.co.kr"
         }
       ],
-      "destination": "https://edunext.kr/:path*",
+      "destination": "https://edunext.co.kr/:path*",
       "permanent": true
     },
     {

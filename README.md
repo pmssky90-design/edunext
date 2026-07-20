@@ -1,6 +1,6 @@
 # EduNext
 
-부산, 양산, 구미 지역 과외 정적 사이트 생성 프로젝트입니다. 대표 도메인은 `https://edunext.kr`이며 canonical, sitemap, robots, JSON-LD 모두 non-www 기준으로 생성합니다.
+부산, 양산, 구미 지역 과외 정적 사이트 생성 프로젝트입니다. 대표 도메인은 `https://edunext.co.kr`이며 canonical, sitemap, robots, JSON-LD 모두 non-www 기준으로 생성합니다.
 
 ## 실행
 

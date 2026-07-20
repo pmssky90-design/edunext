@@ -146,7 +146,7 @@ def main() -> int:
             "og_mismatch": new_title != og_title,
             "twitter_mismatch": new_title != tw_title,
             "h1_changed": h1 != keyword,
-            "canonical_changed": canonical != f"https://edunext.kr/{keyword}/",
+            "canonical_changed": canonical != f"https://edunext.co.kr/{keyword}/",
         }
         for name, bad in checks.items():
             if bad:

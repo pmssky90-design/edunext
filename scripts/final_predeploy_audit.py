@@ -18,7 +18,7 @@ OUTPUT = ROOT / os.environ.get("EDUNEXT_FINAL_OUTPUT", "output_nav_clean")
 BASELINE = ROOT / "output_home_redesign"
 AUDIT = ROOT / "audit"
 VERIFY = ROOT / "verification" / "final-predeploy-report"
-SITE = "https://edunext.kr"
+SITE = "https://edunext.co.kr"
 EXPECTED = {"html": 1462, "sitemap": 1462, "school": 429}
 
 
@@ -135,7 +135,7 @@ def main() -> None:
                 data = json.loads(raw)
                 packed = json.dumps(data, ensure_ascii=False)
                 if "WebSite" not in packed or "WebPage" not in packed or "BreadcrumbList" not in packed: raise ValueError("required schema missing")
-                if any(host in packed for host in ["localhost", "127.0.0.1", "www.edunext.kr"]): raise ValueError("wrong schema host")
+                if any(host in packed for host in ["localhost", "127.0.0.1", "www.edunext.co.kr"]): raise ValueError("wrong schema host")
             except (json.JSONDecodeError, ValueError) as exc:
                 metadata_errors.append({"page": url, "field": "json_ld", "detail": str(exc)}); add(issues, "BLOCKER", "JSON_LD", url, str(exc))
 
@@ -177,7 +177,7 @@ def main() -> None:
     if len(locs) != len(set(locs)): add(issues, "BLOCKER", "SITEMAP", "/sitemap.xml", "duplicate sitemap URLs")
     for loc in locs:
         parsed = urlparse(loc)
-        if parsed.scheme != "https" or parsed.netloc != "edunext.kr" or parsed.query or parsed.fragment or "/index.html" in parsed.path: add(issues, "BLOCKER", "SITEMAP", "/sitemap.xml", f"invalid URL {loc}")
+        if parsed.scheme != "https" or parsed.netloc != "edunext.co.kr" or parsed.query or parsed.fragment or "/index.html" in parsed.path: add(issues, "BLOCKER", "SITEMAP", "/sitemap.xml", f"invalid URL {loc}")
     for missing in sorted(set(pages) - set(sitemap_paths)): add(issues, "BLOCKER", "SITEMAP", missing, "HTML missing from sitemap")
     for extra in sorted(set(sitemap_paths) - set(pages)): add(issues, "BLOCKER", "SITEMAP", extra, "sitemap URL has no HTML")
 
@@ -186,7 +186,7 @@ def main() -> None:
     for source, p in pages.items():
         for href, label in p["links"]:
             parsed = urlparse(href)
-            if parsed.scheme and parsed.netloc not in {"", "edunext.kr"}:
+            if parsed.scheme and parsed.netloc not in {"", "edunext.co.kr"}:
                 continue
             if href.startswith(("mailto:", "tel:")): continue
             target_path = unquote(parsed.path or source)
@@ -248,7 +248,7 @@ def main() -> None:
 
     # Robots, file exposure, assets and image policy.
     robots = (OUTPUT / "robots.txt").read_text(encoding="utf-8") if (OUTPUT / "robots.txt").exists() else ""
-    if "Disallow: /" in robots or "Sitemap: https://edunext.kr/sitemap.xml" not in robots: add(issues, "BLOCKER", "ROBOTS", "/robots.txt", "robots policy invalid")
+    if "Disallow: /" in robots or "Sitemap: https://edunext.co.kr/sitemap.xml" not in robots: add(issues, "BLOCKER", "ROBOTS", "/robots.txt", "robots policy invalid")
     exposed = [p.relative_to(OUTPUT).as_posix() for p in OUTPUT.rglob("*") if p.is_file() and (p.suffix.lower() in {".py", ".xlsx", ".env", ".map"} or p.name in {".git", ".DS_Store", "Thumbs.db"})]
     for item in exposed: add(issues, "HIGH", "EXPOSED_FILE", item, "non-deploy artifact inside output")
     fixed_files = sorted((OUTPUT / "assets" / "images" / "fixed").glob("*"))

@@ -103,8 +103,8 @@ def main() -> None:
 
 ## Required production policy
 
-1. `http://edunext.kr/*` → `https://edunext.kr/*` with 308.
-2. `https://www.edunext.kr/*` → `https://edunext.kr/*` with 308 (already declared by host redirect).
+1. `http://edunext.co.kr/*` → `https://edunext.co.kr/*` with 308.
+2. `https://www.edunext.co.kr/*` → `https://edunext.co.kr/*` with 308 (already declared by host redirect).
 3. `/**/index.html` → canonical trailing-slash URL with 308 (already declared).
 4. Collapse repeated path slashes to one slash with 308; verify platform behavior because this is not explicit in `vercel.json`.
 5. Keep query variants self-canonical to the query-free URL when the content is identical.

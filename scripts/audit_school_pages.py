@@ -46,7 +46,7 @@ def links_for(path: Path) -> list[str]:
     out = []
     for href in links:
         parsed = urlparse(href)
-        if parsed.netloc and parsed.netloc != "edunext.kr":
+        if parsed.netloc and parsed.netloc != "edunext.co.kr":
             out.append(href)
             continue
         p = unquote(parsed.path or "/")

@@ -14,7 +14,7 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / os.environ.get("EDUNEXT_AUDIT_OUTPUT", "output")
 AUDIT = ROOT / "audit"
-SITE_URL = "https://edunext.kr"
+SITE_URL = "https://edunext.co.kr"
 
 
 class Parsed:
@@ -45,7 +45,7 @@ def normalize_internal(href: str) -> str | None:
     if href.startswith(("#", "mailto:", "tel:", "javascript:")):
         return None
     parsed = urlparse(href)
-    if parsed.netloc and parsed.netloc != "edunext.kr":
+    if parsed.netloc and parsed.netloc != "edunext.co.kr":
         return href
     path = unquote(parsed.path or "/")
     if path.startswith("/assets/") or path in {"/sitemap.xml", "/robots.txt"}:
@@ -85,7 +85,7 @@ def main() -> int:
             target = normalize_internal(href)
             if target is None:
                 continue
-            if "www.edunext.kr" in href or "localhost" in href or ("http" in href and "edunext.kr" not in href):
+            if "www.edunext.co.kr" in href or "localhost" in href or ("http" in href and "edunext.co.kr" not in href):
                 domain_errors.append({"page": url, "href": href})
             if "/index.html" in href:
                 index_links.append({"page": url, "href": href})

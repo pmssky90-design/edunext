@@ -1,7 +1,7 @@
 from pathlib import Path
 
 SITE_NAME = "EduNext"
-SITE_URL = "https://edunext.kr"
+SITE_URL = "https://edunext.co.kr"
 SITE_DESCRIPTION = "부산, 양산, 구미 지역별 과외 학습 정보를 정리한 교육 허브"
 NAVER_SITE_VERIFICATION = ""
 
