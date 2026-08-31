@@ -8,7 +8,7 @@ from pathlib import Path
 
 from config import ASSETS_DIR, AUDIT_DIR, CONTENT_FIXED_OUTPUT_DIR, HOME_FIXED_OUTPUT_DIR, HOME_FIXED_V2_OUTPUT_DIR, HOME_REDESIGN_OUTPUT_DIR, IMAGE_FIXED_OUTPUT_DIR, MENU_CONTENT_REDESIGN_OUTPUT_DIR, MOBILE_FIXED_OUTPUT_DIR, NAV_CLEAN_OUTPUT_DIR, OUTPUT_DIR, PREDEPLOY_FINAL_OUTPUT_DIR, PROJECT_ROOT, SCHOOL_FIXED_OUTPUT_DIR, STRUCTURE_FIXED_OUTPUT_DIR, TITLE_FIXED_OUTPUT_DIR
 from sitegen.models import Page
-from sitegen.render import render_page
+from sitegen.render import render_not_found, render_page
 from sitegen.sitemap import render_robots, render_sitemap
 
 
@@ -114,6 +114,7 @@ def write_site(pages: list[Page]) -> None:
         write_text(target, render_page(page, page_map))
     write_text(tmp / "sitemap.xml", render_sitemap(pages))
     write_text(tmp / "robots.txt", render_robots())
+    write_text(tmp / "404.html", render_not_found())
     write_assets(tmp)
     publish(tmp, output_dir)
     write_search_thumbnail_map(pages, output_dir)

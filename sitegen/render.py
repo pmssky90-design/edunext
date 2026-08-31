@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from datetime import date
+from html import unescape
 from pathlib import Path
 from urllib.parse import quote
 
@@ -18,6 +20,61 @@ SUBJECTS = {"영어과외", "수학과외"}
 GRADES = {"초등과외", "중등과외", "고등과외"}
 SUBJECT_GRADES = {"초등영어과외", "중등영어과외", "고등영어과외", "초등수학과외", "중등수학과외", "고등수학과외"}
 CITIES = ("부산", "구미", "양산")
+
+
+def plain_text(value: str) -> str:
+    return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", value))).strip()
+
+
+def enhance_content_body(body: str) -> tuple[str, str]:
+    """Add stable heading anchors and a compact table of contents without changing text."""
+    entries: list[tuple[int, str, str]] = []
+    index = 0
+
+    def add_anchor(match: re.Match[str]) -> str:
+        nonlocal index
+        level, attrs, inner = match.group(1), match.group(2) or "", match.group(3)
+        if re.search(r"\bid\s*=", attrs, flags=re.I):
+            anchor_match = re.search(r'\bid\s*=\s*["\']([^"\']+)', attrs, flags=re.I)
+            anchor = anchor_match.group(1) if anchor_match else f"content-section-{index + 1}"
+        else:
+            index += 1
+            anchor = f"content-section-{index}"
+            attrs += f' id="{anchor}"'
+        entries.append((int(level), anchor, plain_text(inner)))
+        return f"<h{level}{attrs}>{inner}</h{level}>"
+
+    enhanced = re.sub(r"<h([23])(\s[^>]*)?>(.*?)</h\1>", add_anchor, body, flags=re.I | re.S)
+    visible = [entry for entry in entries if entry[2]][:24]
+    if len(visible) < 2:
+        return enhanced, ""
+    links = "".join(
+        f'<li class="toc-level-{level}"><a href="#{escape(anchor)}">{escape(label)}</a></li>'
+        for level, anchor, label in visible
+    )
+    toc = (
+        '<nav class="page-toc" aria-label="이 페이지의 목차">'
+        '<details><summary>이 페이지의 내용</summary>'
+        f'<ol>{links}</ol></details></nav>'
+    )
+    return enhanced, toc
+
+
+def faq_schema(body: str) -> dict[str, object] | None:
+    faq_start = re.search(r"<h2\b[^>]*>.*?자주\s*묻는\s*질문.*?</h2>", body, flags=re.I | re.S)
+    if not faq_start:
+        return None
+    section = body[faq_start.end() :]
+    next_h2 = re.search(r"<h2\b", section, flags=re.I)
+    if next_h2:
+        section = section[: next_h2.start()]
+    pairs = re.findall(r"<h3\b[^>]*>(.*?)</h3>\s*<p\b[^>]*>(.*?)</p>", section, flags=re.I | re.S)
+    entities = []
+    for question, answer in pairs:
+        question_text, answer_text = plain_text(question), plain_text(answer)
+        if question_text and answer_text:
+            entities.append({"@type": "Question", "name": question_text, "acceptedAnswer": {"@type": "Answer", "text": answer_text}})
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": entities} if entities else None
 
 
 def absolute_url(path: str) -> str:
@@ -218,6 +275,7 @@ def breadcrumbs(page: Page) -> str:
 def schema(page: Page) -> str:
     crumbs = [("홈", "/")] + [item for item in page.breadcrumbs if item[1] != "/"]
     data = [
+        {"@context": "https://schema.org", "@type": "Organization", "@id": f"{SITE_URL}/#organization", "name": SITE_NAME, "url": SITE_URL + "/"},
         {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{SITE_URL}/#website", "url": SITE_URL + "/", "name": SITE_NAME, "description": SITE_DESCRIPTION},
         {
             "@context": "https://schema.org",
@@ -239,6 +297,9 @@ def schema(page: Page) -> str:
             ],
         },
     ]
+    faq = faq_schema(page.body)
+    if faq:
+        data.append(faq)
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "</script>"
 
 
@@ -443,6 +504,7 @@ def render_home(page: Page, page_map: dict[str, Page]) -> str:
   <meta property="og:description" content="{escape(page.meta_description)}">
   <meta property="og:url" content="{escape(canonical)}">
   <meta property="og:image" content="{escape(page.search_thumbnail_url)}">
+  <meta property="og:image:alt" content="{escape(page.title)} 대표 이미지">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{escape(search_title)}">
   <meta name="twitter:description" content="{escape(page.meta_description)}">
@@ -477,6 +539,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     search_title = page.seo_title or page.title
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
+    enhanced_body, toc = enhance_content_body(page.body)
     sections = render_related_navigation(page, page_map)
     nav = "".join(
         f'<a href="{escape(page_map[slug].url)}">{escape(page_map[slug].title)}</a>'
@@ -502,6 +565,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
   <meta property="og:description" content="{escape(page.meta_description)}">
   <meta property="og:url" content="{escape(canonical)}">
   <meta property="og:image" content="{escape(page.search_thumbnail_url)}">
+  <meta property="og:image:alt" content="{escape(page.title)} 대표 이미지">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{escape(search_title)}">
   <meta name="twitter:description" content="{escape(page.meta_description)}">
@@ -525,7 +589,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     </section>
     {render_page_hero_image(page)}
     {render_fixed_images(page)}
-    <article class="content-body">{page.body}</article>
+    {toc}
+    <article class="content-body">{enhanced_body}</article>
     {sections}
   </main>
   <footer class="site-footer">
@@ -533,6 +598,32 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     <a href="/sitemap.xml">Sitemap</a>
   </footer>
   <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
+"""
+
+
+def render_not_found() -> str:
+    return f"""<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>페이지를 찾을 수 없습니다 | {SITE_NAME}</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header"><a class="brand" href="/">{SITE_NAME}</a></header>
+  <main id="main" class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">404 · Page not found</p>
+      <h1>페이지를 찾을 수 없습니다</h1>
+      <p>주소가 변경되었거나 존재하지 않는 페이지입니다. 홈페이지에서 지역·과목·학교별 과외 정보를 다시 찾아보세요.</p>
+      <p><a class="home-anchor-link" href="/">EduNext 홈으로 이동</a></p>
+    </section>
+  </main>
 </body>
 </html>
 """

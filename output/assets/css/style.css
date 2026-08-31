@@ -844,3 +844,55 @@ h1 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.page-toc {
+  margin: 28px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--soft);
+}
+
+.page-toc summary {
+  padding: 18px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.page-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0 20px 20px 42px;
+}
+
+.page-toc li {
+  color: var(--muted);
+}
+
+.page-toc .toc-level-3 {
+  margin-left: 14px;
+  font-size: 0.94rem;
+}
+
+.page-toc a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.page-toc a:hover,
+.page-toc a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.content-body h2[id],
+.content-body h3[id] {
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 720px) {
+  .page-toc ol {
+    grid-template-columns: 1fr;
+  }
+}
