@@ -81,8 +81,8 @@ def main() -> int:
 
         links = [unescape(href) for href in re.findall(r'href=["\']([^"\']+)["\']', faq_body, flags=re.I)]
         link_counts.append(len(links))
-        if len(links) < 3:
-            problems.append(f"too_few_links:{len(links)}")
+        if len(links) > 1:
+            problems.append(f"too_many_links:{len(links)}")
         if f"/{slug}/" in links:
             problems.append("self_link")
         missing = []

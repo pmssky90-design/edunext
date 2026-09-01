@@ -434,6 +434,41 @@ def _is_general_school_page(page: Page) -> bool:
     )
 
 
+CITY_REGION_HUBS = {"부산과외", "구미과외", "양산과외"}
+
+
+def _is_pure_region_tutoring_slug(slug: str) -> bool:
+    return slug.endswith("과외") and not any(
+        slug.endswith(suffix)
+        for suffix in ("영어과외", "수학과외", "초등과외", "중등과외", "고등과외")
+    )
+
+
+def _navigation_school_slugs(page: Page, page_map: dict[str, Page]) -> list[str]:
+    """Keep city hubs focused on schools that have no narrower region page.
+
+    Schools assigned to a district or neighborhood remain discoverable from that
+    more relevant page, instead of being repeated in a city-wide list containing
+    hundreds of links.
+    """
+    slugs = list(dict.fromkeys(page.school_slugs))
+    if page.slug not in CITY_REGION_HUBS:
+        return slugs
+
+    narrower: set[str] = set()
+    city = page.slug[: -len("과외")]
+    for candidate in page_map.values():
+        if (
+            candidate.page_type != "region"
+            or candidate.slug == page.slug
+            or not candidate.slug.startswith(city)
+            or not _is_pure_region_tutoring_slug(candidate.slug)
+        ):
+            continue
+        narrower.update(candidate.school_slugs)
+    return [slug for slug in slugs if slug not in narrower]
+
+
 def render_contextual_region_section(page: Page, page_map: dict[str, Page]) -> str:
     """Build a short, in-article navigation section for a pure regional tutoring page."""
     if page.page_type != "region" or page.category != "과외" or page.slug in SPECIAL_REGION_HUBS:
@@ -448,7 +483,7 @@ def render_contextual_region_section(page: Page, page_map: dict[str, Page]) -> s
 
     schools: list[Page] = []
     seen: set[str] = set()
-    for slug in page.school_slugs:
+    for slug in _navigation_school_slugs(page, page_map):
         item = page_map.get(slug)
         if not item or item.slug in seen or not _is_general_school_page(item):
             continue
@@ -531,6 +566,98 @@ def add_contextual_region_links(body: str, page: Page, page_map: dict[str, Page]
     return f"{cleaned}\n{section}"
 
 
+def _normalized_internal_href(href: str) -> str:
+    value = unescape(href).strip()
+    if not value.startswith("/") or value.startswith("//"):
+        return ""
+    path, _, fragment = value.partition("#")
+    path = path.split("?", 1)[0]
+    return f"{path}#{fragment}" if fragment else path
+
+
+def internal_link_slugs(fragment: str) -> set[str]:
+    """Return root-relative page slugs linked from an HTML fragment."""
+    slugs: set[str] = set()
+    for href in re.findall(r'href\s*=\s*["\']([^"\']+)["\']', fragment, flags=re.I):
+        normalized = _normalized_internal_href(href)
+        if not normalized:
+            continue
+        path = normalized.split("#", 1)[0]
+        slug = path.strip("/")
+        if slug:
+            slugs.add(slug)
+    return slugs
+
+
+def deduplicate_region_body_links(body: str, page: Page) -> str:
+    """Keep one useful in-article link per target on pure regional tutoring pages.
+
+    Links in the dedicated contextual section take priority over earlier keyword
+    mentions. Repeated links in FAQ answers become ordinary text, while external
+    references and fragment-only links remain untouched.
+    """
+    if page.page_type != "region" or page.category != "과외" or page.slug in SPECIAL_REGION_HUBS:
+        return body
+
+    contextual = re.search(
+        r'<section\s+class=["\']contextual-links["\'][^>]*>.*?</section>',
+        body,
+        flags=re.I | re.S,
+    )
+    contextual_hrefs: set[str] = set()
+    contextual_bounds: tuple[int, int] | None = None
+    if contextual:
+        contextual_bounds = (contextual.start(), contextual.end())
+        contextual_hrefs = {
+            normalized
+            for href in re.findall(r'href\s*=\s*["\']([^"\']+)["\']', contextual.group(0), flags=re.I)
+            if (normalized := _normalized_internal_href(href))
+        }
+
+    faq = re.search(
+        r'<section\s+class=["\']regional-faq["\'][^>]*>.*?</section>',
+        body,
+        flags=re.I | re.S,
+    )
+    faq_bounds = (faq.start(), faq.end()) if faq else None
+    faq_keeps_directory = bool(faq and re.search(r'href\s*=\s*["\']/#high-schools["\']', faq.group(0), flags=re.I))
+
+    seen: set[str] = set()
+    anchor_pattern = re.compile(
+        r'<a\b(?P<attrs>[^>]*\bhref\s*=\s*(?P<quote>["\'])(?P<href>[^"\']+)(?P=quote)[^>]*)>'
+        r'(?P<inner>.*?)</a>',
+        flags=re.I | re.S,
+    )
+
+    def keep_one(match: re.Match[str]) -> str:
+        normalized = _normalized_internal_href(match.group("href"))
+        if not normalized:
+            return match.group(0)
+        inside_contextual = bool(
+            contextual_bounds
+            and contextual_bounds[0] <= match.start() < contextual_bounds[1]
+        )
+        inside_faq = bool(faq_bounds and faq_bounds[0] <= match.start() < faq_bounds[1])
+        if normalized == "/#high-schools" and faq_keeps_directory:
+            if inside_faq and normalized not in seen:
+                seen.add(normalized)
+                return match.group(0)
+            return match.group("inner")
+        if inside_faq:
+            return match.group("inner")
+        if normalized in contextual_hrefs:
+            if inside_contextual and normalized not in seen:
+                seen.add(normalized)
+                return match.group(0)
+            return match.group("inner")
+        if normalized in seen:
+            return match.group("inner")
+        seen.add(normalized)
+        return match.group(0)
+
+    return anchor_pattern.sub(keep_one, body)
+
+
 def _region_kind(base: str) -> str:
     local = base
     for city in CITIES:
@@ -571,7 +698,7 @@ def _regional_pages(page: Page, page_map: dict[str, Page], limit: int = 2) -> li
 def _regional_school_pages(page: Page, page_map: dict[str, Page], limit: int = 3) -> list[Page]:
     pages: list[Page] = []
     seen: set[str] = set()
-    for slug in page.school_slugs:
+    for slug in _navigation_school_slugs(page, page_map):
         item = page_map.get(slug)
         if not item or item.slug in seen or not _is_general_school_page(item):
             continue
@@ -820,11 +947,12 @@ def compact_label(current: Page, target: Page, context: str = "") -> str:
     current_city = page_city(current)
     target_city = page_city(target)
     if context == "school-action":
+        school = target.school_display_name or target.title
         if target.slug.endswith("수학과외"):
-            return "수학과외"
+            return f"{school} 수학과외"
         if target.slug.endswith("영어과외"):
-            return "영어과외"
-        return "종합과외"
+            return f"{school} 영어과외"
+        return f"{school} 종합과외"
     if current_city and current_city == target_city and target.page_type != "school":
         label = label[len(target_city) :] if label.startswith(target_city) else label
     if target.page_type == "school":
@@ -870,12 +998,14 @@ def category_family_sections(page: Page, page_map: dict[str, Page], candidates: 
     return "".join(chunks)
 
 
-def school_section(page: Page, page_map: dict[str, Page]) -> str:
-    if not page.school_slugs:
+def school_section(page: Page, page_map: dict[str, Page], seen: set[str] | None = None) -> str:
+    school_slugs = _navigation_school_slugs(page, page_map)
+    if not school_slugs:
         return ""
+    seen = seen if seen is not None else set()
     title = "고등학교별 과외 찾기" if page.page_type == "home" else "관련 고등학교 학습 페이지"
     groups: dict[str, list[Page]] = {}
-    for slug in page.school_slugs:
+    for slug in school_slugs:
         item = page_map.get(slug)
         if not item:
             continue
@@ -888,16 +1018,24 @@ def school_section(page: Page, page_map: dict[str, Page]) -> str:
     cards = []
     for base, items in sorted(groups.items()):
         items = sorted(items, key=lambda p: {"school": 0}.get(p.page_type, 1))
+        items = [item for item in items if item.slug not in seen and item.slug != page.slug]
+        if not items:
+            continue
+        seen.update(item.slug for item in items)
         links = "".join(f'<a href="{escape(item.url)}">{escape(compact_label(page, item, "school-action"))}</a>' for item in items)
         display = items[0].school_display_name or base
         official = items[0].official_school_name
         meta = f"<small>{escape(official)}</small>" if official else ""
         cards.append(f'<li class="school-card"><strong>{escape(display)}</strong>{meta}<div>{links}</div></li>')
+    if not cards:
+        return ""
     return f'<section class="link-section school-section" id="high-schools"><h2>{escape(title)}</h2><ul class="school-grid">{"".join(cards)}</ul></section>'
 
 
-def render_related_navigation(page: Page, page_map: dict[str, Page]) -> str:
+def render_related_navigation(page: Page, page_map: dict[str, Page], linked_content: str = "") -> str:
     used: set[str] = set()
+    if page.page_type == "region" and page.category == "과외" and page.slug not in SPECIAL_REGION_HUBS:
+        used.update(internal_link_slugs(linked_content))
     chunks = ['<nav class="related-navigation" aria-label="관련 페이지">']
     parent = unique_pages([page.parent_slug or ""], page_map, page, used)
     if parent:
@@ -912,7 +1050,7 @@ def render_related_navigation(page: Page, page_map: dict[str, Page]) -> str:
     chunks.append(category_family_sections(page, page_map, sg_links, used))
     school_related = unique_pages([slug for slug in page.related_slugs if slug in page_map and page_map[slug].page_type == "school"], page_map, page, used)
     chunks.append(render_page_cards("같은 학교·관련 학교", school_related, page))
-    chunks.append(school_section(page, page_map))
+    chunks.append(school_section(page, page_map, used))
     siblings = unique_pages([slug for slug in page.sibling_slugs if slug in page_map and page_map[slug].page_type == "region"], page_map, page, used)
     chunks.append(render_page_cards("같은 단계의 인접·형제 지역", siblings[:18], page))
     chunks.append("</nav>")
@@ -1204,7 +1342,7 @@ def render_home(page: Page, page_map: dict[str, Page]) -> str:
   <meta name="twitter:title" content="{escape(search_title)}">
   <meta name="twitter:description" content="{escape(page.meta_description)}">
   <meta name="twitter:image" content="{escape(page.search_thumbnail_url)}">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260901-link-quality">
   {schema(page)}
 </head>
 <body>
@@ -1238,11 +1376,12 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = individualize_priority_region_body(body, page)
     body = add_contextual_region_links(body, page, page_map)
     body = replace_regional_faq(body, page, page_map)
+    body = deduplicate_region_body_links(body, page)
     enhanced_body, toc = enhance_content_body(
         body,
         clarify_scenarios=page.page_type == "region" and page.category == "과외",
     )
-    sections = render_related_navigation(page, page_map)
+    sections = render_related_navigation(page, page_map, enhanced_body)
     nav = "".join(
         f'<a href="{escape(page_map[slug].url)}">{escape(page_map[slug].title)}</a>'
         for slug in ["부산과외", "양산과외", "구미과외", "영어과외", "수학과외", "초등과외", "중등과외", "고등과외"]
@@ -1272,7 +1411,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
   <meta name="twitter:title" content="{escape(search_title)}">
   <meta name="twitter:description" content="{escape(page.meta_description)}">
   <meta name="twitter:image" content="{escape(page.search_thumbnail_url)}">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260901-link-quality">
   {schema(page, body)}
 </head>
 <body>
@@ -1313,7 +1452,7 @@ def render_not_found() -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>페이지를 찾을 수 없습니다 | {SITE_NAME}</title>
   <meta name="robots" content="noindex,follow">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260901-link-quality">
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 import shutil
 import sys
@@ -15,6 +16,7 @@ from sitegen.models import Page
 from sitegen.render import (
     SPECIAL_REGION_HUBS,
     add_contextual_region_links,
+    deduplicate_region_body_links,
     enhance_content_body,
     plain_text,
 )
@@ -44,6 +46,51 @@ def linked_slugs(fragment: str) -> list[str]:
     return found
 
 
+def load_school_relationships(page_map: dict[str, Page]) -> dict[str, list[str]]:
+    """Restore school metadata and source mappings during partial HTML refreshes."""
+    assignments: dict[str, list[str]] = {}
+    path = ROOT / "data" / "school_region_map.json"
+    if not path.exists():
+        return assignments
+    for row in json.loads(path.read_text(encoding="utf-8")):
+        keyword = str(row.get("keyword", ""))
+        school = page_map.get(keyword)
+        if not school:
+            continue
+        school.school_display_name = str(row.get("school_display_name", ""))
+        school.official_school_name = str(row.get("official_school_name", ""))
+        for region_slug in str(row.get("mapped_region_pages", "")).split("|"):
+            if region_slug in page_map:
+                assignments.setdefault(region_slug, []).append(keyword)
+    for region_slug, school_slugs in assignments.items():
+        page_map[region_slug].school_slugs = list(dict.fromkeys(school_slugs))
+    return assignments
+
+
+def load_region_relationships(page_map: dict[str, Page], html_by_slug: dict[str, str]) -> None:
+    """Rebuild the region hierarchy from breadcrumbs before partial refreshes."""
+    hierarchy_slugs = {
+        slug for slug, page in page_map.items() if page.page_type in {"region", "hub"}
+    }
+    children_by_parent: dict[str, list[str]] = {}
+    for slug in sorted(hierarchy_slugs):
+        breadcrumb = re.search(
+            r'<nav\s+class="breadcrumb".*?</nav>',
+            html_by_slug[slug],
+            flags=re.I | re.S,
+        )
+        breadcrumb_slugs = linked_slugs(breadcrumb.group(0)) if breadcrumb else []
+        parents = [item for item in breadcrumb_slugs if item in hierarchy_slugs and item != slug]
+        parent_slug = parents[-1] if parents else None
+        page_map[slug].parent_slug = parent_slug
+        if parent_slug:
+            children_by_parent.setdefault(parent_slug, []).append(slug)
+    for parent_slug, children in children_by_parent.items():
+        page_map[parent_slug].child_slugs = children
+        for slug in children:
+            page_map[slug].sibling_slugs = [item for item in children if item != slug]
+
+
 def replace_toc(html: str, toc: str) -> str:
     existing = re.search(r'<nav\s+class="page-toc".*?</nav>\s*', html, flags=re.I | re.S)
     if existing:
@@ -69,6 +116,9 @@ def main() -> int:
         path_by_slug[page.slug] = path
         page_map[page.slug] = page
 
+    load_school_relationships(page_map)
+    load_region_relationships(page_map, html_by_slug)
+
     changed = 0
     school_pages = 0
     nearby_pages = 0
@@ -76,36 +126,13 @@ def main() -> int:
         if page.page_type != "region" or slug in SPECIAL_REGION_HUBS:
             continue
         html = html_by_slug[slug]
-        breadcrumb = re.search(r'<nav\s+class="breadcrumb".*?</nav>', html, flags=re.I | re.S)
-        breadcrumb_slugs = linked_slugs(breadcrumb.group(0)) if breadcrumb else []
-        parent_candidates = [item for item in breadcrumb_slugs if item in page_map and item != slug]
-        page.parent_slug = parent_candidates[-1] if parent_candidates else None
-
-        related = re.search(r'<nav\s+class="related-navigation".*?</nav>', html, flags=re.I | re.S)
-        related_slugs = linked_slugs(related.group(0)) if related else []
-        page.school_slugs = [
-            item
-            for item in related_slugs
-            if item in page_map
-            and page_map[item].page_type == "school"
-            and not item.endswith("영어과외")
-            and not item.endswith("수학과외")
-        ]
-        region_links = [
-            item
-            for item in related_slugs
-            if item in page_map
-            and page_map[item].page_type == "region"
-            and item not in {slug, page.parent_slug}
-        ]
-        page.child_slugs = region_links
-        page.sibling_slugs = region_links
-
         article = re.search(r'<article\s+class="content-body">(.*?)</article>', html, flags=re.I | re.S)
         if not article:
             continue
         body = add_contextual_region_links(article.group(1), page, page_map)
+        body = deduplicate_region_body_links(body, page)
         enhanced_body, toc = enhance_content_body(body, clarify_scenarios=True)
+        enhanced_body = enhanced_body.strip()
         updated = html[: article.start(1)] + enhanced_body + html[article.end(1) :]
         updated = replace_toc(updated, toc)
         if updated != html:

@@ -13,11 +13,17 @@ sys.path.insert(0, str(ROOT))
 from config import OUTPUT_DIR
 from sitegen.render import (
     SPECIAL_REGION_HUBS,
+    deduplicate_region_body_links,
     enhance_content_body,
     faq_schema,
     replace_regional_faq,
 )
-from scripts.refresh_region_contextual_links import linked_slugs, page_from_html, replace_toc
+from scripts.refresh_region_contextual_links import (
+    load_region_relationships,
+    load_school_relationships,
+    page_from_html,
+    replace_toc,
+)
 
 
 def update_json_ld(html: str, body: str) -> str:
@@ -51,6 +57,9 @@ def main() -> int:
         path_by_slug[page.slug] = path
         page_map[page.slug] = page
 
+    load_school_relationships(page_map)
+    load_region_relationships(page_map, html_by_slug)
+
     changed = 0
     school_faqs = 0
     directory_faqs = 0
@@ -58,36 +67,13 @@ def main() -> int:
         if page.page_type != "region" or slug in SPECIAL_REGION_HUBS:
             continue
         html = html_by_slug[slug]
-        breadcrumb = re.search(r'<nav\s+class="breadcrumb".*?</nav>', html, flags=re.I | re.S)
-        breadcrumb_slugs = linked_slugs(breadcrumb.group(0)) if breadcrumb else []
-        parents = [item for item in breadcrumb_slugs if item in page_map and item != slug]
-        page.parent_slug = parents[-1] if parents else None
-
-        related = re.search(r'<nav\s+class="related-navigation".*?</nav>', html, flags=re.I | re.S)
-        related_slugs = linked_slugs(related.group(0)) if related else []
-        page.school_slugs = [
-            item
-            for item in related_slugs
-            if item in page_map
-            and page_map[item].page_type == "school"
-            and not item.endswith("영어과외")
-            and not item.endswith("수학과외")
-        ]
-        region_links = [
-            item
-            for item in related_slugs
-            if item in page_map
-            and page_map[item].page_type == "region"
-            and item not in {slug, page.parent_slug}
-        ]
-        page.child_slugs = region_links
-        page.sibling_slugs = region_links
-
         article = re.search(r'<article\s+class="content-body">(.*?)</article>', html, flags=re.I | re.S)
         if not article:
             continue
         body = replace_regional_faq(article.group(1), page, page_map)
+        body = deduplicate_region_body_links(body, page)
         enhanced_body, toc = enhance_content_body(body, clarify_scenarios=True)
+        enhanced_body = enhanced_body.strip()
         updated = html[: article.start(1)] + enhanced_body + html[article.end(1) :]
         updated = replace_toc(updated, toc)
         updated = update_json_ld(updated, enhanced_body)
