@@ -75,5 +75,7 @@ def build_page_title(keyword: str, source_sheet: str | None) -> tuple[str, bool]
             return normalize_spaces(f"{keyword} {scope} 학습 정보"), False
         return normalize_spaces(keyword), False
     suffix, removed = sheet_suffix(source_sheet)
+    if keyword.endswith("수학과외") and suffix == "기초부터심화까지 내신 수능 전문 과외":
+        return f"{keyword} 기초부터 심화까지 · 내신·수능 학습 가이드", removed
     title = normalize_spaces(f"{keyword} {suffix}" if suffix else keyword)
     return title, removed

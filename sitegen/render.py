@@ -28,10 +28,41 @@ PRIORITY_REGION_SLUGS = {
     "부산우동과외",
     "부산화명동과외",
 }
+PRIORITY_MATH_EXCLUSIONS = {"수학과외", "경남수학과외", "경북수학과외"}
 
 
 def plain_text(value: str) -> str:
     return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", value))).strip()
+
+
+def is_priority_region_math_page(page: Page) -> bool:
+    """Select city and smaller regional math pages, excluding grade and collection hubs."""
+    return (
+        page.page_type == "subject"
+        and page.category == "수학과외"
+        and page.slug.endswith("수학과외")
+        and page.slug not in PRIORITY_MATH_EXCLUSIONS
+        and not re.search(r"(초등|중등|고등)수학과외$", page.slug)
+    )
+
+
+def structure_priority_math_body(body: str) -> str:
+    """Give regional math guides a readable H2 structure while keeping FAQ questions at H3."""
+    body = body.replace("수학학습", "수학 학습")
+    headings = list(re.finditer(r"<h2\b[^>]*>.*?</h2>", body, flags=re.I | re.S))
+    if len(headings) < 2:
+        return body
+    faq_start = headings[-1].start()
+    guide, faq = body[:faq_start], body[faq_start:]
+    guide = re.sub(r"<h3(\b[^>]*)>", r"<h2\1>", guide, flags=re.I)
+    guide = re.sub(r"</h3>", "</h2>", guide, flags=re.I)
+    return guide + faq
+
+
+def polish_priority_region_math_body(body: str, page: Page) -> str:
+    if not is_priority_region_math_page(page):
+        return body
+    return structure_priority_math_body(body)
 
 
 def faq_section_bounds(body: str) -> tuple[int, int, int] | None:
@@ -1444,6 +1475,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     body = individualize_secondary_region_body(page.body, page)
     body = individualize_priority_region_body(body, page)
+    body = polish_priority_region_math_body(body, page)
     body = add_contextual_region_links(body, page, page_map)
     body = replace_regional_faq(body, page, page_map)
     body = deduplicate_region_body_links(body, page)
