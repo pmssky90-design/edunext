@@ -26,8 +26,37 @@ def plain_text(value: str) -> str:
     return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", value))).strip()
 
 
+def deduplicate_faq_pairs(body: str) -> str:
+    """Remove only repeated FAQ question/answer pairs with identical visible text."""
+    faq_start = re.search(r"<h2\b[^>]*>.*?자주\s*묻는\s*질문.*?</h2>", body, flags=re.I | re.S)
+    if not faq_start:
+        return body
+    section_start = faq_start.end()
+    remainder = body[section_start:]
+    next_h2 = re.search(r"<h2\b", remainder, flags=re.I)
+    section_end = section_start + (next_h2.start() if next_h2 else len(remainder))
+    section = body[section_start:section_end]
+    seen: set[tuple[str, str]] = set()
+
+    def keep_first(match: re.Match[str]) -> str:
+        key = (plain_text(match.group(1)), plain_text(match.group(2)))
+        if key in seen:
+            return ""
+        seen.add(key)
+        return match.group(0)
+
+    cleaned = re.sub(
+        r"<h3\b[^>]*>(.*?)</h3>\s*<p\b[^>]*>(.*?)</p>",
+        keep_first,
+        section,
+        flags=re.I | re.S,
+    )
+    return body[:section_start] + cleaned + body[section_end:]
+
+
 def enhance_content_body(body: str) -> tuple[str, str]:
     """Add stable heading anchors and a compact table of contents without changing text."""
+    body = deduplicate_faq_pairs(body)
     entries: list[tuple[int, str, str]] = []
     index = 0
 
@@ -70,9 +99,11 @@ def faq_schema(body: str) -> dict[str, object] | None:
         section = section[: next_h2.start()]
     pairs = re.findall(r"<h3\b[^>]*>(.*?)</h3>\s*<p\b[^>]*>(.*?)</p>", section, flags=re.I | re.S)
     entities = []
+    seen_questions: set[str] = set()
     for question, answer in pairs:
         question_text, answer_text = plain_text(question), plain_text(answer)
-        if question_text and answer_text:
+        if question_text and answer_text and question_text not in seen_questions:
+            seen_questions.add(question_text)
             entities.append({"@type": "Question", "name": question_text, "acceptedAnswer": {"@type": "Answer", "text": answer_text}})
     return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": entities} if entities else None
 

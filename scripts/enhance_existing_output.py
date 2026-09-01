@@ -46,7 +46,10 @@ def enhance_page(path: Path) -> bool:
     if body:
         enhanced_body, toc = enhance_content_body(body)
         html = html[: article.start(1)] + enhanced_body + html[article.end(1) :]
-        if toc and 'class="page-toc"' not in html:
+        existing_toc = re.search(r'<nav\s+class="page-toc".*?</nav>\s*', html, flags=re.I | re.S)
+        if existing_toc:
+            html = html[: existing_toc.start()] + (toc + "\n    " if toc else "") + html[existing_toc.end() :]
+        elif toc:
             article_start = html.find('<article class="content-body">')
             html = html[:article_start] + toc + "\n    " + html[article_start:]
 
