@@ -6,8 +6,9 @@ import os
 from config import CATEGORIES, GRADE_CATEGORIES, SUBJECT_CATEGORIES, SUBJECT_GRADE_CATEGORIES
 from sitegen.content_builder import fallback_content, school_intro
 from sitegen.models import Page, Region
+from sitegen.render import individualize_priority_region_body, individualize_secondary_region_body
 from sitegen.title_rules import HOME_SEO_TITLE, build_page_title
-from sitegen.utils import excerpt, page_slug
+from sitegen.utils import excerpt, page_slug, region_meta_description
 
 
 def page_type_for(category: str, region: Region | None = None, school: bool = False) -> str:
@@ -103,6 +104,12 @@ def build_pages(
             related = [page_slug(None if region.level == "national" else region.slug, item) for item in CATEGORIES if item != category]
             body = content.get(slug, "")
             seo_title, _ = build_page_title(slug, content_sources.get(slug))
+            meta_description = (
+                region_meta_description(slug, body)
+                if category == "과외" and region.level not in {"national", "province"} and body
+                else excerpt(body) if body
+                else f"{title} 학습 환경, 내신 준비, 영어와 수학 학습 방향을 정리한 EduNext 지역 과외 정보입니다."
+            )
             page = Page(
                 slug=slug,
                 title=title,
@@ -115,10 +122,14 @@ def build_pages(
                 sibling_slugs=sibling_slugs,
                 related_slugs=related,
                 body=body,
-                meta_description=excerpt(body) if body else f"{title} 학습 환경, 내신 준비, 영어와 수학 학습 방향을 정리한 EduNext 지역 과외 정보입니다.",
+                meta_description=meta_description,
             )
             if not page.body:
                 page.body = fallback_content(page)
+            page.body = individualize_secondary_region_body(page.body, page)
+            page.body = individualize_priority_region_body(page.body, page)
+            if category == "과외" and region.level not in {"national", "province"}:
+                page.meta_description = region_meta_description(slug, page.body)
             pages[slug] = page
             stats[page.page_type] += 1
 

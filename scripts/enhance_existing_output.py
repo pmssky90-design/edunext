@@ -44,7 +44,7 @@ def enhance_page(path: Path) -> bool:
     body = article.group(1) if article else ""
 
     if body:
-        enhanced_body, toc = enhance_content_body(body)
+        enhanced_body, toc = enhance_content_body(body, clarify_scenarios="page-type-region" in html)
         html = html[: article.start(1)] + enhanced_body + html[article.end(1) :]
         existing_toc = re.search(r'<nav\s+class="page-toc".*?</nav>\s*', html, flags=re.I | re.S)
         if existing_toc:
