@@ -891,6 +891,28 @@ h1 {
   scroll-margin-top: 96px;
 }
 
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 4px;
+  padding: 5px 10px;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  color: var(--brand);
+  background: #fff;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.source-link:hover,
+.source-link:focus-visible {
+  color: #fff;
+  background: var(--brand);
+  text-decoration: none;
+}
+
 @media (max-width: 720px) {
   .page-toc ol {
     grid-template-columns: 1fr;

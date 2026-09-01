@@ -46,7 +46,7 @@ def normalize_internal(href: str) -> str | None:
         return None
     parsed = urlparse(href)
     if parsed.netloc and parsed.netloc != "edunext.co.kr":
-        return href
+        return None
     path = unquote(parsed.path or "/")
     if path.startswith("/assets/") or path in {"/sitemap.xml", "/robots.txt"}:
         return None
@@ -85,14 +85,12 @@ def main() -> int:
             target = normalize_internal(href)
             if target is None:
                 continue
-            if "www.edunext.co.kr" in href or "localhost" in href or ("http" in href and "edunext.co.kr" not in href):
+            if "www.edunext.co.kr" in href or "localhost" in href:
                 domain_errors.append({"page": url, "href": href})
             if "/index.html" in href:
                 index_links.append({"page": url, "href": href})
             if target == url:
                 self_links.append({"page": url, "href": href})
-            elif target.startswith("http"):
-                broken.append({"page": url, "href": href, "reason": "external domain"})
             elif target not in pages:
                 broken.append({"page": url, "href": href, "reason": "missing page"})
             else:
