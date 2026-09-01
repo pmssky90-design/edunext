@@ -1037,6 +1037,76 @@ def render_related_navigation(page: Page, page_map: dict[str, Page], linked_cont
     if page.page_type == "region" and page.category == "과외" and page.slug not in SPECIAL_REGION_HUBS:
         used.update(internal_link_slugs(linked_content))
     chunks = ['<nav class="related-navigation" aria-label="관련 페이지">']
+    if page.slug in {"초등영어과외", "중등영어과외", "고등영어과외"}:
+        grade = page.slug.removesuffix("영어과외")
+        regional_grade = unique_pages(
+            [f"{region}{grade}영어과외" for region in ("부산", "경남", "경북", "양산", "구미")],
+            page_map,
+            page,
+            used,
+        )
+        chunks.append(render_page_cards(f"지역별 {grade}영어과외", regional_grade, page))
+        grade_hubs = unique_pages(["영어과외", f"{grade}과외", f"{grade}수학과외"], page_map, page, used)
+        chunks.append(render_page_cards("과목·학년 허브", grade_hubs, page))
+        adjacent_by_grade = {
+            "초등": ["중등영어과외"],
+            "중등": ["초등영어과외", "고등영어과외"],
+            "고등": ["중등영어과외"],
+        }
+        adjacent = unique_pages(adjacent_by_grade[grade], page_map, page, used)
+        chunks.append(render_page_cards("이어지는 영어 학습 단계", adjacent, page))
+    elif page.slug == "영어과외":
+        regional_english = unique_pages(
+            ["부산영어과외", "경남영어과외", "경북영어과외", "양산영어과외", "구미영어과외"],
+            page_map,
+            page,
+            used,
+        )
+        chunks.append(render_page_cards("지역별 영어과외", regional_english, page))
+        grade_english = unique_pages(
+            ["초등영어과외", "중등영어과외", "고등영어과외"],
+            page_map,
+            page,
+            used,
+        )
+        chunks.append(render_page_cards("학년별 영어과외", grade_english, page))
+        overview = unique_pages(["전국과외", "수학과외"], page_map, page, used)
+        chunks.append(render_page_cards("다른 학습 허브", overview, page))
+    elif page.slug == "경남영어과외":
+        overview = unique_pages(["경남과외", "영어과외", "양산영어과외"], page_map, page, used)
+        chunks.append(render_page_cards("경남권 영어과외 둘러보기", overview, page))
+        local_english = unique_pages(
+            [
+                "양산교동영어과외",
+                "양산남부동영어과외",
+                "양산동면영어과외",
+                "양산물금읍영어과외",
+                "양산중부동영어과외",
+            ],
+            page_map,
+            page,
+            used,
+        )
+        chunks.append(render_page_cards("양산 생활권별 영어과외", local_english, page))
+    elif page.slug == "경북영어과외":
+        overview = unique_pages(["경북과외", "영어과외", "구미영어과외"], page_map, page, used)
+        chunks.append(render_page_cards("경북권 영어과외 둘러보기", overview, page))
+        local_english = unique_pages(
+            [
+                "구미고아읍영어과외",
+                "구미남통동영어과외",
+                "구미사곡동영어과외",
+                "구미산동읍영어과외",
+                "구미송정동영어과외",
+                "구미옥계동영어과외",
+                "구미원평동영어과외",
+                "구미형곡동영어과외",
+            ],
+            page_map,
+            page,
+            used,
+        )
+        chunks.append(render_page_cards("구미 생활권별 영어과외", local_english, page))
     parent = unique_pages([page.parent_slug or ""], page_map, page, used)
     if parent:
         chunks.append(render_page_cards("지역 둘러보기", parent, page, "parent"))

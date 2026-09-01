@@ -10,6 +10,34 @@ from sitegen.models import Region
 from sitegen.utils import clean, normalize_slug
 
 
+SOURCE_TEXT_REPLACEMENTS = {
+    "학습 메모하는가": "기록하는가",
+    "학습 메모한다": "기록한다",
+    "학습 메모하고": "기록하고",
+    "학습 메모에서": "기록에서",
+    "학습 메모을": "기록을",
+    "학습 메모과": "기록과",
+    "학습 메모은": "기록은",
+    "학습 메모해": "기록해",
+    "시험 학습가": "시험 학습이",
+    "영어 학습는": "영어 학습은",
+    "출발점에서는 읽고": "출발점으로 읽고",
+    "처음에는 정한다": "먼저 정한다",
+    "영어학습": "영어 학습",
+}
+
+
+def normalize_source_text(body: str) -> str:
+    """Repair known malformed copy before imported HTML becomes page content."""
+    for malformed, corrected in SOURCE_TEXT_REPLACEMENTS.items():
+        body = body.replace(malformed, corrected)
+    return re.sub(
+        r"(초등학생|중학생|고등학생)에게는\s+\1은",
+        r"\1은",
+        body,
+    )
+
+
 def sanitize_source_html(body: str) -> str:
     body = re.sub(r"(?is)<(script|iframe|object|embed|form)\b.*?</\1>", " ", body)
     body = re.sub(r"(?is)<(script|iframe|object|embed|form)\b[^>]*>", " ", body)
@@ -17,7 +45,8 @@ def sanitize_source_html(body: str) -> str:
     body = re.sub(r"(?i)\s+href\s*=\s*(['\"])\s*javascript:.*?\1", "", body)
     body = re.sub(r"(?i)<\s*/?\s*h1\b", lambda m: m.group(0).lower().replace("h1", "h2"), body)
     body = re.sub(r'<a\b([^>]*?)\s+href=["\']https?://[^"\']+["\']([^>]*)>', r"<span\1\2>", body, flags=re.I)
-    return re.sub(r"</a>", "</span>", body, flags=re.I)
+    body = re.sub(r"</a>", "</span>", body, flags=re.I)
+    return normalize_source_text(body)
 
 
 def add_region(regions: OrderedDict[str, Region], key: str, name: str, slug: str, level: str, parent: str | None) -> None:

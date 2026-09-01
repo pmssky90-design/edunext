@@ -36,6 +36,15 @@ GENERATED_HUB_KEYWORDS.update({
     "초등수학과외", "중등수학과외", "고등수학과외",
 })
 
+SPECIAL_GENERATED_TITLES = {
+    "영어과외": "영어과외 어휘·문법·독해·내신 학년별 학습 가이드",
+    "초등영어과외": "초등영어과외 읽기·기초어휘·말하기 학습 가이드",
+    "중등영어과외": "중등영어과외 내신·문법·독해·서술형 학습 가이드",
+    "고등영어과외": "고등영어과외 내신·모의고사·구문독해 학습 가이드",
+    "경남영어과외": "경남영어과외 내신·독해·문법 학년별 학습 가이드",
+    "경북영어과외": "경북영어과외 구미권 내신·독해·문법 학습 가이드",
+}
+
 
 def normalize_spaces(value: str) -> str:
     value = value.replace("\u3000", " ")
@@ -58,6 +67,8 @@ def sheet_suffix(sheet_name: str) -> tuple[str, bool]:
 
 
 def build_page_title(keyword: str, source_sheet: str | None) -> tuple[str, bool]:
+    if keyword in SPECIAL_GENERATED_TITLES:
+        return SPECIAL_GENERATED_TITLES[keyword], False
     if not source_sheet:
         if keyword in GENERATED_HUB_KEYWORDS:
             scope = "지역별" if keyword.startswith(("경남", "경북")) else "전국"

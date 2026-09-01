@@ -4,7 +4,12 @@ from collections import Counter
 import os
 
 from config import CATEGORIES, GRADE_CATEGORIES, SUBJECT_CATEGORIES, SUBJECT_GRADE_CATEGORIES
-from sitegen.content_builder import fallback_content, school_intro
+from sitegen.content_builder import (
+    SPECIAL_SUBJECT_HUB_META_DESCRIPTIONS,
+    fallback_content,
+    school_intro,
+    special_subject_hub_content,
+)
 from sitegen.models import Page, Region
 from sitegen.render import individualize_priority_region_body, individualize_secondary_region_body
 from sitegen.title_rules import HOME_SEO_TITLE, build_page_title
@@ -124,8 +129,13 @@ def build_pages(
                 body=body,
                 meta_description=meta_description,
             )
-            if not page.body:
+            special_subject_body = special_subject_hub_content(slug)
+            if special_subject_body:
+                page.body = special_subject_body
+            elif not page.body:
                 page.body = fallback_content(page)
+            if slug in SPECIAL_SUBJECT_HUB_META_DESCRIPTIONS:
+                page.meta_description = SPECIAL_SUBJECT_HUB_META_DESCRIPTIONS[slug]
             page.body = individualize_secondary_region_body(page.body, page)
             page.body = individualize_priority_region_body(page.body, page)
             if category == "과외" and region.level not in {"national", "province"}:
