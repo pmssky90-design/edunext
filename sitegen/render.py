@@ -31,6 +31,11 @@ from sitegen.local_high_english import (
     individualize_local_high_english_body,
     is_local_high_english_slug,
 )
+from sitegen.local_high_general import (
+    build_local_high_general_meta,
+    individualize_local_high_general_body,
+    is_local_high_general_slug,
+)
 from sitegen.local_elementary_math import (
     build_local_elementary_math_meta,
     individualize_local_elementary_math_body,
@@ -1517,6 +1522,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         search_title, meta_description = build_local_high_math_meta(page.slug, page.body)
     if is_local_high_english_slug(page.slug):
         search_title, meta_description = build_local_high_english_meta(page.slug, page.body)
+    if is_local_high_general_slug(page.slug):
+        search_title, meta_description = build_local_high_general_meta(page.slug, page.body)
     if is_local_elementary_math_slug(page.slug):
         search_title, meta_description = build_local_elementary_math_meta(page.slug, page.body)
     if is_local_elementary_english_slug(page.slug):
@@ -1527,6 +1534,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = individualize_local_middle_math_body(body, page.slug)
     body = individualize_local_high_math_body(body, page.slug)
     body = individualize_local_high_english_body(body, page.slug)
+    body = individualize_local_high_general_body(body, page.slug)
     body = individualize_local_elementary_math_body(body, page.slug)
     body = individualize_local_elementary_english_body(body, page.slug)
     body = individualize_secondary_region_body(body, page)
