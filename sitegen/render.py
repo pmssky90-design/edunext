@@ -66,6 +66,11 @@ from sitegen.school_math import (
     individualize_school_math_body,
     is_school_math_slug,
 )
+from sitegen.school_general import (
+    build_school_general_meta,
+    individualize_school_general_body,
+    is_school_general_slug,
+)
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1552,6 +1557,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         search_title, meta_description = build_local_elementary_math_meta(page.slug, page.body)
     if is_local_elementary_english_slug(page.slug):
         search_title, meta_description = build_local_elementary_english_meta(page.slug, page.body)
+    if is_school_general_slug(page.slug):
+        search_title, meta_description = build_school_general_meta(page.slug, page.body)
     if is_school_english_slug(page.slug):
         search_title, meta_description = build_school_english_meta(page.slug, page.body)
     if is_school_math_slug(page.slug):
@@ -1567,6 +1574,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = individualize_local_elementary_general_body(body, page.slug)
     body = individualize_local_elementary_math_body(body, page.slug)
     body = individualize_local_elementary_english_body(body, page.slug)
+    body = individualize_school_general_body(body, page.slug)
     body = individualize_school_english_body(body, page.slug)
     body = individualize_school_math_body(body, page.slug)
     body = individualize_secondary_region_body(body, page)
