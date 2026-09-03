@@ -1,0 +1,3835 @@
+{
+  "source": {
+    "file": "2025년 유초중등 학교별 학년별 학생수 학급수 입학 졸업 교원 직원 면적_260206W.xlsx",
+    "survey_date": "2025-04-01",
+    "extracted_date": "2026-02-06",
+    "publisher": "한국교육개발원 교육데이터연구본부 국가교육통계센터",
+    "mapping_rule": "학교 주소에 대상 읍·면·동 명칭이 포함되는 초등학교"
+  },
+  "locations": {
+    "구미고아읍": [
+      {
+        "name": "고아초등학교",
+        "address": "경상북도 구미시 고아읍 관심1길 46(고아읍.고아초등학교)",
+        "homepage": "http://school.gyo6.net/goa",
+        "students": 104,
+        "classes": 8,
+        "grade_students": {
+          "1": 16,
+          "2": 12,
+          "3": 9,
+          "4": 20,
+          "5": 29,
+          "6": 18
+        }
+      },
+      {
+        "name": "구미문성초등학교",
+        "address": "경상북도 구미시 고아읍 들성로9길 13(고아읍)",
+        "homepage": "http://school.gyo6.net/gmsung",
+        "students": 1431,
+        "classes": 57,
+        "grade_students": {
+          "1": 209,
+          "2": 237,
+          "3": 261,
+          "4": 268,
+          "5": 242,
+          "6": 214
+        }
+      },
+      {
+        "name": "구운초등학교",
+        "address": "경상북도 구미시 고아읍 송평구길 79(고아읍. 구운초등학교)",
+        "homepage": "http://school.gyo6.net/9un",
+        "students": 52,
+        "classes": 7,
+        "grade_students": {
+          "1": 10,
+          "2": 5,
+          "3": 9,
+          "4": 12,
+          "5": 10,
+          "6": 6
+        }
+      },
+      {
+        "name": "남계초등학교",
+        "address": "경상북도 구미시 고아읍 봉한3길 16(고아읍. 남계초등학교)",
+        "homepage": "http://school.gyo6.net/namgye",
+        "students": 54,
+        "classes": 6,
+        "grade_students": {
+          "1": 6,
+          "2": 6,
+          "3": 11,
+          "4": 8,
+          "5": 9,
+          "6": 14
+        }
+      },
+      {
+        "name": "문장초등학교",
+        "address": "경상북도 구미시 고아읍 문장로 168. 문장초등학교 (고아읍)",
+        "homepage": "http://school.gyo6.net/mun-jang",
+        "students": 153,
+        "classes": 10,
+        "grade_students": {
+          "1": 11,
+          "2": 18,
+          "3": 21,
+          "4": 32,
+          "5": 33,
+          "6": 38
+        }
+      },
+      {
+        "name": "원호초등학교",
+        "address": "경상북도 구미시 고아읍 문장로22길 58(고아읍.원호초등학교)",
+        "homepage": "http://school.gyo6.net/wonho",
+        "students": 673,
+        "classes": 34,
+        "grade_students": {
+          "1": 124,
+          "2": 124,
+          "3": 83,
+          "4": 119,
+          "5": 100,
+          "6": 123
+        }
+      }
+    ],
+    "구미남통동": [
+      {
+        "name": "원남초등학교",
+        "address": "경상북도 구미시 원남로 12-50(남통동. 원남초등학교)",
+        "homepage": "http://school.gyo6.net/kwonnam",
+        "students": 488,
+        "classes": 23,
+        "grade_students": {
+          "1": 64,
+          "2": 58,
+          "3": 85,
+          "4": 86,
+          "5": 91,
+          "6": 104
+        }
+      }
+    ],
+    "구미사곡동": [
+      {
+        "name": "구미사곡초등학교",
+        "address": "경상북도 구미시 상사동로24길 9(사곡동. 구미사곡초등학교)",
+        "homepage": "http://gumisagok.school.gyo6.net",
+        "students": 473,
+        "classes": 23,
+        "grade_students": {
+          "1": 67,
+          "2": 77,
+          "3": 78,
+          "4": 94,
+          "5": 93,
+          "6": 64
+        }
+      }
+    ],
+    "구미산동읍": [
+      {
+        "name": "구미신당초등학교",
+        "address": "경상북도 구미시 산동읍 신당4로 29구미신당초등학교",
+        "homepage": "http://school.gyo6.net/gmsdes",
+        "students": 1406,
+        "classes": 62,
+        "grade_students": {
+          "1": 232,
+          "2": 226,
+          "3": 256,
+          "4": 260,
+          "5": 233,
+          "6": 199
+        }
+      },
+      {
+        "name": "구미원당초등학교",
+        "address": "경상북도 구미시 산동읍 옥계신당로9길 21(산동읍. 구미원당초등학교)",
+        "homepage": "https://school.gyo6.net/gumiwondang",
+        "students": 685,
+        "classes": 37,
+        "grade_students": {
+          "1": 127,
+          "2": 112,
+          "3": 121,
+          "4": 120,
+          "5": 108,
+          "6": 97
+        }
+      },
+      {
+        "name": "구미인덕초등학교",
+        "address": "경상북도 구미시 산동읍 신당인덕3로 25. 구미인덕초등학교 (산동읍. 구미인덕초등학교)",
+        "homepage": "https://school.gyo6.net/gmindeokes",
+        "students": 1878,
+        "classes": 80,
+        "grade_students": {
+          "1": 305,
+          "2": 292,
+          "3": 336,
+          "4": 323,
+          "5": 339,
+          "6": 283
+        }
+      },
+      {
+        "name": "산동초등학교",
+        "address": "경상북도 구미시 산동읍 강동로 936-18(산동읍. 산동초등학교)",
+        "homepage": "https://school.gyo6.net/sand",
+        "students": 129,
+        "classes": 10,
+        "grade_students": {
+          "1": 21,
+          "2": 26,
+          "3": 27,
+          "4": 29,
+          "5": 15,
+          "6": 11
+        }
+      }
+    ],
+    "구미송정동": [
+      {
+        "name": "송정초등학교",
+        "address": "경상북도 구미시 송정대로6길 72-6(송정동)",
+        "homepage": "https://school.gyo6.net/songjeung",
+        "students": 389,
+        "classes": 19,
+        "grade_students": {
+          "1": 48,
+          "2": 55,
+          "3": 69,
+          "4": 89,
+          "5": 63,
+          "6": 65
+        }
+      }
+    ],
+    "구미옥계동": [
+      {
+        "name": "양포초등학교",
+        "address": "경상북도 구미시 흥안로3길 30(옥계동. 양포초등학교)",
+        "homepage": "http://school.gyo6.net/yangpo",
+        "students": 421,
+        "classes": 20,
+        "grade_students": {
+          "1": 51,
+          "2": 61,
+          "3": 67,
+          "4": 88,
+          "5": 77,
+          "6": 77
+        }
+      },
+      {
+        "name": "옥계동부초등학교",
+        "address": "경상북도 구미시 옥계북로 89(옥계동. 옥계동부초등학교)",
+        "homepage": "http://school.gyo6.net/okgyedongbues",
+        "students": 967,
+        "classes": 41,
+        "grade_students": {
+          "1": 101,
+          "2": 116,
+          "3": 181,
+          "4": 172,
+          "5": 206,
+          "6": 191
+        }
+      },
+      {
+        "name": "옥계초등학교",
+        "address": "경상북도 구미시 산호대로23길 21-7. 옥계초등학교 (옥계동.옥계초등학교)",
+        "homepage": "https://school.gyo6.net/okgyees",
+        "students": 642,
+        "classes": 28,
+        "grade_students": {
+          "1": 112,
+          "2": 82,
+          "3": 105,
+          "4": 119,
+          "5": 107,
+          "6": 117
+        }
+      },
+      {
+        "name": "해마루초등학교",
+        "address": "경상북도 구미시 산호대로 953(옥계동)",
+        "homepage": "https://school.gyo6.net/haemaru",
+        "students": 1546,
+        "classes": 59,
+        "grade_students": {
+          "1": 190,
+          "2": 236,
+          "3": 283,
+          "4": 267,
+          "5": 294,
+          "6": 276
+        }
+      }
+    ],
+    "구미원평동": [
+      {
+        "name": "구미초등학교",
+        "address": "경상북도 구미시 역전로2길 23(원평동). 구미초등학교",
+        "homepage": "http://gumies.school.gyo6.net",
+        "students": 361,
+        "classes": 18,
+        "grade_students": {
+          "1": 85,
+          "2": 72,
+          "3": 70,
+          "4": 55,
+          "5": 49,
+          "6": 30
+        }
+      },
+      {
+        "name": "금오초등학교",
+        "address": "경상북도 구미시 산책길 19. 금오초등학교 (원평동.금오초등학교)",
+        "homepage": "https://school.gyo6.net/keumo",
+        "students": 889,
+        "classes": 35,
+        "grade_students": {
+          "1": 116,
+          "2": 138,
+          "3": 140,
+          "4": 180,
+          "5": 157,
+          "6": 158
+        }
+      }
+    ],
+    "구미형곡동": [
+      {
+        "name": "형곡초등학교",
+        "address": "경상북도 구미시 신시로1길 10(형곡동. 형곡초등학교)",
+        "homepage": "https://school.gyo6.net/hyoung-gok",
+        "students": 440,
+        "classes": 20,
+        "grade_students": {
+          "1": 52,
+          "2": 58,
+          "3": 81,
+          "4": 85,
+          "5": 88,
+          "6": 76
+        }
+      },
+      {
+        "name": "형남초등학교",
+        "address": "경상북도 구미시 형곡동로 1-5(형곡동.형남초등학교)",
+        "homepage": "https://school.gyo6.net/hyeongnames",
+        "students": 172,
+        "classes": 11,
+        "grade_students": {
+          "1": 19,
+          "2": 17,
+          "3": 31,
+          "4": 40,
+          "5": 30,
+          "6": 35
+        }
+      },
+      {
+        "name": "형일초등학교",
+        "address": "경상북도 구미시 형곡로14길 5-20. 형일초등학교 (형곡동. 형일초등학교)",
+        "homepage": "https://school.gyo6.net/hyungiles",
+        "students": 332,
+        "classes": 17,
+        "grade_students": {
+          "1": 27,
+          "2": 42,
+          "3": 62,
+          "4": 58,
+          "5": 65,
+          "6": 78
+        }
+      }
+    ],
+    "부산가야동": [
+      {
+        "name": "가남초등학교",
+        "address": "부산광역시 부산진구 엄광로 325(가야동)",
+        "homepage": "http://www.ga-nam.es.kr",
+        "students": 54,
+        "classes": 7,
+        "grade_students": {
+          "1": 5,
+          "2": 7,
+          "3": 13,
+          "4": 15,
+          "5": 8,
+          "6": 6
+        }
+      },
+      {
+        "name": "가야초등학교",
+        "address": "부산광역시 부산진구 대학로 22(가야동. 가야초등학교)",
+        "homepage": "http://www.ka-ya.es.kr",
+        "students": 964,
+        "classes": 44,
+        "grade_students": {
+          "1": 136,
+          "2": 144,
+          "3": 188,
+          "4": 162,
+          "5": 178,
+          "6": 156
+        }
+      },
+      {
+        "name": "가평초등학교",
+        "address": "부산광역시 부산진구 가야대로482번길 87(가야동. 가평초등학교)",
+        "homepage": "http://school.busanedu.net/busangapyeong-e/main.do",
+        "students": 624,
+        "classes": 30,
+        "grade_students": {
+          "1": 72,
+          "2": 78,
+          "3": 105,
+          "4": 123,
+          "5": 120,
+          "6": 126
+        }
+      }
+    ],
+    "부산감전동": [
+      {
+        "name": "감전초등학교",
+        "address": "부산광역시 사상구 괘감로 132(감전동.감전초등학교/북부교육청)",
+        "homepage": "http://gamjeon.es.kr",
+        "students": 119,
+        "classes": 8,
+        "grade_students": {
+          "1": 16,
+          "2": 16,
+          "3": 22,
+          "4": 20,
+          "5": 25,
+          "6": 20
+        }
+      },
+      {
+        "name": "서감초등학교",
+        "address": "부산광역시 사상구 괘감로 64. 서감초등학교 (감전동)",
+        "homepage": "http://seogam.es.kr/",
+        "students": 114,
+        "classes": 9,
+        "grade_students": {
+          "1": 19,
+          "2": 21,
+          "3": 17,
+          "4": 18,
+          "5": 21,
+          "6": 18
+        }
+      }
+    ],
+    "부산개금동": [
+      {
+        "name": "개금초등학교",
+        "address": "부산광역시 부산진구 가야대로443번길 25-10(개금동)",
+        "homepage": "http://kaegum.es.kr/",
+        "students": 549,
+        "classes": 26,
+        "grade_students": {
+          "1": 61,
+          "2": 74,
+          "3": 83,
+          "4": 110,
+          "5": 131,
+          "6": 90
+        }
+      },
+      {
+        "name": "개림초등학교",
+        "address": "부산광역시 부산진구 백양대로320번길 40(개금동. 개림초등학교)",
+        "homepage": "https://school.busanedu.net/gaerim-e/main.do",
+        "students": 685,
+        "classes": 32,
+        "grade_students": {
+          "1": 79,
+          "2": 103,
+          "3": 115,
+          "4": 130,
+          "5": 115,
+          "6": 143
+        }
+      },
+      {
+        "name": "개원초등학교",
+        "address": "부산광역시 부산진구 백양관문로77번길 17. 개원초등학교 (개금동)",
+        "homepage": "http://kaewone.es.kr",
+        "students": 461,
+        "classes": 24,
+        "grade_students": {
+          "1": 57,
+          "2": 63,
+          "3": 75,
+          "4": 80,
+          "5": 90,
+          "6": 96
+        }
+      },
+      {
+        "name": "개포초등학교",
+        "address": "부산광역시 부산진구 백양대로208번길 9(개금동.개포초등학교)",
+        "homepage": "http://www.gaepo.es.kr",
+        "students": 230,
+        "classes": 14,
+        "grade_students": {
+          "1": 30,
+          "2": 31,
+          "3": 40,
+          "4": 47,
+          "5": 50,
+          "6": 32
+        }
+      },
+      {
+        "name": "개화초등학교",
+        "address": "부산광역시 부산진구 개금본동로66번길 12-12(개금동. 개화초등학교)",
+        "homepage": "http://www.kae-hwa.es.kr",
+        "students": 164,
+        "classes": 10,
+        "grade_students": {
+          "1": 11,
+          "2": 24,
+          "3": 22,
+          "4": 32,
+          "5": 31,
+          "6": 44
+        }
+      },
+      {
+        "name": "주례초등학교",
+        "address": "부산광역시 부산진구 진사로61번길 28-7(개금동. 주례초등학교)",
+        "homepage": "http://www.jure.es.kr",
+        "students": 302,
+        "classes": 17,
+        "grade_students": {
+          "1": 39,
+          "2": 47,
+          "3": 47,
+          "4": 67,
+          "5": 53,
+          "6": 49
+        }
+      }
+    ],
+    "부산거제동": [
+      {
+        "name": "거제초등학교",
+        "address": "부산광역시 연제구 해맞이로 39(거제동.거제초등학교)",
+        "homepage": "http://www.gue-je.es.kr",
+        "students": 798,
+        "classes": 35,
+        "grade_students": {
+          "1": 150,
+          "2": 157,
+          "3": 136,
+          "4": 142,
+          "5": 122,
+          "6": 91
+        }
+      },
+      {
+        "name": "거학초등학교",
+        "address": "부산광역시 연제구 교대로24번길 36(거제동. 거학초등학교)",
+        "homepage": "http://www.geohak.es.kr",
+        "students": 547,
+        "classes": 25,
+        "grade_students": {
+          "1": 61,
+          "2": 66,
+          "3": 97,
+          "4": 103,
+          "5": 115,
+          "6": 105
+        }
+      },
+      {
+        "name": "남문초등학교",
+        "address": "부산광역시 연제구 법원북로 23. 남문초등학교 (거제동)",
+        "homepage": "http://nammun.es.kr",
+        "students": 1039,
+        "classes": 42,
+        "grade_students": {
+          "1": 142,
+          "2": 116,
+          "3": 179,
+          "4": 207,
+          "5": 178,
+          "6": 217
+        }
+      },
+      {
+        "name": "창신초등학교",
+        "address": "부산광역시 연제구 종합운동장로12번길 15(거제동. 창신초등학교)",
+        "homepage": "http://www.changshin.es.kr",
+        "students": 1624,
+        "classes": 62,
+        "grade_students": {
+          "1": 236,
+          "2": 291,
+          "3": 271,
+          "4": 272,
+          "5": 277,
+          "6": 277
+        }
+      }
+    ],
+    "부산광안동": [
+      {
+        "name": "광안초등학교",
+        "address": "부산광역시 수영구 광안로35번길 42(광안동)",
+        "homepage": "http://www.kwangan.es.kr",
+        "students": 662,
+        "classes": 29,
+        "grade_students": {
+          "1": 76,
+          "2": 92,
+          "3": 114,
+          "4": 127,
+          "5": 125,
+          "6": 128
+        }
+      },
+      {
+        "name": "수영초등학교",
+        "address": "부산광역시 수영구 광서로16번길 33(광안동. 수영초등학교)",
+        "homepage": "http://suyoung.es.kr/",
+        "students": 675,
+        "classes": 31,
+        "grade_students": {
+          "1": 73,
+          "2": 82,
+          "3": 115,
+          "4": 122,
+          "5": 132,
+          "6": 151
+        }
+      },
+      {
+        "name": "호암초등학교",
+        "address": "부산광역시 수영구 호암로 57(광안동)",
+        "homepage": "http://www.hoam.es.kr",
+        "students": 470,
+        "classes": 23,
+        "grade_students": {
+          "1": 69,
+          "2": 75,
+          "3": 84,
+          "4": 90,
+          "5": 85,
+          "6": 67
+        }
+      }
+    ],
+    "부산구서동": [
+      {
+        "name": "구서초등학교",
+        "address": "부산광역시 금정구 구서중앙로 35(구서동) 구서초등학교",
+        "homepage": "http://www.kuseo.es.kr",
+        "students": 463,
+        "classes": 23,
+        "grade_students": {
+          "1": 46,
+          "2": 59,
+          "3": 72,
+          "4": 104,
+          "5": 87,
+          "6": 95
+        }
+      },
+      {
+        "name": "동래초등학교",
+        "address": "부산광역시 금정구 체육공원로44번길 26. 동래초등학교 (구서동)",
+        "homepage": "http://www.dongrae.es.kr/",
+        "students": 620,
+        "classes": 22,
+        "grade_students": {
+          "1": 112,
+          "2": 112,
+          "3": 109,
+          "4": 106,
+          "5": 91,
+          "6": 90
+        }
+      },
+      {
+        "name": "두실초등학교",
+        "address": "부산광역시 금정구 중앙대로1893번길 33(구서동. 두실초등학교)",
+        "homepage": "http://www.dusil.es.kr",
+        "students": 760,
+        "classes": 32,
+        "grade_students": {
+          "1": 88,
+          "2": 132,
+          "3": 133,
+          "4": 126,
+          "5": 132,
+          "6": 149
+        }
+      },
+      {
+        "name": "장서초등학교",
+        "address": "부산광역시 금정구 금강로 453번길 26-7. 장서초등학교 (구서동)",
+        "homepage": "http://www.jangseo.es.kr/",
+        "students": 567,
+        "classes": 26,
+        "grade_students": {
+          "1": 64,
+          "2": 88,
+          "3": 83,
+          "4": 122,
+          "5": 112,
+          "6": 98
+        }
+      }
+    ],
+    "부산구포동": [
+      {
+        "name": "구남초등학교",
+        "address": "부산광역시 북구 구남로14번가길 23(구포동.구남초등학교)",
+        "homepage": "http://kunam.es.kr",
+        "students": 402,
+        "classes": 22,
+        "grade_students": {
+          "1": 68,
+          "2": 43,
+          "3": 63,
+          "4": 79,
+          "5": 70,
+          "6": 79
+        }
+      },
+      {
+        "name": "구포초등학교",
+        "address": "부산광역시 북구 백양대로1124번길 20(구포동. 구포초등학교)",
+        "homepage": "http://school.busanedu.net/gupo-e",
+        "students": 556,
+        "classes": 31,
+        "grade_students": {
+          "1": 99,
+          "2": 89,
+          "3": 116,
+          "4": 97,
+          "5": 88,
+          "6": 67
+        }
+      },
+      {
+        "name": "덕천초등학교",
+        "address": "부산광역시 북구 덕천2길 10(구포동. 덕천초등학교)",
+        "homepage": "http://school.busanedu.net/dugchun-e/main.do",
+        "students": 86,
+        "classes": 7,
+        "grade_students": {
+          "1": 14,
+          "2": 7,
+          "3": 16,
+          "4": 15,
+          "5": 13,
+          "6": 21
+        }
+      },
+      {
+        "name": "신천초등학교",
+        "address": "부산광역시 북구 모분재로 83(구포동.신천초등학교)",
+        "homepage": "http://psc.es.kr",
+        "students": 161,
+        "classes": 12,
+        "grade_students": {
+          "1": 23,
+          "2": 21,
+          "3": 30,
+          "4": 28,
+          "5": 21,
+          "6": 38
+        }
+      },
+      {
+        "name": "포천초등학교",
+        "address": "부산광역시 북구 시랑로 115(구포동. 포천초등학교)",
+        "homepage": "http://pochen.es.kr",
+        "students": 401,
+        "classes": 21,
+        "grade_students": {
+          "1": 46,
+          "2": 44,
+          "3": 55,
+          "4": 83,
+          "5": 68,
+          "6": 105
+        }
+      }
+    ],
+    "부산금사동": [],
+    "부산금성동": [
+      {
+        "name": "금성초등학교",
+        "address": "부산광역시 금정구 중리1길 15(금성동)",
+        "homepage": "http://school.busanedu.net/gumseang-e",
+        "students": 39,
+        "classes": 7,
+        "grade_students": {
+          "1": 2,
+          "2": 10,
+          "3": 2,
+          "4": 11,
+          "5": 4,
+          "6": 10
+        }
+      }
+    ],
+    "부산기장읍": [
+      {
+        "name": "교리초등학교",
+        "address": "부산광역시 기장군 기장읍 차성로 427.교리초등학교(기장읍. 교리초등학교)",
+        "homepage": "http://gyori.es.kr",
+        "students": 532,
+        "classes": 25,
+        "grade_students": {
+          "1": 68,
+          "2": 83,
+          "3": 94,
+          "4": 87,
+          "5": 110,
+          "6": 90
+        }
+      },
+      {
+        "name": "기장초등학교",
+        "address": "부산광역시 기장군 기장읍 읍내로 69(기장읍. 기장초등학교)",
+        "homepage": "http://gijang.es.kr/",
+        "students": 454,
+        "classes": 23,
+        "grade_students": {
+          "1": 63,
+          "2": 63,
+          "3": 82,
+          "4": 80,
+          "5": 72,
+          "6": 94
+        }
+      },
+      {
+        "name": "내리초등학교",
+        "address": "부산광역시 기장군 기장읍 소정안길 50(기장읍.내리초등학교)",
+        "homepage": "http://naeri.es.kr",
+        "students": 130,
+        "classes": 10,
+        "grade_students": {
+          "1": 18,
+          "2": 20,
+          "3": 27,
+          "4": 23,
+          "5": 27,
+          "6": 15
+        }
+      },
+      {
+        "name": "대청초등학교",
+        "address": "부산광역시 기장군 기장읍 차성서로 31(기장읍)",
+        "homepage": "http://www.daechung.es.kr/",
+        "students": 469,
+        "classes": 23,
+        "grade_students": {
+          "1": 79,
+          "2": 75,
+          "3": 73,
+          "4": 77,
+          "5": 79,
+          "6": 86
+        }
+      },
+      {
+        "name": "용암초등학교",
+        "address": "부산광역시 기장군 기장읍 기장해안로 577. 용암초등학교 (기장읍)",
+        "homepage": "http://www.yongam.es.kr",
+        "students": 70,
+        "classes": 7,
+        "grade_students": {
+          "1": 7,
+          "2": 18,
+          "3": 13,
+          "4": 7,
+          "5": 12,
+          "6": 13
+        }
+      },
+      {
+        "name": "죽성초등학교",
+        "address": "부산광역시 기장군 기장읍 죽성로 270(기장읍. 죽성초등학교)",
+        "homepage": "http://www.jukseong.es.kr",
+        "students": 73,
+        "classes": 7,
+        "grade_students": {
+          "1": 10,
+          "2": 15,
+          "3": 15,
+          "4": 13,
+          "5": 16,
+          "6": 4
+        }
+      }
+    ],
+    "부산낙민동": [
+      {
+        "name": "낙민초등학교",
+        "address": "부산광역시 동래구 충렬대로272번길 34(낙민동.낙민초등학교)",
+        "homepage": "http://nakmin.es.kr",
+        "students": 597,
+        "classes": 28,
+        "grade_students": {
+          "1": 81,
+          "2": 81,
+          "3": 106,
+          "4": 144,
+          "5": 85,
+          "6": 100
+        }
+      },
+      {
+        "name": "안민초등학교",
+        "address": "부산광역시 동래구 온천천로381번길 19(낙민동.안민초등학교)",
+        "homepage": "http://www.anmin.es.kr/",
+        "students": 617,
+        "classes": 28,
+        "grade_students": {
+          "1": 84,
+          "2": 86,
+          "3": 100,
+          "4": 120,
+          "5": 129,
+          "6": 98
+        }
+      }
+    ],
+    "부산남산동": [
+      {
+        "name": "금샘초등학교",
+        "address": "부산광역시 금정구 금샘로 525(남산동. 금샘초등학교)",
+        "homepage": "http://www.geumsaem.es.kr",
+        "students": 151,
+        "classes": 11,
+        "grade_students": {
+          "1": 19,
+          "2": 23,
+          "3": 27,
+          "4": 31,
+          "5": 22,
+          "6": 29
+        }
+      },
+      {
+        "name": "남산초등학교",
+        "address": "부산광역시 금정구 금강로 614(남산동. 남산초등학교)",
+        "homepage": "http://www.pusannamsan.es.kr",
+        "students": 358,
+        "classes": 18,
+        "grade_students": {
+          "1": 38,
+          "2": 49,
+          "3": 60,
+          "4": 59,
+          "5": 84,
+          "6": 68
+        }
+      }
+    ],
+    "부산남천동": [
+      {
+        "name": "광남초등학교",
+        "address": "부산광역시 수영구 광안해변로 115(남천동. 광남초등학교)",
+        "homepage": "http://gwangnam.es.kr/",
+        "students": 585,
+        "classes": 29,
+        "grade_students": {
+          "1": 66,
+          "2": 94,
+          "3": 89,
+          "4": 114,
+          "5": 108,
+          "6": 114
+        }
+      },
+      {
+        "name": "남천초등학교",
+        "address": "부산광역시 수영구 남천서로 14(남천동. 남천초등학교)",
+        "homepage": "http://www.namcheon.es.kr",
+        "students": 937,
+        "classes": 41,
+        "grade_students": {
+          "1": 141,
+          "2": 162,
+          "3": 152,
+          "4": 167,
+          "5": 165,
+          "6": 150
+        }
+      }
+    ],
+    "부산노포동": [],
+    "부산당감동": [
+      {
+        "name": "당감초등학교",
+        "address": "부산광역시 부산진구 당감로 22-5(당감동.당감초등학교)",
+        "homepage": "http://www.danggam.es.kr",
+        "students": 174,
+        "classes": 10,
+        "grade_students": {
+          "1": 17,
+          "2": 23,
+          "3": 16,
+          "4": 32,
+          "5": 39,
+          "6": 47
+        }
+      },
+      {
+        "name": "당평초등학교",
+        "address": "부산광역시 부산진구 백양대로136번길 26(당감동.당평초등학교)",
+        "homepage": "http://www.dangpyung.es.kr",
+        "students": 226,
+        "classes": 13,
+        "grade_students": {
+          "1": 24,
+          "2": 37,
+          "3": 31,
+          "4": 49,
+          "5": 46,
+          "6": 39
+        }
+      },
+      {
+        "name": "동원초등학교",
+        "address": "부산광역시 부산진구 백양산로 43(당감동. 동원초등학교)",
+        "homepage": "http://www.pdw.es.kr",
+        "students": 527,
+        "classes": 28,
+        "grade_students": {
+          "1": 73,
+          "2": 72,
+          "3": 81,
+          "4": 103,
+          "5": 95,
+          "6": 103
+        }
+      },
+      {
+        "name": "동평초등학교",
+        "address": "부산광역시 부산진구 당감서로65번길 31. (당감동.동평초등학교) (당감동)",
+        "homepage": "http://dongpyeong.es.kr",
+        "students": 501,
+        "classes": 24,
+        "grade_students": {
+          "1": 95,
+          "2": 75,
+          "3": 90,
+          "4": 84,
+          "5": 86,
+          "6": 71
+        }
+      }
+    ],
+    "부산대연동": [
+      {
+        "name": "대남초등학교",
+        "address": "부산광역시 남구 황령대로 343번길 9-55(대연동. 대남초등학교)",
+        "homepage": "http://daenam.es.kr/",
+        "students": 301,
+        "classes": 16,
+        "grade_students": {
+          "1": 49,
+          "2": 63,
+          "3": 40,
+          "4": 65,
+          "5": 41,
+          "6": 43
+        }
+      },
+      {
+        "name": "대연초등학교",
+        "address": "부산광역시 남구 진남로18번길 11(대연동. 대연초등학교)",
+        "homepage": "http://www.daeyeon.es.kr",
+        "students": 770,
+        "classes": 36,
+        "grade_students": {
+          "1": 88,
+          "2": 108,
+          "3": 127,
+          "4": 131,
+          "5": 156,
+          "6": 160
+        }
+      },
+      {
+        "name": "대천초등학교",
+        "address": "부산광역시 남구 조각공원로 19(대연동. 대천초등학교)",
+        "homepage": "http://www.daechon.es.kr",
+        "students": 510,
+        "classes": 26,
+        "grade_students": {
+          "1": 50,
+          "2": 74,
+          "3": 88,
+          "4": 104,
+          "5": 86,
+          "6": 108
+        }
+      },
+      {
+        "name": "석포초등학교",
+        "address": "부산광역시 남구 석포로86번길 76(대연동. 석포초등학교)",
+        "homepage": "http://www.sukpo.es.kr",
+        "students": 666,
+        "classes": 32,
+        "grade_students": {
+          "1": 113,
+          "2": 112,
+          "3": 97,
+          "4": 125,
+          "5": 130,
+          "6": 89
+        }
+      },
+      {
+        "name": "연포초등학교",
+        "address": "부산광역시 남구 못골로 17. 연포초등학교 (대연동)",
+        "homepage": "http://yeonpo.es.kr",
+        "students": 1227,
+        "classes": 52,
+        "grade_students": {
+          "1": 168,
+          "2": 191,
+          "3": 220,
+          "4": 217,
+          "5": 221,
+          "6": 210
+        }
+      },
+      {
+        "name": "용소초등학교",
+        "address": "부산광역시 남구 수영로325번길 114(대연동)",
+        "homepage": "http://yong-so.es.kr/",
+        "students": 1102,
+        "classes": 43,
+        "grade_students": {
+          "1": 142,
+          "2": 151,
+          "3": 197,
+          "4": 193,
+          "5": 212,
+          "6": 207
+        }
+      }
+    ],
+    "부산덕천동": [
+      {
+        "name": "덕성초등학교",
+        "address": "부산광역시 북구 만덕대로39번길 45. 덕성초등학교 (덕천동)",
+        "homepage": "http://school.busanedu.net/dsedu-e",
+        "students": 329,
+        "classes": 19,
+        "grade_students": {
+          "1": 65,
+          "2": 56,
+          "3": 56,
+          "4": 53,
+          "5": 57,
+          "6": 42
+        }
+      },
+      {
+        "name": "양덕초등학교",
+        "address": "부산광역시 북구 팽나무로 58(덕천동. 양덕초등학교)",
+        "homepage": "https://school.busanedu.net/yangduk-e/main.do",
+        "students": 141,
+        "classes": 10,
+        "grade_students": {
+          "1": 13,
+          "2": 27,
+          "3": 20,
+          "4": 19,
+          "5": 32,
+          "6": 30
+        }
+      },
+      {
+        "name": "양천초등학교",
+        "address": "부산광역시 북구 덕천로 132(덕천동. 양천초등학교)",
+        "homepage": "http://busanyangchun.es.kr",
+        "students": 103,
+        "classes": 9,
+        "grade_students": {
+          "1": 10,
+          "2": 14,
+          "3": 13,
+          "4": 21,
+          "5": 25,
+          "6": 20
+        }
+      }
+    ],
+    "부산덕포동": [
+      {
+        "name": "덕상초등학교",
+        "address": "부산광역시 사상구 덕상로 32(덕포동. 덕상초등학교)",
+        "homepage": "http://school.busanedu.net/deoksang-e",
+        "students": 375,
+        "classes": 19,
+        "grade_students": {
+          "1": 37,
+          "2": 54,
+          "3": 57,
+          "4": 93,
+          "5": 60,
+          "6": 74
+        }
+      },
+      {
+        "name": "덕포초등학교",
+        "address": "부산광역시 사상구 삼덕로 83(덕포동. 덕포초등학교)",
+        "homepage": "http://www.deokpo.es.kr",
+        "students": 134,
+        "classes": 10,
+        "grade_students": {
+          "1": 18,
+          "2": 28,
+          "3": 27,
+          "4": 26,
+          "5": 19,
+          "6": 16
+        }
+      },
+      {
+        "name": "사상초등학교",
+        "address": "부산광역시 사상구 운산로 65(덕포동.사상초등학교)",
+        "homepage": "http://sasang.es.kr/",
+        "students": 347,
+        "classes": 19,
+        "grade_students": {
+          "1": 58,
+          "2": 67,
+          "3": 49,
+          "4": 59,
+          "5": 63,
+          "6": 51
+        }
+      }
+    ],
+    "부산두구동": [
+      {
+        "name": "공덕초등학교",
+        "address": "부산광역시 금정구 대두로 2(두구동.공덕초등학교)",
+        "homepage": "http://www.kongduk.es.kr",
+        "students": 45,
+        "classes": 7,
+        "grade_students": {
+          "1": 4,
+          "2": 5,
+          "3": 11,
+          "4": 14,
+          "5": 7,
+          "6": 4
+        }
+      }
+    ],
+    "부산만덕동": [
+      {
+        "name": "덕양초등학교",
+        "address": "부산광역시 북구 함박봉로 42(만덕동. 덕양초등학교)",
+        "homepage": "http://deokyang.es.kr",
+        "students": 341,
+        "classes": 17,
+        "grade_students": {
+          "1": 40,
+          "2": 47,
+          "3": 52,
+          "4": 64,
+          "5": 62,
+          "6": 76
+        }
+      },
+      {
+        "name": "만덕초등학교",
+        "address": "부산광역시 북구 만덕1로 72(만덕동. 만덕초등학교)",
+        "homepage": "http://manduk.or.kr",
+        "students": 411,
+        "classes": 20,
+        "grade_students": {
+          "1": 64,
+          "2": 77,
+          "3": 75,
+          "4": 60,
+          "5": 60,
+          "6": 75
+        }
+      },
+      {
+        "name": "백산초등학교",
+        "address": "부산광역시 북구 덕천로259번길 23(만덕동. 백산초등학교)",
+        "homepage": "http://www.baeksan.es.kr",
+        "students": 546,
+        "classes": 25,
+        "grade_students": {
+          "1": 59,
+          "2": 92,
+          "3": 91,
+          "4": 101,
+          "5": 94,
+          "6": 109
+        }
+      },
+      {
+        "name": "백양초등학교",
+        "address": "부산광역시 북구 상리로18번길 12(만덕동. 백양초등학교)",
+        "homepage": "http://baekyang.es.kr/",
+        "students": 918,
+        "classes": 42,
+        "grade_students": {
+          "1": 150,
+          "2": 162,
+          "3": 156,
+          "4": 170,
+          "5": 142,
+          "6": 138
+        }
+      },
+      {
+        "name": "상학초등학교",
+        "address": "부산광역시 북구 상학산복길 191(만덕동. 상학초등학교)",
+        "homepage": "http://www.sanghak.es.kr/",
+        "students": 268,
+        "classes": 14,
+        "grade_students": {
+          "1": 51,
+          "2": 44,
+          "3": 43,
+          "4": 51,
+          "5": 42,
+          "6": 37
+        }
+      },
+      {
+        "name": "신덕초등학교",
+        "address": "부산광역시 북구 함박봉로140번가길 25(만덕동.신덕초등학교)",
+        "homepage": "http://sinduk.es.kr",
+        "students": 222,
+        "classes": 14,
+        "grade_students": {
+          "1": 24,
+          "2": 32,
+          "3": 42,
+          "4": 45,
+          "5": 42,
+          "6": 37
+        }
+      }
+    ],
+    "부산망미동": [
+      {
+        "name": "망미초등학교",
+        "address": "부산광역시 수영구 수미로35번길 27. 망미초등학교 (망미동)",
+        "homepage": "http://school.busanedu.net/mangmi-e",
+        "students": 389,
+        "classes": 21,
+        "grade_students": {
+          "1": 56,
+          "2": 43,
+          "3": 61,
+          "4": 71,
+          "5": 75,
+          "6": 83
+        }
+      },
+      {
+        "name": "배산초등학교",
+        "address": "부산광역시 수영구 망미배산로48번길 85-15(망미동. 배산초등학교)",
+        "homepage": "http://www.baesan.es.kr",
+        "students": 518,
+        "classes": 25,
+        "grade_students": {
+          "1": 81,
+          "2": 69,
+          "3": 88,
+          "4": 99,
+          "5": 97,
+          "6": 84
+        }
+      },
+      {
+        "name": "수미초등학교",
+        "address": "부산광역시 수영구 연수로310번길 91(망미동. 수미초등학교)",
+        "homepage": "http://www.sumi.es.kr/",
+        "students": 408,
+        "classes": 21,
+        "grade_students": {
+          "1": 31,
+          "2": 47,
+          "3": 84,
+          "4": 82,
+          "5": 77,
+          "6": 87
+        }
+      }
+    ],
+    "부산명륜동": [
+      {
+        "name": "교동초등학교",
+        "address": "부산광역시 동래구 시실로 73-13(명륜동)",
+        "homepage": "https://school.busanedu.net/kd-e/main.do",
+        "students": 858,
+        "classes": 37,
+        "grade_students": {
+          "1": 123,
+          "2": 131,
+          "3": 127,
+          "4": 165,
+          "5": 149,
+          "6": 163
+        }
+      },
+      {
+        "name": "명륜초등학교",
+        "address": "부산광역시 동래구 동래로 91(명륜동.명륜초등학교)",
+        "homepage": "http://school.busanedu.net/myeongryun-e/main.do",
+        "students": 1093,
+        "classes": 44,
+        "grade_students": {
+          "1": 127,
+          "2": 162,
+          "3": 189,
+          "4": 214,
+          "5": 204,
+          "6": 197
+        }
+      }
+    ],
+    "부산명장동": [
+      {
+        "name": "명동초등학교",
+        "address": "부산광역시 동래구 명장로63번길 60-5(명장동. 명동초등학교)",
+        "homepage": "http://www.mdong.es.kr",
+        "students": 469,
+        "classes": 23,
+        "grade_students": {
+          "1": 50,
+          "2": 80,
+          "3": 83,
+          "4": 94,
+          "5": 81,
+          "6": 81
+        }
+      },
+      {
+        "name": "명서초등학교",
+        "address": "부산광역시 동래구 명서로 121. 명서초등학교(명장동)",
+        "homepage": "http://www.myongseo.es.kr",
+        "students": 95,
+        "classes": 7,
+        "grade_students": {
+          "1": 12,
+          "2": 11,
+          "3": 13,
+          "4": 14,
+          "5": 26,
+          "6": 19
+        }
+      },
+      {
+        "name": "명장초등학교",
+        "address": "부산광역시 동래구 복천로 121(명장동. 명장초등학교)",
+        "homepage": "http://myungjang.es.kr",
+        "students": 349,
+        "classes": 18,
+        "grade_students": {
+          "1": 45,
+          "2": 57,
+          "3": 73,
+          "4": 57,
+          "5": 60,
+          "6": 57
+        }
+      },
+      {
+        "name": "안락초등학교",
+        "address": "부산광역시 동래구 명안로53번길 22(명장동. 안락초등학교)",
+        "homepage": "http://anrak.es.kr",
+        "students": 185,
+        "classes": 12,
+        "grade_students": {
+          "1": 27,
+          "2": 21,
+          "3": 36,
+          "4": 34,
+          "5": 31,
+          "6": 36
+        }
+      },
+      {
+        "name": "혜화초등학교",
+        "address": "부산광역시 동래구 명장로99번길 25(명장동. 혜화초등학교)",
+        "homepage": "http://www.hyehwa.es.kr",
+        "students": 338,
+        "classes": 12,
+        "grade_students": {
+          "1": 60,
+          "2": 60,
+          "3": 59,
+          "4": 55,
+          "5": 55,
+          "6": 49
+        }
+      }
+    ],
+    "부산모라동": [
+      {
+        "name": "모덕초등학교",
+        "address": "부산광역시 사상구 덕상로 120(모라동)",
+        "homepage": "http://school.busanedu.net/modeok-e",
+        "students": 560,
+        "classes": 28,
+        "grade_students": {
+          "1": 65,
+          "2": 77,
+          "3": 83,
+          "4": 101,
+          "5": 114,
+          "6": 120
+        }
+      },
+      {
+        "name": "모동초등학교",
+        "address": "부산광역시 사상구 모라로192번길 37(모라동)",
+        "homepage": "http://modong2.es.kr",
+        "students": 48,
+        "classes": 7,
+        "grade_students": {
+          "1": 6,
+          "2": 6,
+          "3": 5,
+          "4": 9,
+          "5": 10,
+          "6": 12
+        }
+      },
+      {
+        "name": "모라초등학교",
+        "address": "부산광역시 사상구 모라로64번길 46(모라동. 모라초등학교)",
+        "homepage": "http://www.mora.es.kr/",
+        "students": 123,
+        "classes": 10,
+        "grade_students": {
+          "1": 17,
+          "2": 18,
+          "3": 13,
+          "4": 25,
+          "5": 32,
+          "6": 18
+        }
+      },
+      {
+        "name": "모산초등학교",
+        "address": "부산광역시 사상구 모라로110번길 93(모라동. 모산초등학교)",
+        "homepage": "http://https://school.busanedu.net/mosan-e/main.do",
+        "students": 286,
+        "classes": 14,
+        "grade_students": {
+          "1": 45,
+          "2": 47,
+          "3": 47,
+          "4": 53,
+          "5": 45,
+          "6": 49
+        }
+      }
+    ],
+    "부산민락동": [
+      {
+        "name": "민락초등학교",
+        "address": "부산광역시 수영구 광남로257번길 12(민락동.민락초등학교)",
+        "homepage": "http://minlak.es.kr",
+        "students": 595,
+        "classes": 29,
+        "grade_students": {
+          "1": 89,
+          "2": 95,
+          "3": 104,
+          "4": 108,
+          "5": 116,
+          "6": 83
+        }
+      },
+      {
+        "name": "민안초등학교",
+        "address": "부산광역시 수영구 감포로38번길 33(민락동. 민안초등학교)",
+        "homepage": "http://minan.es.kr",
+        "students": 394,
+        "classes": 21,
+        "grade_students": {
+          "1": 75,
+          "2": 59,
+          "3": 67,
+          "4": 77,
+          "5": 56,
+          "6": 60
+        }
+      }
+    ],
+    "부산반송동": [
+      {
+        "name": "반송초등학교",
+        "address": "부산광역시 해운대구 아랫반송로30번길 37-16(반송동) 반송초등학교",
+        "homepage": "http://www.bansong.es.kr",
+        "students": 102,
+        "classes": 10,
+        "grade_students": {
+          "1": 9,
+          "2": 12,
+          "3": 10,
+          "4": 20,
+          "5": 30,
+          "6": 21
+        }
+      },
+      {
+        "name": "송운초등학교",
+        "address": "부산광역시 해운대구 신반송로 20(반송동. 송운초등학교)",
+        "homepage": "http://songun.es.kr",
+        "students": 306,
+        "classes": 17,
+        "grade_students": {
+          "1": 37,
+          "2": 53,
+          "3": 54,
+          "4": 56,
+          "5": 51,
+          "6": 55
+        }
+      },
+      {
+        "name": "운봉초등학교",
+        "address": "부산광역시 해운대구 신반송로 11-20. 운봉초등학교 (반송동)",
+        "homepage": "http://www.unbong.es.kr",
+        "students": 111,
+        "classes": 10,
+        "grade_students": {
+          "1": 13,
+          "2": 7,
+          "3": 18,
+          "4": 21,
+          "5": 28,
+          "6": 24
+        }
+      },
+      {
+        "name": "운송초등학교",
+        "address": "부산광역시 해운대구 반송로 839(반송동.운송초등학교)",
+        "homepage": "http://woonsong.es.kr",
+        "students": 76,
+        "classes": 7,
+        "grade_students": {
+          "1": 10,
+          "2": 6,
+          "3": 20,
+          "4": 15,
+          "5": 11,
+          "6": 14
+        }
+      }
+    ],
+    "부산반여동": [
+      {
+        "name": "무정초등학교",
+        "address": "부산광역시 해운대구 반여로 68-11. 무정초등학교 (반여동)",
+        "homepage": "http://www.bsmj.es.kr",
+        "students": 508,
+        "classes": 24,
+        "grade_students": {
+          "1": 102,
+          "2": 83,
+          "3": 94,
+          "4": 70,
+          "5": 88,
+          "6": 71
+        }
+      },
+      {
+        "name": "반석초등학교",
+        "address": "부산광역시 해운대구 선수촌로207번길 14(반여동. 반석초등학교)",
+        "homepage": "http://bansuk.es.kr",
+        "students": 60,
+        "classes": 7,
+        "grade_students": {
+          "1": 7,
+          "2": 11,
+          "3": 10,
+          "4": 10,
+          "5": 12,
+          "6": 10
+        }
+      },
+      {
+        "name": "반안초등학교",
+        "address": "부산광역시 해운대구 명장로67번길 40-42. 반안초등학교 (반여동)",
+        "homepage": "http://www.banan.es.kr",
+        "students": 515,
+        "classes": 25,
+        "grade_students": {
+          "1": 64,
+          "2": 80,
+          "3": 66,
+          "4": 101,
+          "5": 91,
+          "6": 113
+        }
+      },
+      {
+        "name": "삼어초등학교",
+        "address": "부산광역시 해운대구 삼어로91번길 73(반여동.삼어초등학교)",
+        "homepage": "http://sameo.es.kr",
+        "students": 278,
+        "classes": 16,
+        "grade_students": {
+          "1": 32,
+          "2": 38,
+          "3": 44,
+          "4": 49,
+          "5": 55,
+          "6": 60
+        }
+      },
+      {
+        "name": "인지초등학교",
+        "address": "부산광역시 해운대구 반여로 128(반여동)",
+        "homepage": "http://www.ij.es.kr",
+        "students": 505,
+        "classes": 24,
+        "grade_students": {
+          "1": 67,
+          "2": 56,
+          "3": 85,
+          "4": 94,
+          "5": 85,
+          "6": 118
+        }
+      },
+      {
+        "name": "장산초등학교",
+        "address": "부산광역시 해운대구 선수촌로 68(반여동.장산초등학교)",
+        "homepage": "http://www.jangsan.es.kr",
+        "students": 691,
+        "classes": 31,
+        "grade_students": {
+          "1": 94,
+          "2": 92,
+          "3": 92,
+          "4": 138,
+          "5": 137,
+          "6": 138
+        }
+      }
+    ],
+    "부산부곡동": [
+      {
+        "name": "금양초등학교",
+        "address": "부산광역시 금정구 중앙대로 1755(부곡동)",
+        "homepage": "http://www.kumyang.es.kr",
+        "students": 664,
+        "classes": 33,
+        "grade_students": {
+          "1": 84,
+          "2": 89,
+          "3": 114,
+          "4": 110,
+          "5": 132,
+          "6": 135
+        }
+      },
+      {
+        "name": "동현초등학교",
+        "address": "부산광역시 금정구 동현로 36(부곡동. 동현초등학교)",
+        "homepage": "http://bs-donghyun.es.kr",
+        "students": 289,
+        "classes": 16,
+        "grade_students": {
+          "1": 44,
+          "2": 39,
+          "3": 55,
+          "4": 40,
+          "5": 58,
+          "6": 53
+        }
+      },
+      {
+        "name": "부곡초등학교",
+        "address": "부산광역시 금정구 기찰로22번길 15(부곡동)",
+        "homepage": "http://www.pugok.es.kr",
+        "students": 438,
+        "classes": 21,
+        "grade_students": {
+          "1": 64,
+          "2": 69,
+          "3": 73,
+          "4": 82,
+          "5": 75,
+          "6": 75
+        }
+      },
+      {
+        "name": "현곡초등학교",
+        "address": "부산광역시 금정구 동부곡로27번라길 20(부곡동. 현곡초등학교)",
+        "homepage": "https://school.busanedu.net/hyungok-e",
+        "students": 86,
+        "classes": 7,
+        "grade_students": {
+          "1": 10,
+          "2": 11,
+          "3": 14,
+          "4": 21,
+          "5": 15,
+          "6": 15
+        }
+      }
+    ],
+    "부산부암동": [
+      {
+        "name": "동양초등학교",
+        "address": "부산광역시 부산진구 백양산로 99(부암동. 동양초등학교)",
+        "homepage": "http://school.busanedu.net/dong-yang-e/main.do",
+        "students": 189,
+        "classes": 12,
+        "grade_students": {
+          "1": 21,
+          "2": 32,
+          "3": 29,
+          "4": 37,
+          "5": 31,
+          "6": 39
+        }
+      },
+      {
+        "name": "부암초등학교",
+        "address": "부산광역시 부산진구 신천대로263번길 26(부암동.부암초등학교)",
+        "homepage": "http://www.buam.es.kr",
+        "students": 694,
+        "classes": 35,
+        "grade_students": {
+          "1": 100,
+          "2": 113,
+          "3": 123,
+          "4": 117,
+          "5": 129,
+          "6": 112
+        }
+      }
+    ],
+    "부산부전동": [
+      {
+        "name": "부전초등학교",
+        "address": "부산광역시 부산진구 부전로65번길 25. 부전초등학교 (부전동)",
+        "homepage": "https://school.busanedu.net/pspujun-e/main.do#",
+        "students": 353,
+        "classes": 19,
+        "grade_students": {
+          "1": 63,
+          "2": 57,
+          "3": 60,
+          "4": 59,
+          "5": 63,
+          "6": 51
+        }
+      }
+    ],
+    "부산사직동": [
+      {
+        "name": "사직초등학교",
+        "address": "부산광역시 동래구 쇠미로81번길 7(사직동. 사직초등학교)",
+        "homepage": "http://www.sajik.es.kr",
+        "students": 934,
+        "classes": 40,
+        "grade_students": {
+          "1": 115,
+          "2": 119,
+          "3": 141,
+          "4": 183,
+          "5": 190,
+          "6": 186
+        }
+      },
+      {
+        "name": "여고초등학교",
+        "address": "부산광역시 동래구 여고로63번가길 12(사직동. 여고초등학교)",
+        "homepage": "http://www.yeogo.es.kr",
+        "students": 1004,
+        "classes": 37,
+        "grade_students": {
+          "1": 105,
+          "2": 141,
+          "3": 147,
+          "4": 195,
+          "5": 210,
+          "6": 206
+        }
+      },
+      {
+        "name": "예원초등학교",
+        "address": "부산광역시 동래구 사직로 78(사직동. 예원초등학교)",
+        "homepage": "http://www.yewon.es.kr",
+        "students": 875,
+        "classes": 35,
+        "grade_students": {
+          "1": 115,
+          "2": 112,
+          "3": 155,
+          "4": 165,
+          "5": 163,
+          "6": 165
+        }
+      }
+    ],
+    "부산서동": [
+      {
+        "name": "구서초등학교",
+        "address": "부산광역시 금정구 구서중앙로 35(구서동) 구서초등학교",
+        "homepage": "http://www.kuseo.es.kr",
+        "students": 463,
+        "classes": 23,
+        "grade_students": {
+          "1": 46,
+          "2": 59,
+          "3": 72,
+          "4": 104,
+          "5": 87,
+          "6": 95
+        }
+      },
+      {
+        "name": "금사초등학교",
+        "address": "부산광역시 금정구 금사로57번길 24서동. 금사초등학교",
+        "homepage": "http://www.kumsa.es.kr",
+        "students": 280,
+        "classes": 16,
+        "grade_students": {
+          "1": 39,
+          "2": 38,
+          "3": 42,
+          "4": 60,
+          "5": 42,
+          "6": 59
+        }
+      },
+      {
+        "name": "동래초등학교",
+        "address": "부산광역시 금정구 체육공원로44번길 26. 동래초등학교 (구서동)",
+        "homepage": "http://www.dongrae.es.kr/",
+        "students": 620,
+        "classes": 22,
+        "grade_students": {
+          "1": 112,
+          "2": 112,
+          "3": 109,
+          "4": 106,
+          "5": 91,
+          "6": 90
+        }
+      },
+      {
+        "name": "동상초등학교",
+        "address": "부산광역시 금정구 옥봉로 5(서동. 동상초등학교)",
+        "homepage": "http://dongsang.es.kr",
+        "students": 100,
+        "classes": 7,
+        "grade_students": {
+          "1": 10,
+          "2": 17,
+          "3": 13,
+          "4": 20,
+          "5": 21,
+          "6": 19
+        }
+      },
+      {
+        "name": "두실초등학교",
+        "address": "부산광역시 금정구 중앙대로1893번길 33(구서동. 두실초등학교)",
+        "homepage": "http://www.dusil.es.kr",
+        "students": 760,
+        "classes": 32,
+        "grade_students": {
+          "1": 88,
+          "2": 132,
+          "3": 133,
+          "4": 126,
+          "5": 132,
+          "6": 149
+        }
+      },
+      {
+        "name": "서동초등학교",
+        "address": "부산광역시 금정구 동현로 147(서동. 서동초등학교)",
+        "homepage": "http://www.seodong.es.kr",
+        "students": 63,
+        "classes": 7,
+        "grade_students": {
+          "1": 7,
+          "2": 15,
+          "3": 7,
+          "4": 12,
+          "5": 14,
+          "6": 8
+        }
+      },
+      {
+        "name": "서명초등학교",
+        "address": "부산광역시 금정구 명서로 48. 서명초등학교 (서동)",
+        "homepage": "http://www.seomyeong.es.kr",
+        "students": 37,
+        "classes": 7,
+        "grade_students": {
+          "1": 4,
+          "2": 5,
+          "3": 5,
+          "4": 9,
+          "5": 3,
+          "6": 11
+        }
+      },
+      {
+        "name": "장서초등학교",
+        "address": "부산광역시 금정구 금강로 453번길 26-7. 장서초등학교 (구서동)",
+        "homepage": "http://www.jangseo.es.kr/",
+        "students": 567,
+        "classes": 26,
+        "grade_students": {
+          "1": 64,
+          "2": 88,
+          "3": 83,
+          "4": 122,
+          "5": 112,
+          "6": 98
+        }
+      }
+    ],
+    "부산선동": [
+      {
+        "name": "남항초등학교",
+        "address": "부산광역시 영도구 남항새싹길 55(영선동4가. 남항초등학교)",
+        "homepage": "http://namhang.es.kr/",
+        "students": 160,
+        "classes": 11,
+        "grade_students": {
+          "1": 20,
+          "2": 28,
+          "3": 19,
+          "4": 33,
+          "5": 39,
+          "6": 21
+        }
+      },
+      {
+        "name": "신선초등학교",
+        "address": "부산광역시 영도구 산정길 17(신선동3가)",
+        "homepage": "http://www.sinseon.es.kr/",
+        "students": 21,
+        "classes": 4,
+        "grade_students": {
+          "1": 2,
+          "2": 1,
+          "3": 4,
+          "4": 2,
+          "5": 1,
+          "6": 11
+        }
+      },
+      {
+        "name": "영도초등학교",
+        "address": "부산광역시 영도구 꿈나무길 41(신선동1가.영도초등학교)",
+        "homepage": "http://school.busanedu.net/yeongdo-e/",
+        "students": 226,
+        "classes": 14,
+        "grade_students": {
+          "1": 24,
+          "2": 42,
+          "3": 35,
+          "4": 34,
+          "5": 40,
+          "6": 51
+        }
+      }
+    ],
+    "부산수안동": [
+      {
+        "name": "수안초등학교",
+        "address": "부산광역시 동래구 온천천로 215(수안동. 수안초등학교)",
+        "homepage": "http://suan.es.kr",
+        "students": 167,
+        "classes": 12,
+        "grade_students": {
+          "1": 10,
+          "2": 27,
+          "3": 26,
+          "4": 35,
+          "5": 36,
+          "6": 33
+        }
+      }
+    ],
+    "부산신평동": [
+      {
+        "name": "신촌초등학교",
+        "address": "부산광역시 사하구 다대로135번길 30-21(신평동. 신촌초등학교)",
+        "homepage": "http://www.shinchon.es.kr",
+        "students": 71,
+        "classes": 8,
+        "grade_students": {
+          "1": 3,
+          "2": 10,
+          "3": 14,
+          "4": 14,
+          "5": 15,
+          "6": 15
+        }
+      },
+      {
+        "name": "신평초등학교",
+        "address": "부산광역시 사하구 장평로299번안길 19(신평동. 신평초등학교)",
+        "homepage": "http://www.sinpyeong.es.kr",
+        "students": 514,
+        "classes": 24,
+        "grade_students": {
+          "1": 88,
+          "2": 76,
+          "3": 84,
+          "4": 102,
+          "5": 81,
+          "6": 83
+        }
+      }
+    ],
+    "부산안락동": [
+      {
+        "name": "안남초등학교",
+        "address": "부산광역시 동래구 연안로 46(안락동. 안남초등학교)",
+        "homepage": "http://annam.es.kr",
+        "students": 732,
+        "classes": 32,
+        "grade_students": {
+          "1": 87,
+          "2": 104,
+          "3": 120,
+          "4": 137,
+          "5": 135,
+          "6": 149
+        }
+      },
+      {
+        "name": "안진초등학교",
+        "address": "부산광역시 동래구 안남로 63(안락동. 안진초등학교)",
+        "homepage": "http://anjin.es.kr",
+        "students": 397,
+        "classes": 18,
+        "grade_students": {
+          "1": 61,
+          "2": 47,
+          "3": 66,
+          "4": 79,
+          "5": 81,
+          "6": 63
+        }
+      },
+      {
+        "name": "충렬초등학교",
+        "address": "부산광역시 동래구 안락로125번길 22(안락동. 충렬초등학교)",
+        "homepage": "http://www.pscr.es.kr",
+        "students": 101,
+        "classes": 7,
+        "grade_students": {
+          "1": 9,
+          "2": 12,
+          "3": 16,
+          "4": 20,
+          "5": 25,
+          "6": 19
+        }
+      }
+    ],
+    "부산양정동": [
+      {
+        "name": "양동초등학교",
+        "address": "부산광역시 부산진구 황령산로605번길 35-10(양정동. 양동초등학교)",
+        "homepage": "http://www.yangdong.es.kr/",
+        "students": 982,
+        "classes": 41,
+        "grade_students": {
+          "1": 163,
+          "2": 180,
+          "3": 204,
+          "4": 168,
+          "5": 168,
+          "6": 99
+        }
+      },
+      {
+        "name": "양성초등학교",
+        "address": "부산광역시 부산진구 양성로 34(양정동.양성초등학교)",
+        "homepage": "http://yangsung.es.kr",
+        "students": 312,
+        "classes": 18,
+        "grade_students": {
+          "1": 46,
+          "2": 44,
+          "3": 44,
+          "4": 50,
+          "5": 62,
+          "6": 66
+        }
+      },
+      {
+        "name": "양정초등학교",
+        "address": "부산광역시 부산진구 중앙대로941번길 24(양정동. 양정초등학교)",
+        "homepage": "http://www.yj.es.kr",
+        "students": 747,
+        "classes": 41,
+        "grade_students": {
+          "1": 117,
+          "2": 113,
+          "3": 127,
+          "4": 151,
+          "5": 135,
+          "6": 104
+        }
+      }
+    ],
+    "부산연산동": [
+      {
+        "name": "과정초등학교",
+        "address": "부산광역시 연제구 과정로164번길 37. 과정초등학교 (연산동. 과정초등학교)",
+        "homepage": "http://www.kwajung.es.kr",
+        "students": 425,
+        "classes": 21,
+        "grade_students": {
+          "1": 45,
+          "2": 58,
+          "3": 86,
+          "4": 75,
+          "5": 88,
+          "6": 73
+        }
+      },
+      {
+        "name": "동명초등학교",
+        "address": "부산광역시 연제구 쌍미천로44번길 17(연산동. 동명초등학교)",
+        "homepage": "http://www.dongmyung.es.kr",
+        "students": 157,
+        "classes": 13,
+        "grade_students": {
+          "1": 14,
+          "2": 22,
+          "3": 29,
+          "4": 26,
+          "5": 37,
+          "6": 29
+        }
+      },
+      {
+        "name": "연동초등학교",
+        "address": "부산광역시 연제구 고분로56번길 40(연산동)",
+        "homepage": "http://yondong.es.kr",
+        "students": 548,
+        "classes": 27,
+        "grade_students": {
+          "1": 71,
+          "2": 80,
+          "3": 81,
+          "4": 110,
+          "5": 88,
+          "6": 118
+        }
+      },
+      {
+        "name": "연미초등학교",
+        "address": "부산광역시 연제구 금련로38번길 84(연산동. 연미초등학교)",
+        "homepage": "http://www.yeunmi.es.kr",
+        "students": 299,
+        "classes": 18,
+        "grade_students": {
+          "1": 74,
+          "2": 48,
+          "3": 57,
+          "4": 47,
+          "5": 42,
+          "6": 31
+        }
+      },
+      {
+        "name": "연산초등학교",
+        "address": "부산광역시 연제구 월드컵대로 41(연산동. 연산초등학교)",
+        "homepage": "http://www.yonsan.es.kr",
+        "students": 802,
+        "classes": 39,
+        "grade_students": {
+          "1": 114,
+          "2": 134,
+          "3": 154,
+          "4": 140,
+          "5": 128,
+          "6": 132
+        }
+      },
+      {
+        "name": "연서초등학교",
+        "address": "부산광역시 연제구 거제천로270번길 30(연산동. 연서초등학교)",
+        "homepage": "http://school.busanedu.net/yeonseo-e/main.do",
+        "students": 599,
+        "classes": 30,
+        "grade_students": {
+          "1": 73,
+          "2": 89,
+          "3": 101,
+          "4": 100,
+          "5": 131,
+          "6": 105
+        }
+      },
+      {
+        "name": "연신초등학교",
+        "address": "부산광역시 연제구 신금로23번길 30(연산동. 연신초등학교)",
+        "homepage": "http://www.yonsin.es.kr",
+        "students": 592,
+        "classes": 28,
+        "grade_students": {
+          "1": 85,
+          "2": 89,
+          "3": 123,
+          "4": 98,
+          "5": 106,
+          "6": 91
+        }
+      },
+      {
+        "name": "연일초등학교",
+        "address": "부산광역시 연제구 고분로 126-4(연산동.연일초등학교)",
+        "homepage": "http://www.yonil.es.kr",
+        "students": 94,
+        "classes": 7,
+        "grade_students": {
+          "1": 10,
+          "2": 12,
+          "3": 17,
+          "4": 20,
+          "5": 18,
+          "6": 17
+        }
+      },
+      {
+        "name": "연제초등학교",
+        "address": "부산광역시 연제구 중앙대로1065번길 14(연산동. 연제초등학교)",
+        "homepage": "http://www.yeonje.es.kr",
+        "students": 438,
+        "classes": 22,
+        "grade_students": {
+          "1": 56,
+          "2": 62,
+          "3": 66,
+          "4": 87,
+          "5": 73,
+          "6": 94
+        }
+      },
+      {
+        "name": "연천초등학교",
+        "address": "부산광역시 연제구 과정로225번길 46(연산동. 연천 초등학교)",
+        "homepage": "http://yonchon.es.kr",
+        "students": 573,
+        "classes": 27,
+        "grade_students": {
+          "1": 77,
+          "2": 78,
+          "3": 107,
+          "4": 105,
+          "5": 102,
+          "6": 104
+        }
+      },
+      {
+        "name": "토현초등학교",
+        "address": "부산광역시 연제구 토현로 48(연산동. 토현초등학교)",
+        "homepage": "http://www.tohyeon.es.kr",
+        "students": 242,
+        "classes": 14,
+        "grade_students": {
+          "1": 22,
+          "2": 36,
+          "3": 39,
+          "4": 42,
+          "5": 52,
+          "6": 51
+        }
+      }
+    ],
+    "부산연지동": [
+      {
+        "name": "연지초등학교",
+        "address": "부산광역시 부산진구 연지로 29. 연지초등학교 (연지동)",
+        "homepage": "http://yeonji.es.kr/",
+        "students": 1287,
+        "classes": 56,
+        "grade_students": {
+          "1": 193,
+          "2": 210,
+          "3": 229,
+          "4": 240,
+          "5": 213,
+          "6": 202
+        }
+      }
+    ],
+    "부산오륜동": [],
+    "부산온천동": [
+      {
+        "name": "금강초등학교",
+        "address": "부산광역시 동래구 사직북로28번길 125(온천동.금강초등학교)",
+        "homepage": "http://www.geumgang.es.kr/",
+        "students": 755,
+        "classes": 35,
+        "grade_students": {
+          "1": 124,
+          "2": 123,
+          "3": 126,
+          "4": 131,
+          "5": 132,
+          "6": 119
+        }
+      },
+      {
+        "name": "내산초등학교",
+        "address": "부산광역시 동래구 중앙대로1335번길 38(온천동. 내산초등학교)",
+        "homepage": "http://www.naesan.es.kr",
+        "students": 215,
+        "classes": 13,
+        "grade_students": {
+          "1": 17,
+          "2": 28,
+          "3": 43,
+          "4": 44,
+          "5": 43,
+          "6": 40
+        }
+      },
+      {
+        "name": "달북초등학교",
+        "address": "부산광역시 동래구 쇠미로 131(온천동.달북초등학교)",
+        "homepage": "http://www.dalbuk.es.kr",
+        "students": 521,
+        "classes": 25,
+        "grade_students": {
+          "1": 63,
+          "2": 83,
+          "3": 96,
+          "4": 101,
+          "5": 84,
+          "6": 94
+        }
+      },
+      {
+        "name": "미남초등학교",
+        "address": "부산광역시 동래구 충렬대로100번길 83(온천동. 미남초등학교)",
+        "homepage": "http://minam.es.kr/",
+        "students": 267,
+        "classes": 15,
+        "grade_students": {
+          "1": 38,
+          "2": 33,
+          "3": 47,
+          "4": 45,
+          "5": 47,
+          "6": 57
+        }
+      },
+      {
+        "name": "온샘초등학교",
+        "address": "부산광역시 동래구 충렬대로75번길 25(온천동)",
+        "homepage": "http://www.onsaem.es.kr",
+        "students": 1375,
+        "classes": 57,
+        "grade_students": {
+          "1": 241,
+          "2": 246,
+          "3": 261,
+          "4": 246,
+          "5": 199,
+          "6": 182
+        }
+      },
+      {
+        "name": "온천초등학교",
+        "address": "부산광역시 동래구 충렬대로107번길 124(온천동. 온천초등학교)",
+        "homepage": "http://www.onchun.es.kr/",
+        "students": 1051,
+        "classes": 46,
+        "grade_students": {
+          "1": 163,
+          "2": 167,
+          "3": 198,
+          "4": 151,
+          "5": 201,
+          "6": 171
+        }
+      }
+    ],
+    "부산용당동": [
+      {
+        "name": "용당초등학교",
+        "address": "부산광역시 남구 신선로 341(용당동)",
+        "homepage": "http://yongdang.es.kr/",
+        "students": 89,
+        "classes": 9,
+        "grade_students": {
+          "1": 6,
+          "2": 10,
+          "3": 14,
+          "4": 19,
+          "5": 11,
+          "6": 29
+        }
+      }
+    ],
+    "부산용호동": [
+      {
+        "name": "백운초등학교",
+        "address": "부산광역시 남구 동명로 76(용호동. 백운초등학교)",
+        "homepage": "http://www.baekwoon.es.kr",
+        "students": 157,
+        "classes": 11,
+        "grade_students": {
+          "1": 16,
+          "2": 18,
+          "3": 28,
+          "4": 19,
+          "5": 35,
+          "6": 41
+        }
+      },
+      {
+        "name": "분포초등학교",
+        "address": "부산광역시 남구 분포로 41(용호동. 분포초등학교)",
+        "homepage": "http://www.bunpo.es.kr",
+        "students": 958,
+        "classes": 41,
+        "grade_students": {
+          "1": 107,
+          "2": 139,
+          "3": 158,
+          "4": 172,
+          "5": 195,
+          "6": 187
+        }
+      },
+      {
+        "name": "오륙도초등학교",
+        "address": "부산광역시 남구 오륙도로 57(용호동. 오륙도초등학교)",
+        "homepage": "http://www.oryukdo.es.kr/",
+        "students": 468,
+        "classes": 22,
+        "grade_students": {
+          "1": 60,
+          "2": 67,
+          "3": 88,
+          "4": 88,
+          "5": 81,
+          "6": 84
+        }
+      },
+      {
+        "name": "용문초등학교",
+        "address": "부산광역시 남구 신선로 542(용호동. 용문초등학교)",
+        "homepage": "http://yong-mun.es.kr/",
+        "students": 841,
+        "classes": 36,
+        "grade_students": {
+          "1": 108,
+          "2": 118,
+          "3": 136,
+          "4": 173,
+          "5": 149,
+          "6": 157
+        }
+      },
+      {
+        "name": "용산초등학교",
+        "address": "부산광역시 남구 동명로 176번길 55(용호동)",
+        "homepage": "http://school.busanedu.net/yong-san-e/main.do",
+        "students": 273,
+        "classes": 16,
+        "grade_students": {
+          "1": 25,
+          "2": 39,
+          "3": 43,
+          "4": 58,
+          "5": 52,
+          "6": 56
+        }
+      },
+      {
+        "name": "용호초등학교",
+        "address": "부산광역시 남구 용호로42번길 94(용호동)",
+        "homepage": "http://yh.es.kr/",
+        "students": 394,
+        "classes": 20,
+        "grade_students": {
+          "1": 49,
+          "2": 57,
+          "3": 67,
+          "4": 76,
+          "5": 78,
+          "6": 67
+        }
+      },
+      {
+        "name": "운산초등학교",
+        "address": "부산광역시 남구 용호로269번길 89(용호동. 운산초등학교)",
+        "homepage": "http://www.unsan.es.kr",
+        "students": 454,
+        "classes": 23,
+        "grade_students": {
+          "1": 65,
+          "2": 87,
+          "3": 75,
+          "4": 77,
+          "5": 77,
+          "6": 73
+        }
+      }
+    ],
+    "부산우동": [
+      {
+        "name": "강동초등학교",
+        "address": "부산광역시 해운대구 해운대로349번길 10(우동. 강동초등학교)",
+        "homepage": "http://www.pusangangdong.es.kr/",
+        "students": 756,
+        "classes": 33,
+        "grade_students": {
+          "1": 121,
+          "2": 117,
+          "3": 112,
+          "4": 146,
+          "5": 131,
+          "6": 129
+        }
+      },
+      {
+        "name": "해강초등학교",
+        "address": "부산광역시 해운대구 해운대해변로 73(우동. 해강초등학교)",
+        "homepage": "http://www.haegang.es.kr",
+        "students": 750,
+        "classes": 33,
+        "grade_students": {
+          "1": 101,
+          "2": 117,
+          "3": 125,
+          "4": 146,
+          "5": 126,
+          "6": 135
+        }
+      },
+      {
+        "name": "해동초등학교",
+        "address": "부산광역시 해운대구 우동1로 104(우동. 해동초등학교)",
+        "homepage": "http://www.haedong.es.kr/",
+        "students": 317,
+        "classes": 17,
+        "grade_students": {
+          "1": 33,
+          "2": 28,
+          "3": 56,
+          "4": 62,
+          "5": 68,
+          "6": 70
+        }
+      },
+      {
+        "name": "해림초등학교",
+        "address": "부산광역시 해운대구 해운대로469번길 42(우동. 해림초등학교)",
+        "homepage": "http://www.haerim.es.kr",
+        "students": 925,
+        "classes": 39,
+        "grade_students": {
+          "1": 125,
+          "2": 130,
+          "3": 181,
+          "4": 156,
+          "5": 149,
+          "6": 184
+        }
+      },
+      {
+        "name": "해원초등학교",
+        "address": "부산광역시 해운대구 마린시티2로 10(우동. 해원초등학교)",
+        "homepage": "http://haewon.es.kr",
+        "students": 1061,
+        "classes": 44,
+        "grade_students": {
+          "1": 173,
+          "2": 161,
+          "3": 181,
+          "4": 195,
+          "5": 173,
+          "6": 178
+        }
+      }
+    ],
+    "부산장안읍": [
+      {
+        "name": "월내초등학교",
+        "address": "부산광역시 기장군 장안읍 길천2길 25(장안읍. 월내초등학교)",
+        "homepage": "http://www.wollae.es.kr",
+        "students": 156,
+        "classes": 11,
+        "grade_students": {
+          "1": 20,
+          "2": 22,
+          "3": 27,
+          "4": 29,
+          "5": 29,
+          "6": 29
+        }
+      },
+      {
+        "name": "장안초등학교",
+        "address": "부산광역시 기장군 장안읍 장안로 67-4(장안읍.장안초등학교)",
+        "homepage": "http://www.jangancho.es.kr",
+        "students": 58,
+        "classes": 6,
+        "grade_students": {
+          "1": 4,
+          "2": 12,
+          "3": 13,
+          "4": 9,
+          "5": 10,
+          "6": 10
+        }
+      },
+      {
+        "name": "좌천초등학교",
+        "address": "부산광역시 기장군 장안읍 좌천로 13-66. 좌천초등학교 (장안읍)",
+        "homepage": "http://www.jwacheon.es.kr",
+        "students": 39,
+        "classes": 7,
+        "grade_students": {
+          "1": 1,
+          "2": 9,
+          "3": 10,
+          "4": 7,
+          "5": 8,
+          "6": 4
+        }
+      }
+    ],
+    "부산장전동": [
+      {
+        "name": "금빛초등학교",
+        "address": "부산광역시 금정구 소정로 31(장전동. 금빛초등학교)",
+        "homepage": "http://www.gbit.es.kr",
+        "students": 686,
+        "classes": 32,
+        "grade_students": {
+          "1": 97,
+          "2": 117,
+          "3": 107,
+          "4": 133,
+          "5": 113,
+          "6": 119
+        }
+      },
+      {
+        "name": "금정초등학교",
+        "address": "부산광역시 금정구 식물원로44번길 46.금정초등학교 (장전동. 금정초등학교.금정유치원)",
+        "homepage": "http://www.gumjeong.es.kr",
+        "students": 1300,
+        "classes": 54,
+        "grade_students": {
+          "1": 223,
+          "2": 208,
+          "3": 212,
+          "4": 243,
+          "5": 214,
+          "6": 200
+        }
+      },
+      {
+        "name": "장전초등학교",
+        "address": "부산광역시 금정구 수림로 90(장전동. 장전초등학교)",
+        "homepage": "http://www.jangjeon.es.kr",
+        "students": 426,
+        "classes": 22,
+        "grade_students": {
+          "1": 48,
+          "2": 49,
+          "3": 71,
+          "4": 91,
+          "5": 71,
+          "6": 96
+        }
+      }
+    ],
+    "부산재송동": [
+      {
+        "name": "반산초등학교",
+        "address": "부산광역시 해운대구 재반로 171(재송동. 반산초등학교)",
+        "homepage": "http://www.bansan.es.kr/",
+        "students": 286,
+        "classes": 19,
+        "grade_students": {
+          "1": 26,
+          "2": 35,
+          "3": 52,
+          "4": 54,
+          "5": 52,
+          "6": 67
+        }
+      },
+      {
+        "name": "센텀초등학교",
+        "address": "부산광역시 해운대구 센텀중앙로 166. 센텀초등학교 (재송동. 센텀초등학교)",
+        "homepage": "http://www.centum.es.kr",
+        "students": 1453,
+        "classes": 56,
+        "grade_students": {
+          "1": 198,
+          "2": 207,
+          "3": 233,
+          "4": 261,
+          "5": 293,
+          "6": 261
+        }
+      },
+      {
+        "name": "송수초등학교",
+        "address": "부산광역시 해운대구 해운대로76번길 35(재송동. 송수초등학교)",
+        "homepage": "http://www.songsu.es.kr",
+        "students": 866,
+        "classes": 38,
+        "grade_students": {
+          "1": 123,
+          "2": 118,
+          "3": 134,
+          "4": 149,
+          "5": 179,
+          "6": 163
+        }
+      },
+      {
+        "name": "신재초등학교",
+        "address": "부산광역시 해운대구 해운대로81번길 55(재송동. 신재초등학교)",
+        "homepage": "http://www.sinjae.es.kr",
+        "students": 313,
+        "classes": 17,
+        "grade_students": {
+          "1": 36,
+          "2": 50,
+          "3": 49,
+          "4": 67,
+          "5": 46,
+          "6": 65
+        }
+      },
+      {
+        "name": "재송초등학교",
+        "address": "부산광역시 해운대구 재반로64번길 33(재송동.재송초등학교)",
+        "homepage": "http://www.jaesong.es.kr",
+        "students": 344,
+        "classes": 19,
+        "grade_students": {
+          "1": 38,
+          "2": 51,
+          "3": 59,
+          "4": 58,
+          "5": 76,
+          "6": 62
+        }
+      }
+    ],
+    "부산전포동": [
+      {
+        "name": "동성초등학교",
+        "address": "부산광역시 부산진구 동성로 26. 동성초등학교 (전포동)",
+        "homepage": "http://www.ds.es.kr",
+        "students": 700,
+        "classes": 24,
+        "grade_students": {
+          "1": 112,
+          "2": 113,
+          "3": 112,
+          "4": 120,
+          "5": 122,
+          "6": 121
+        }
+      },
+      {
+        "name": "성북초등학교",
+        "address": "부산광역시 부산진구 황령대로 79(전포동. 성북초등학교)",
+        "homepage": "https://school.busanedu.net/seongbuk-e/",
+        "students": 619,
+        "classes": 30,
+        "grade_students": {
+          "1": 77,
+          "2": 107,
+          "3": 109,
+          "4": 118,
+          "5": 100,
+          "6": 108
+        }
+      },
+      {
+        "name": "성전초등학교",
+        "address": "부산광역시 부산진구 전포대로298번길 15(전포동. 성전초등학교)",
+        "homepage": "http://www.sungjeun.es.kr/",
+        "students": 438,
+        "classes": 21,
+        "grade_students": {
+          "1": 80,
+          "2": 66,
+          "3": 74,
+          "4": 74,
+          "5": 74,
+          "6": 70
+        }
+      },
+      {
+        "name": "전포초등학교",
+        "address": "부산광역시 부산진구 전포대로255번길 38(전포동. 전포초등학교)",
+        "homepage": "http://jeonpo.es.kr/",
+        "students": 352,
+        "classes": 21,
+        "grade_students": {
+          "1": 45,
+          "2": 64,
+          "3": 66,
+          "4": 54,
+          "5": 61,
+          "6": 62
+        }
+      }
+    ],
+    "부산좌동": [
+      {
+        "name": "동백초등학교",
+        "address": "부산광역시 해운대구 좌동순환로357번길 6. 동백초등학교 (중동)",
+        "homepage": "http://dongbaek.es.kr",
+        "students": 630,
+        "classes": 30,
+        "grade_students": {
+          "1": 87,
+          "2": 88,
+          "3": 121,
+          "4": 110,
+          "5": 124,
+          "6": 100
+        }
+      },
+      {
+        "name": "부흥초등학교",
+        "address": "부산광역시 해운대구 좌동순환로 216(좌동. 부흥초등학교)",
+        "homepage": "http://www.buhung.es.kr",
+        "students": 731,
+        "classes": 30,
+        "grade_students": {
+          "1": 83,
+          "2": 102,
+          "3": 125,
+          "4": 138,
+          "5": 152,
+          "6": 131
+        }
+      },
+      {
+        "name": "상당초등학교",
+        "address": "부산광역시 해운대구 세실로 173(좌동.상당초등학교)",
+        "homepage": "http://sangdang.es.kr/",
+        "students": 726,
+        "classes": 31,
+        "grade_students": {
+          "1": 99,
+          "2": 100,
+          "3": 117,
+          "4": 153,
+          "5": 126,
+          "6": 131
+        }
+      },
+      {
+        "name": "신곡초등학교",
+        "address": "부산광역시 해운대구 좌동순환로 290(좌동.신곡초등학교)",
+        "homepage": "http://www.singok.es.kr",
+        "students": 464,
+        "classes": 23,
+        "grade_students": {
+          "1": 49,
+          "2": 53,
+          "3": 89,
+          "4": 85,
+          "5": 97,
+          "6": 91
+        }
+      },
+      {
+        "name": "신도초등학교",
+        "address": "부산광역시 해운대구 좌동순환로 34(좌동. 신도초등학교)",
+        "homepage": "http://sin-do.es.kr/",
+        "students": 566,
+        "classes": 26,
+        "grade_students": {
+          "1": 83,
+          "2": 81,
+          "3": 94,
+          "4": 111,
+          "5": 85,
+          "6": 112
+        }
+      },
+      {
+        "name": "양운초등학교",
+        "address": "부산광역시 해운대구 대천로67번길 36(좌동. 양운초등학교)",
+        "homepage": "http://www.yangun.es.kr/",
+        "students": 342,
+        "classes": 18,
+        "grade_students": {
+          "1": 35,
+          "2": 38,
+          "3": 63,
+          "4": 53,
+          "5": 62,
+          "6": 91
+        }
+      },
+      {
+        "name": "좌동초등학교",
+        "address": "부산광역시 해운대구 세실로 127(좌동. 좌동초등학교)",
+        "homepage": "http://jwadong.es.kr",
+        "students": 391,
+        "classes": 20,
+        "grade_students": {
+          "1": 36,
+          "2": 57,
+          "3": 65,
+          "4": 65,
+          "5": 77,
+          "6": 91
+        }
+      },
+      {
+        "name": "좌산초등학교",
+        "address": "부산광역시 해운대구 좌동순환로311번길 7(좌동. 좌산초등학교)",
+        "homepage": "http://www.jwasan.es.kr/",
+        "students": 456,
+        "classes": 21,
+        "grade_students": {
+          "1": 68,
+          "2": 67,
+          "3": 76,
+          "4": 86,
+          "5": 67,
+          "6": 92
+        }
+      },
+      {
+        "name": "해송초등학교",
+        "address": "부산광역시 해운대구 좌동순환로402번길 32(좌동)",
+        "homepage": "http://haesong.es.kr/",
+        "students": 628,
+        "classes": 28,
+        "grade_students": {
+          "1": 72,
+          "2": 98,
+          "3": 102,
+          "4": 123,
+          "5": 121,
+          "6": 112
+        }
+      }
+    ],
+    "부산주례동": [
+      {
+        "name": "동주초등학교",
+        "address": "부산광역시 사상구 가야대로306번길 72(주례동. 동주초등학교)",
+        "homepage": "https://school.busanedu.net/dongju-e",
+        "students": 429,
+        "classes": 22,
+        "grade_students": {
+          "1": 62,
+          "2": 56,
+          "3": 64,
+          "4": 84,
+          "5": 80,
+          "6": 83
+        }
+      },
+      {
+        "name": "주감초등학교",
+        "address": "부산광역시 사상구 양지로 48. 주감초등학교 (주례동)",
+        "homepage": "http://www.jugam.es.kr",
+        "students": 615,
+        "classes": 29,
+        "grade_students": {
+          "1": 112,
+          "2": 88,
+          "3": 109,
+          "4": 110,
+          "5": 104,
+          "6": 92
+        }
+      },
+      {
+        "name": "주양초등학교",
+        "address": "부산광역시 사상구 백양대로 372-6(주례동. 주양초등학교)",
+        "homepage": "http://www.juyang.es.kr/",
+        "students": 285,
+        "classes": 17,
+        "grade_students": {
+          "1": 38,
+          "2": 40,
+          "3": 52,
+          "4": 52,
+          "5": 46,
+          "6": 57
+        }
+      },
+      {
+        "name": "주학초등학교",
+        "address": "부산광역시 사상구 가야대로366번길 120(주례동. 주학초등학교)",
+        "homepage": "https://school.busanedu.net/juhak-e/main.do",
+        "students": 43,
+        "classes": 7,
+        "grade_students": {
+          "1": 5,
+          "2": 9,
+          "3": 7,
+          "4": 6,
+          "5": 5,
+          "6": 11
+        }
+      }
+    ],
+    "부산중동": [
+      {
+        "name": "동백초등학교",
+        "address": "부산광역시 해운대구 좌동순환로357번길 6. 동백초등학교 (중동)",
+        "homepage": "http://dongbaek.es.kr",
+        "students": 630,
+        "classes": 30,
+        "grade_students": {
+          "1": 87,
+          "2": 88,
+          "3": 121,
+          "4": 110,
+          "5": 124,
+          "6": 100
+        }
+      },
+      {
+        "name": "해운대초등학교",
+        "address": "부산광역시 해운대구 중동2로24번길 30(중동). 해운대초등학교",
+        "homepage": "http://www.haeundae.es.kr",
+        "students": 1134,
+        "classes": 49,
+        "grade_students": {
+          "1": 202,
+          "2": 180,
+          "3": 189,
+          "4": 197,
+          "5": 197,
+          "6": 169
+        }
+      }
+    ],
+    "부산철마면": [
+      {
+        "name": "신진초등학교",
+        "address": "부산광역시 기장군 철마면 고촌로28번길 10(철마면. 신진초등학교)",
+        "homepage": "http://school.busanedu.net/sinjin-e/main.do",
+        "students": 156,
+        "classes": 11,
+        "grade_students": {
+          "1": 15,
+          "2": 22,
+          "3": 33,
+          "4": 26,
+          "5": 32,
+          "6": 28
+        }
+      },
+      {
+        "name": "철마초등학교",
+        "address": "부산광역시 기장군 철마면 철마로 493(철마면. 철마초등학교)",
+        "homepage": "http://chulma.es.kr/",
+        "students": 84,
+        "classes": 6,
+        "grade_students": {
+          "1": 12,
+          "2": 15,
+          "3": 15,
+          "4": 14,
+          "5": 15,
+          "6": 13
+        }
+      }
+    ],
+    "부산초읍동": [
+      {
+        "name": "연학초등학교",
+        "address": "부산광역시 부산진구 초읍천로 43번길. 10 (초읍동) 연학초등학교",
+        "homepage": "http://www.yeonhak.es.kr",
+        "students": 363,
+        "classes": 18,
+        "grade_students": {
+          "1": 53,
+          "2": 60,
+          "3": 80,
+          "4": 61,
+          "5": 70,
+          "6": 39
+        }
+      },
+      {
+        "name": "초읍초등학교",
+        "address": "부산광역시 부산진구 성지로104번길 26(초읍동) 초읍초등학교",
+        "homepage": "http://www.choup.es.kr",
+        "students": 423,
+        "classes": 22,
+        "grade_students": {
+          "1": 55,
+          "2": 65,
+          "3": 69,
+          "4": 77,
+          "5": 71,
+          "6": 86
+        }
+      }
+    ],
+    "부산하단동": [
+      {
+        "name": "신남초등학교",
+        "address": "부산광역시 사하구 비봉로 88(하단동.신남초등학교)",
+        "homepage": "http://www.sinnam.es.kr",
+        "students": 425,
+        "classes": 22,
+        "grade_students": {
+          "1": 54,
+          "2": 67,
+          "3": 61,
+          "4": 70,
+          "5": 92,
+          "6": 81
+        }
+      },
+      {
+        "name": "을숙도초등학교",
+        "address": "부산광역시 사하구 낙동대로 581(하단동. 을숙도초등학교)",
+        "homepage": "http://www.eulsukdo.es.kr",
+        "students": 541,
+        "classes": 27,
+        "grade_students": {
+          "1": 69,
+          "2": 74,
+          "3": 89,
+          "4": 103,
+          "5": 106,
+          "6": 100
+        }
+      },
+      {
+        "name": "하남초등학교",
+        "address": "부산광역시 사하구 하신번영로 186(하단동)",
+        "homepage": "http://www.hanam.es.kr",
+        "students": 586,
+        "classes": 28,
+        "grade_students": {
+          "1": 73,
+          "2": 89,
+          "3": 78,
+          "4": 122,
+          "5": 106,
+          "6": 118
+        }
+      },
+      {
+        "name": "하단초등학교",
+        "address": "부산광역시 사하구 하신중앙로 321(하단동. 하단초등학교)",
+        "homepage": "http://www.hadan.es.kr",
+        "students": 275,
+        "classes": 16,
+        "grade_students": {
+          "1": 31,
+          "2": 33,
+          "3": 48,
+          "4": 51,
+          "5": 47,
+          "6": 65
+        }
+      }
+    ],
+    "부산학장동": [
+      {
+        "name": "구학초등학교",
+        "address": "부산광역시 사상구 학감대로 49.(학장동. 구학초등학교)",
+        "homepage": "http://www.guhag.es.kr",
+        "students": 406,
+        "classes": 20,
+        "grade_students": {
+          "1": 45,
+          "2": 64,
+          "3": 60,
+          "4": 74,
+          "5": 70,
+          "6": 93
+        }
+      },
+      {
+        "name": "학장초등학교",
+        "address": "부산광역시 사상구 대동로 205(학장동)",
+        "homepage": "http://www.hakjang.es.kr/",
+        "students": 200,
+        "classes": 13,
+        "grade_students": {
+          "1": 35,
+          "2": 29,
+          "3": 37,
+          "4": 30,
+          "5": 35,
+          "6": 34
+        }
+      }
+    ],
+    "부산화명동": [
+      {
+        "name": "대천리초등학교",
+        "address": "부산광역시 북구 산성로 87-10. 대천리초등학교 (화명동)",
+        "homepage": "http://www.daechunlee.es.kr",
+        "students": 198,
+        "classes": 12,
+        "grade_students": {
+          "1": 21,
+          "2": 22,
+          "3": 36,
+          "4": 47,
+          "5": 37,
+          "6": 35
+        }
+      },
+      {
+        "name": "명덕초등학교",
+        "address": "부산광역시 북구 금곡대로186번길 43(화명동. 명덕초등학교)",
+        "homepage": "http://myd.es.kr",
+        "students": 644,
+        "classes": 30,
+        "grade_students": {
+          "1": 84,
+          "2": 100,
+          "3": 113,
+          "4": 127,
+          "5": 110,
+          "6": 110
+        }
+      },
+      {
+        "name": "명진초등학교",
+        "address": "부산광역시 북구 화명신도시로 159(화명동. 명진초등학교)",
+        "homepage": "http://myungjin.es.kr",
+        "students": 560,
+        "classes": 26,
+        "grade_students": {
+          "1": 71,
+          "2": 88,
+          "3": 91,
+          "4": 106,
+          "5": 113,
+          "6": 91
+        }
+      },
+      {
+        "name": "와석초등학교",
+        "address": "부산광역시 북구 화명대로94번길 83(화명동. 와석초등학교)",
+        "homepage": "http://waseok.es.kr",
+        "students": 488,
+        "classes": 25,
+        "grade_students": {
+          "1": 56,
+          "2": 78,
+          "3": 85,
+          "4": 87,
+          "5": 85,
+          "6": 97
+        }
+      },
+      {
+        "name": "용수초등학교",
+        "address": "부산광역시 북구 화명신도시로 53(화명동. 용수초등학교)",
+        "homepage": "https://school.busanedu.net/yongsu-e/main.do",
+        "students": 739,
+        "classes": 35,
+        "grade_students": {
+          "1": 81,
+          "2": 103,
+          "3": 134,
+          "4": 137,
+          "5": 141,
+          "6": 143
+        }
+      },
+      {
+        "name": "학사초등학교",
+        "address": "부산광역시 북구 용당로15번길 20. 20 (화명동. 학사초등학교)",
+        "homepage": "http://school.busanedu.net/haksa-e",
+        "students": 405,
+        "classes": 21,
+        "grade_students": {
+          "1": 42,
+          "2": 78,
+          "3": 62,
+          "4": 61,
+          "5": 78,
+          "6": 84
+        }
+      },
+      {
+        "name": "화명초등학교",
+        "address": "부산광역시 북구 대천천길 65(화명동)",
+        "homepage": "http://hwamyong.es.kr",
+        "students": 508,
+        "classes": 27,
+        "grade_students": {
+          "1": 82,
+          "2": 96,
+          "3": 86,
+          "4": 110,
+          "5": 75,
+          "6": 59
+        }
+      },
+      {
+        "name": "화잠초등학교",
+        "address": "부산광역시 북구 화명대로 97-25(화명동.화잠초등학교)",
+        "homepage": "http://hwajam.es.kr",
+        "students": 402,
+        "classes": 19,
+        "grade_students": {
+          "1": 39,
+          "2": 71,
+          "3": 70,
+          "4": 81,
+          "5": 72,
+          "6": 69
+        }
+      },
+      {
+        "name": "화정초등학교",
+        "address": "부산광역시 북구 의성로 23(화명동)",
+        "homepage": "http://www.bshj.es.kr",
+        "students": 703,
+        "classes": 32,
+        "grade_students": {
+          "1": 107,
+          "2": 95,
+          "3": 133,
+          "4": 129,
+          "5": 130,
+          "6": 109
+        }
+      }
+    ],
+    "양산교동": [],
+    "양산남부동": [
+      {
+        "name": "삽량초등학교",
+        "address": "경상남도 양산시 양주로 55(남부동. 삽량초등학교)",
+        "homepage": "http://sabryang-p.gne.go.kr/",
+        "students": 497,
+        "classes": 26,
+        "grade_students": {
+          "1": 68,
+          "2": 67,
+          "3": 81,
+          "4": 80,
+          "5": 97,
+          "6": 104
+        }
+      },
+      {
+        "name": "신양초등학교",
+        "address": "경상남도 양산시 양주로 27(남부동. 신양초등학교)",
+        "homepage": "http://y-sinyang-p.gne.go.kr",
+        "students": 475,
+        "classes": 23,
+        "grade_students": {
+          "1": 60,
+          "2": 70,
+          "3": 64,
+          "4": 87,
+          "5": 101,
+          "6": 93
+        }
+      }
+    ],
+    "양산동면": [
+      {
+        "name": "금송초등학교",
+        "address": "경상남도 양산시 동면 사송로 99-20금송초중학교",
+        "homepage": "https://geumsong-p.gne.go.kr/",
+        "students": 365,
+        "classes": 20,
+        "grade_students": {
+          "1": 102,
+          "2": 60,
+          "3": 60,
+          "4": 52,
+          "5": 48,
+          "6": 43
+        }
+      },
+      {
+        "name": "금오초등학교",
+        "address": "경상남도 양산시 동면 금오16길 97(동면. 금오초중학교)",
+        "homepage": "http://geumo-p.gne.go.kr",
+        "students": 790,
+        "classes": 34,
+        "grade_students": {
+          "1": 101,
+          "2": 122,
+          "3": 142,
+          "4": 151,
+          "5": 146,
+          "6": 128
+        }
+      },
+      {
+        "name": "동면초등학교",
+        "address": "경상남도 양산시 동면 내송큰들1길 14동면초등학교",
+        "homepage": "http://dongmyon-p.gne.go.kr",
+        "students": 621,
+        "classes": 31,
+        "grade_students": {
+          "1": 122,
+          "2": 123,
+          "3": 111,
+          "4": 101,
+          "5": 101,
+          "6": 63
+        }
+      },
+      {
+        "name": "동산초등학교",
+        "address": "경상남도 양산시 동면 양산대로 346. 동산초등학교 (동면)",
+        "homepage": "http://ysdongsan-p.gne.go.kr/",
+        "students": 316,
+        "classes": 19,
+        "grade_students": {
+          "1": 49,
+          "2": 48,
+          "3": 63,
+          "4": 57,
+          "5": 56,
+          "6": 43
+        }
+      },
+      {
+        "name": "사송초등학교",
+        "address": "경상남도 양산시 동면 외송로 29사송초등학교",
+        "homepage": "https://sasong-p.gne.go.kr/",
+        "students": 338,
+        "classes": 20,
+        "grade_students": {
+          "1": 71,
+          "2": 74,
+          "3": 69,
+          "4": 48,
+          "5": 39,
+          "6": 37
+        }
+      },
+      {
+        "name": "석산초등학교",
+        "address": "경상남도 양산시 동면 금오16길 105. 석산초등학교 (동면)",
+        "homepage": "http://seoksan-p.gne.go.kr/",
+        "students": 1416,
+        "classes": 60,
+        "grade_students": {
+          "1": 193,
+          "2": 205,
+          "3": 238,
+          "4": 281,
+          "5": 258,
+          "6": 241
+        }
+      },
+      {
+        "name": "영천초등학교",
+        "address": "경상남도 양산시 동면 영천4길 6(동면.영천초등학교)",
+        "homepage": "http://yeongcheon-p.gne.go.kr/",
+        "students": 68,
+        "classes": 6,
+        "grade_students": {
+          "1": 18,
+          "2": 15,
+          "3": 11,
+          "4": 12,
+          "5": 5,
+          "6": 7
+        }
+      },
+      {
+        "name": "원동초등학교",
+        "address": "경상남도 양산시 원동면 원동로 1508. 원동초등학교 (원동면. 원동초등학교)",
+        "homepage": "http://wondong-p.gne.go.kr/",
+        "students": 37,
+        "classes": 6,
+        "grade_students": {
+          "1": 5,
+          "2": 6,
+          "3": 6,
+          "4": 8,
+          "5": 7,
+          "6": 5
+        }
+      },
+      {
+        "name": "원동초등학교이천분교장",
+        "address": "경상남도 양산시 원동면 배내로 431-1(원동면. 원동초등학교이천분교)",
+        "homepage": "http://www.y-wondong.es.kr",
+        "students": 6,
+        "classes": 3,
+        "grade_students": {
+          "1": 0,
+          "2": 0,
+          "3": 2,
+          "4": 3,
+          "5": 0,
+          "6": 1
+        }
+      },
+      {
+        "name": "화제초등학교",
+        "address": "경상남도 양산시 원동면 화제로 399-29(원동면. 화제초등학교)",
+        "homepage": "http://hwaje-p.gne.go.kr",
+        "students": 89,
+        "classes": 6,
+        "grade_students": {
+          "1": 11,
+          "2": 14,
+          "3": 17,
+          "4": 14,
+          "5": 15,
+          "6": 18
+        }
+      }
+    ],
+    "양산물금읍": [
+      {
+        "name": "가남초등학교",
+        "address": "경상남도 양산시 물금읍 청운로 114(물금읍)",
+        "homepage": "http://ganam-p.gne.go.kr",
+        "students": 1095,
+        "classes": 48,
+        "grade_students": {
+          "1": 165,
+          "2": 185,
+          "3": 193,
+          "4": 223,
+          "5": 177,
+          "6": 152
+        }
+      },
+      {
+        "name": "가양초등학교",
+        "address": "경상남도 양산시 물금읍 물금로 60(물금읍)",
+        "homepage": "http://gayang-p.gne.go.kr",
+        "students": 1557,
+        "classes": 66,
+        "grade_students": {
+          "1": 225,
+          "2": 239,
+          "3": 283,
+          "4": 295,
+          "5": 267,
+          "6": 248
+        }
+      },
+      {
+        "name": "가촌초등학교",
+        "address": "경상남도 양산시 물금읍 물금로 139(물금읍. 가촌초등학교)",
+        "homepage": "http://gachon-p.gne.go.kr",
+        "students": 1396,
+        "classes": 61,
+        "grade_students": {
+          "1": 239,
+          "2": 200,
+          "3": 246,
+          "4": 256,
+          "5": 236,
+          "6": 219
+        }
+      },
+      {
+        "name": "물금초등학교",
+        "address": "경상남도 양산시 물금읍 가촌새터길 15. 물금초등학교 (물금읍. 물금초등학교)",
+        "homepage": "http://mulgeum-p.gne.go.kr",
+        "students": 506,
+        "classes": 26,
+        "grade_students": {
+          "1": 81,
+          "2": 81,
+          "3": 104,
+          "4": 88,
+          "5": 82,
+          "6": 70
+        }
+      },
+      {
+        "name": "범어초등학교",
+        "address": "경상남도 양산시 물금읍 동중6길 8. 범어초등학교 (물금읍)",
+        "homepage": "http://beomeo-p.gne.go.kr",
+        "students": 238,
+        "classes": 14,
+        "grade_students": {
+          "1": 32,
+          "2": 46,
+          "3": 39,
+          "4": 44,
+          "5": 42,
+          "6": 35
+        }
+      },
+      {
+        "name": "서남초등학교",
+        "address": "경상남도 양산시 물금읍 오봉로 28(물금읍. 서남초등학교)",
+        "homepage": "http://seonam-p.gne.go.kr",
+        "students": 365,
+        "classes": 18,
+        "grade_students": {
+          "1": 38,
+          "2": 48,
+          "3": 60,
+          "4": 75,
+          "5": 81,
+          "6": 63
+        }
+      },
+      {
+        "name": "성산초등학교",
+        "address": "경상남도 양산시 물금읍 신주로 78(물금읍. 성산초등학교)",
+        "homepage": "https://ys-sungsan-p.gne.go.kr/ys-sungsan-p/main.do",
+        "students": 819,
+        "classes": 36,
+        "grade_students": {
+          "1": 91,
+          "2": 127,
+          "3": 130,
+          "4": 152,
+          "5": 156,
+          "6": 163
+        }
+      },
+      {
+        "name": "신주초등학교",
+        "address": "경상남도 양산시 물금읍 신주1길 58(물금읍.신주초등학교)",
+        "homepage": "http://sinju-p.gne.go.kr",
+        "students": 748,
+        "classes": 32,
+        "grade_students": {
+          "1": 78,
+          "2": 120,
+          "3": 124,
+          "4": 131,
+          "5": 139,
+          "6": 156
+        }
+      },
+      {
+        "name": "오봉초등학교",
+        "address": "경상남도 양산시 물금읍 목화9길 8(물금읍)",
+        "homepage": "http://ysob-p.gne.go.kr",
+        "students": 188,
+        "classes": 13,
+        "grade_students": {
+          "1": 22,
+          "2": 18,
+          "3": 31,
+          "4": 38,
+          "5": 32,
+          "6": 47
+        }
+      },
+      {
+        "name": "증산초등학교",
+        "address": "경상남도 양산시 물금읍 새실1길 50(물금읍)",
+        "homepage": "http://jeungsan-p.gne.go.kr/",
+        "students": 1521,
+        "classes": 64,
+        "grade_students": {
+          "1": 199,
+          "2": 247,
+          "3": 261,
+          "4": 282,
+          "5": 265,
+          "6": 267
+        }
+      },
+      {
+        "name": "황산초등학교",
+        "address": "경상남도 양산시 물금읍 화합5길 12(물금읍. 황산초등학교)",
+        "homepage": "http://hwangsan-p.gne.go.kr/",
+        "students": 818,
+        "classes": 37,
+        "grade_students": {
+          "1": 110,
+          "2": 117,
+          "3": 134,
+          "4": 142,
+          "5": 154,
+          "6": 161
+        }
+      }
+    ],
+    "양산중부동": [
+      {
+        "name": "양주초등학교",
+        "address": "경상남도 양산시 양주3길 40-13(중부동. 양주초등학교)",
+        "homepage": "http://yangju-p.gne.go.kr",
+        "students": 288,
+        "classes": 17,
+        "grade_students": {
+          "1": 45,
+          "2": 32,
+          "3": 41,
+          "4": 54,
+          "5": 63,
+          "6": 53
+        }
+      },
+      {
+        "name": "중부초등학교",
+        "address": "경상남도 양산시 양주로 140(중부동.중부초등학교)",
+        "homepage": "http://ysjb-p.gne.go.kr",
+        "students": 398,
+        "classes": 20,
+        "grade_students": {
+          "1": 50,
+          "2": 56,
+          "3": 70,
+          "4": 72,
+          "5": 75,
+          "6": 75
+        }
+      }
+    ]
+  }
+}
