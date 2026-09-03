@@ -71,6 +71,11 @@ from sitegen.school_general import (
     individualize_school_general_body,
     is_school_general_slug,
 )
+from sitegen.middle_school_math import (
+    build_middle_school_math_meta,
+    individualize_middle_school_math_body,
+    is_middle_school_math_slug,
+)
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1094,7 +1099,9 @@ def school_section(page: Page, page_map: dict[str, Page], seen: set[str] | None 
     if not school_slugs:
         return ""
     seen = seen if seen is not None else set()
-    title = "고등학교별 과외 찾기" if page.page_type == "home" else "관련 고등학교 학습 페이지"
+    is_middle = page.category == "중등수학과외"
+    title = "고등학교별 과외 찾기" if page.page_type == "home" else "관련 중학교 수학 학습 페이지" if is_middle else "관련 고등학교 학습 페이지"
+    section_id = "middle-schools" if is_middle else "high-schools"
     groups: dict[str, list[Page]] = {}
     for slug in school_slugs:
         item = page_map.get(slug)
@@ -1120,7 +1127,7 @@ def school_section(page: Page, page_map: dict[str, Page], seen: set[str] | None 
         cards.append(f'<li class="school-card"><strong>{escape(display)}</strong>{meta}<div>{links}</div></li>')
     if not cards:
         return ""
-    return f'<section class="link-section school-section" id="high-schools"><h2>{escape(title)}</h2><ul class="school-grid">{"".join(cards)}</ul></section>'
+    return f'<section class="link-section school-section" id="{section_id}"><h2>{escape(title)}</h2><ul class="school-grid">{"".join(cards)}</ul></section>'
 
 
 def render_related_navigation(page: Page, page_map: dict[str, Page], linked_content: str = "") -> str:
@@ -1563,6 +1570,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         search_title, meta_description = build_school_english_meta(page.slug, page.body)
     if is_school_math_slug(page.slug):
         search_title, meta_description = build_school_math_meta(page.slug, page.body)
+    if is_middle_school_math_slug(page.slug):
+        search_title, meta_description = build_middle_school_math_meta(page.slug, page.body)
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     body = individualize_local_middle_english_body(page.body, page.slug)
@@ -1577,6 +1586,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = individualize_school_general_body(body, page.slug)
     body = individualize_school_english_body(body, page.slug)
     body = individualize_school_math_body(body, page.slug)
+    body = individualize_middle_school_math_body(body, page.slug)
     body = individualize_secondary_region_body(body, page)
     body = individualize_priority_region_body(body, page)
     body = polish_priority_region_math_body(body, page)

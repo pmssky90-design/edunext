@@ -11,6 +11,12 @@ from sitegen.content_builder import (
     special_subject_hub_content,
 )
 from sitegen.models import Page, Region
+from sitegen.middle_school_math import (
+    build_middle_school_math_body,
+    build_middle_school_math_meta,
+    is_middle_school_math_slug,
+    middle_school_math_contexts,
+)
 from sitegen.render import individualize_priority_region_body, individualize_secondary_region_body
 from sitegen.title_rules import HOME_SEO_TITLE, build_page_title
 from sitegen.utils import excerpt, page_slug, region_meta_description
@@ -184,12 +190,36 @@ def build_pages(
         pages[slug] = page
         stats["school"] += 1
 
+    for slug, context in middle_school_math_contexts().items():
+        if slug in pages:
+            stats["duplicate_slugs"] += 1
+            continue
+        seo_title, meta_description = build_middle_school_math_meta(slug)
+        pages[slug] = Page(
+            slug=slug,
+            title=slug,
+            page_type="school",
+            category="중등수학과외",
+            seo_title=seo_title,
+            parent_slug=context.parent_slug,
+            related_slugs=list(context.internal_links),
+            school_display_name=context.display_name,
+            official_school_name=context.official_name,
+            body=build_middle_school_math_body(slug),
+            meta_description=meta_description,
+        )
+        stats["school"] += 1
+
     for page in list(pages.values()):
         if page.page_type != "school" or not page.parent_slug or page.parent_slug not in pages:
             continue
         parent = pages[page.parent_slug]
         if page.slug not in parent.child_slugs:
             parent.child_slugs.append(page.slug)
+        if is_middle_school_math_slug(page.slug):
+            if page.slug not in parent.school_slugs:
+                parent.school_slugs.append(page.slug)
+            continue
         info = school_map.get(page.slug, {})
         for region_slug in [
             existing_region_parent(info, pages, "과외"),
