@@ -16,6 +16,11 @@ from sitegen.local_middle_english import (
     individualize_local_middle_english_body,
     is_local_middle_english_slug,
 )
+from sitegen.local_middle_math import (
+    build_local_middle_math_meta,
+    individualize_local_middle_math_body,
+    is_local_middle_math_slug,
+)
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1486,9 +1491,12 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     meta_description = page.meta_description
     if is_local_middle_english_slug(page.slug):
         search_title, meta_description = build_local_middle_english_meta(page.slug)
+    if is_local_middle_math_slug(page.slug):
+        search_title, meta_description = build_local_middle_math_meta(page.slug, page.body)
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     body = individualize_local_middle_english_body(page.body, page.slug)
+    body = individualize_local_middle_math_body(body, page.slug)
     body = individualize_secondary_region_body(body, page)
     body = individualize_priority_region_body(body, page)
     body = polish_priority_region_math_body(body, page)
