@@ -21,6 +21,11 @@ from sitegen.local_middle_math import (
     individualize_local_middle_math_body,
     is_local_middle_math_slug,
 )
+from sitegen.local_middle_general import (
+    build_local_middle_general_meta,
+    individualize_local_middle_general_body,
+    is_local_middle_general_slug,
+)
 from sitegen.local_high_math import (
     build_local_high_math_meta,
     individualize_local_high_math_body,
@@ -1523,6 +1528,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         search_title, meta_description = build_local_middle_english_meta(page.slug)
     if is_local_middle_math_slug(page.slug):
         search_title, meta_description = build_local_middle_math_meta(page.slug, page.body)
+    if is_local_middle_general_slug(page.slug):
+        search_title, meta_description = build_local_middle_general_meta(page.slug, page.body)
     if is_local_high_math_slug(page.slug):
         search_title, meta_description = build_local_high_math_meta(page.slug, page.body)
     if is_local_high_english_slug(page.slug):
@@ -1539,6 +1546,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     body = individualize_local_middle_english_body(page.body, page.slug)
     body = individualize_local_middle_math_body(body, page.slug)
+    body = individualize_local_middle_general_body(body, page.slug)
     body = individualize_local_high_math_body(body, page.slug)
     body = individualize_local_high_english_body(body, page.slug)
     body = individualize_local_high_general_body(body, page.slug)
