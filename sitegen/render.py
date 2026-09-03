@@ -81,6 +81,7 @@ from sitegen.middle_school_english import (
     individualize_middle_school_english_body,
     is_middle_school_english_slug,
 )
+from sitegen.text_quality import polish_generated_body
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1605,10 +1606,12 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = add_contextual_region_links(body, page, page_map)
     body = replace_regional_faq(body, page, page_map)
     body = deduplicate_region_body_links(body, page)
+    body = polish_generated_body(body, page.slug)
     enhanced_body, toc = enhance_content_body(
         body,
         clarify_scenarios=page.page_type == "region" and page.category == "과외",
     )
+    enhanced_body = polish_generated_body(enhanced_body, page.slug)
     sections = render_related_navigation(page, page_map, enhanced_body)
     nav = "".join(
         f'<a href="{escape(page_map[slug].url)}">{escape(page_map[slug].title)}</a>'

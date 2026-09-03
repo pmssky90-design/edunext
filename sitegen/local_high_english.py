@@ -741,7 +741,11 @@ def _faq(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
         f"{focus} 진단부터 시험 복습까지 묻는 {location} FAQ",
         f"{location}에서 {focus} 계획을 세울 때 자주 묻는 질문",
     )
-    return f'<h2 class="{FAQ_MARKER}" data-faq-focus="{escape(focus)}">{escape(_pick(heading_frames, slug, "faq-heading"))}</h2>{pairs}'
+    return (
+        f'<section class="high-english-faq-section">'
+        f'<h2 class="{FAQ_MARKER}" data-faq-focus="{escape(focus)}">'
+        f'{escape(_pick(heading_frames, slug, "faq-heading"))}</h2>{pairs}</section>'
+    )
 
 
 def build_local_high_english_meta(slug: str, body: str) -> tuple[str, str]:
@@ -764,8 +768,6 @@ def _individualize_headings(body: str, location: str, focus: str) -> str:
         additions: list[str] = []
         if location not in text:
             additions.append(location)
-        if focus not in text:
-            additions.append(focus)
         if not additions:
             return match.group(0)
         return f"{opening}{inner} — {escape(' · '.join(additions))} 기준{closing}"
@@ -779,7 +781,7 @@ def _individualize_paragraphs(body: str, location: str, focus: str) -> str:
         text = _plain_text(inner)
         if location in text or focus in text:
             return match.group(0)
-        addition = f" {escape(location)}의 {escape(focus)} 기록에서는 같은 질문을 첫 시도와 간격 뒤 재시도에 각각 적용합니다."
+        addition = f" {escape(location)} 학생의 실제 기록에서는 같은 질문을 첫 시도와 간격 뒤 재시도에 각각 적용합니다."
         return f"{opening}{inner}{addition}{closing}"
 
     return re.sub(r"(<p\b[^>]*>)(.*?)(</p>)", replace, body, flags=re.I | re.S)

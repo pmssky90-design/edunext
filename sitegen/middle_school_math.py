@@ -57,7 +57,7 @@ ACTION_LIBRARY = (
     ("정의 회상", "교과서 핵심 용어를 보지 않고 설명", "정의·맞는 예·반례 세 칸", "세 칸을 순서대로 재현", "반례가 막히면 성립 조건으로 복귀"),
     ("조건 색인", "문제 문장에서 수치와 관계를 분리", "주어진 값·구할 값·제약 표시", "누락 없이 첫 식과 연결", "첫 식이 늦으면 관계 문장만 다시 작성"),
     ("부호 추적", "음수와 괄호가 바뀌는 줄을 관찰", "변형 전후 부호 대조", "최초 변화의 근거를 설명", "계산량보다 한 줄 한 연산으로 축소"),
-    ("식 역검산", "구한 값을 원래 식에 대입", "정방향과 역방향의 첫 불일치", "두 방향이 같은 조건에서 만남", "불일치 줄의 연산 성질을 재확인"),
+    ("식 역검산", "구한 값을 원래 식에 대입", "정방향과 역방향의 첫 불일치", "정방향과 역방향에서 같은 결과를 얻음", "불일치 줄의 연산 성질을 재확인"),
     ("표현 전환", "한 관계를 말·표·식·그림으로 변환", "표현별 바로 보이는 정보", "두 표현 이상에서 같은 결론", "한 표현만 가능하면 연결 예제로 복귀"),
     ("그래프 예측", "계수를 바꾸기 전 이동 방향을 예상", "예상 위치와 실제 스케치", "오차 이유를 계수와 연결", "값 대입 전에 기준 그래프부터 복원"),
     ("도형 재구성", "모양이 다른 그림에서 조건을 찾기", "주어진 사실과 추론 사실 구분", "보조선 목적을 한 문장으로 설명", "시각적 추측은 조건표에서 제외"),
@@ -65,7 +65,7 @@ ACTION_LIBRARY = (
     ("자료 비교", "평균과 중앙값의 역할을 나누기", "중심·퍼짐·이상값 변화", "대표값 선택 이유를 설명", "계산만 맞으면 해석 문장을 보완"),
     ("경우 분류", "무엇을 먼저 고정할지 결정", "나무그림·표의 분류 기준", "중복과 누락을 다른 기준으로 검산", "전체 수가 다르면 분류 경계 재설정"),
     ("첫 줄 후보", "풀이 시작식을 두 개 제안", "선택한 식과 버린 식의 이유", "더 적은 가정의 시작을 선택", "둘 다 막히면 개념 정의로 복귀"),
-    ("서술형 연결", "식 사이의 생략된 근거를 채우기", "가정·정의·계산·결론 표식", "다른 사람이 중단 없이 읽음", "한 문장에 근거 하나만 남기기"),
+    ("서술형 연결", "식 사이의 생략된 근거를 채우기", "가정·정의·계산·결론 표식", "다른 사람이 중단 없이 읽을 수 있음", "한 문장에 근거 하나만 남기기"),
     ("시간 구간", "읽기·첫 식·계산·검토 시간을 분리", "문항별 네 구간 실제 시간", "보류와 재진입 시점 준수", "한 구간만 길면 해당 행동을 축소 연습"),
     ("오류 코드", "최초 오류를 다섯 유형으로 분류", "개념·조건·전략·계산·시간 코드", "다음 확인 신호까지 기록", "결과 오류와 최초 원인을 다시 분리"),
     ("빈 종이 복원", "해설을 덮고 핵심 네 단계를 재현", "조건·첫 식·변형·검산", "하루 뒤에도 순서가 유지", "멈춘 단계만 참고 후 다시 덮기"),
@@ -215,7 +215,7 @@ def _diagnosis(context: MiddleSchoolMathContext, theme: tuple[str, ...], method:
     paragraphs = (
         f"{escape(context.display_name)} 수학 진단의 첫 주제는 <strong>{escape(theme[0])}</strong>입니다. 현재 관찰할 문제는 {escape(theme[1])}인지 여부이며, 맞힌 문항도 풀이 근거가 비어 있다면 진단 대상에 포함합니다.",
         f"진단은 문제 수를 늘리는 일이 아니라 행동의 위치를 찾는 일입니다. {escape(context.slug)}에서는 {escape(theme[2])}를 남겨 개념·조건·전략·계산·검산 중 어디에서 처음 흐름이 끊겼는지 확인합니다.",
-        f"과외 첫 상담에서는 점수 한 개보다 최근 시험지, 교과서 표시, 학교 학습지, 오답을 고친 흔적을 같은 순서로 봅니다. 이 네 자료가 없으면 {escape(theme[3])}부터 짧게 시도해 출발점을 다시 잡습니다.",
+        f"과외 첫 상담에서는 점수 한 개보다 최근 시험지, 교과서 표시, 학교 학습지, 오답을 고친 흔적을 같은 순서로 봅니다. 이 네 자료가 없으면 짧은 과제부터 시도해 출발점을 다시 잡습니다. 구체적인 행동 기준은 ‘{escape(theme[3])}’입니다.",
     )
     return _section("diagnosis", f"{context.display_name} {theme[0]} 출발 진단", paragraphs, table)
 
@@ -267,7 +267,7 @@ def _geometry_data(context: MiddleSchoolMathContext, method: tuple[str, ...]) ->
     )
     paragraphs = (
         f"{escape(context.official_name)} 내신에서 도형·함수·자료 문항을 준비할 때는 그림이나 표를 보는 즉시 공식을 고르지 않습니다. 문제에 실제로 적힌 조건, 표현에서 읽은 정보, 추가로 추론한 내용을 세 칸으로 나눕니다.",
-        f"{escape(method[0])}은 표현 전환에도 적용할 수 있습니다. {escape(method[1])} 이 과정에서 식만 남기지 말고 표·스케치·상황 문장 중 적어도 하나를 함께 저장합니다.",
+        f"{escape(method[0])}은 표현 전환에도 적용할 수 있습니다. {escape(method[1])}. 이 과정에서 식만 남기지 말고 표·스케치·상황 문장 중 적어도 하나를 함께 저장합니다.",
         f"오답을 다시 풀 때 원래 그림을 그대로 따라 그리면 모양을 외운 것인지 조건을 이해한 것인지 구분하기 어렵습니다. {escape(context.slug)} 복습에서는 점과 변의 위치를 바꾸어도 같은 근거를 찾는지 확인합니다.",
     )
     return _section("geometry-data", f"{context.display_name} 함수·도형·자료 표현 전환", paragraphs, table)
@@ -303,9 +303,9 @@ def _error_method(context: MiddleSchoolMathContext, method: tuple[str, ...]) -> 
         ),
     )
     paragraphs = (
-        f"{escape(context.display_name)} 오답장은 문제를 다시 베끼는 공책이 아니라 다음 행동을 예약하는 기록이어야 합니다. {escape(method[1])} 한 문제에 오류 코드를 여러 개 붙이기보다 최초 원인 하나와 뒤따른 결과를 나눕니다.",
-        f"{escape(method[2])} 기록은 선생님이 대신 완성하지 않고 학생이 이해한 범위와 도움을 받은 범위를 그대로 보이게 합니다. 지운 흔적을 모두 없애면 같은 실수가 반복되는 지점을 비교할 수 없습니다.",
-        f"{escape(method[3])} {escape(context.slug)}를 비교할 때도 오답 수보다 이 기록을 학생이 혼자 다시 사용할 수 있도록 설명하는지 확인합니다.",
+        f"{escape(context.display_name)} 오답장은 문제를 다시 베끼는 공책이 아니라 다음 행동을 예약하는 기록이어야 합니다. {escape(method[1])}. 한 문제에 오류 코드를 여러 개 붙이기보다 최초 원인 하나와 뒤따른 결과를 나눕니다.",
+        f"{escape(method[2])}. 이 기록은 선생님이 대신 완성하지 않고 학생이 이해한 범위와 도움을 받은 범위를 그대로 보이게 합니다. 지운 흔적을 모두 없애면 같은 실수가 반복되는 지점을 비교할 수 없습니다.",
+        f"{escape(method[3])}. {escape(context.slug)}를 비교할 때도 오답 수보다 이 기록을 학생이 혼자 다시 사용할 수 있도록 설명하는지 확인합니다.",
     )
     return _section("error-method", f"{context.display_name} {method[0]} 오답 복원법", paragraphs, table)
 
@@ -339,13 +339,14 @@ def _action_cycle(context: MiddleSchoolMathContext, theme: tuple[str, ...], meth
         label, start, evidence, done, adjust = action
         blocks.append(
             f'<section class="middle-school-math-action" id="action-{session}">'
-            f'<h3>{escape(context.display_name)} {escape(label)}와 {escape(theme[0])} 점검</h3>'
-            f'<p>{escape(context.display_name)}에서 {escape(label)}의 출발 행동은 {escape(start)}입니다. '
-            f'{escape(context.town)} 과제에서는 {escape(theme[0])} 문항을 골라 {escape(evidence)}을 남깁니다. '
-            f'{escape(method[0])} 절차로 {escape(done)}할 때 이 점검을 완료로 표시합니다.</p>'
+            f'<h3>{escape(context.display_name)} {escape(label)} 활동으로 살피는 {escape(theme[0])}</h3>'
+            f'<p>{escape(context.display_name)}에서 {escape(label)} 활동은 다음 행동으로 시작합니다. ‘{escape(start)}’. '
+            f'{escape(context.town)} 과제에서 {escape(theme[0])} 문항을 고른 뒤 남길 증거는 ‘{escape(evidence)}’입니다. '
+            f'{escape(method[0])} 절차의 완료 기준은 ‘{escape(done)}’입니다.</p>'
             f'<p>{escape(context.official_name)} 점검에서 완료 기준에 닿지 않으면 정답 수를 늘리지 않습니다. '
-            f'{escape(context.slug)}의 조정 행동은 {escape(adjust)}이며, 다음 회차에는 {escape(theme[2])}와 '
-            f'{escape(method[2])}을 함께 대조합니다. 이 순서는 성적 약속이 아니라 도움 없이 재현하는 범위를 찾기 위한 계획입니다.</p>'
+            f'{escape(context.slug)}의 조정 기준은 ‘{escape(adjust)}’입니다. 다음 회차에는 두 기록을 함께 대조합니다. '
+            f'첫 번째 기록에는 ‘{escape(theme[2])}’라는 내용을 남기고, 두 번째 기록에는 ‘{escape(method[2])}’라는 내용을 적습니다. '
+            f'이 순서는 성적 약속이 아니라 도움 없이 재현하는 범위를 찾기 위한 계획입니다.</p>'
             '</section>'
         )
     intro = (
@@ -370,7 +371,7 @@ def _scenario(context: MiddleSchoolMathContext, theme: tuple[str, ...], method: 
     )
     paragraphs = (
         f"<strong class=\"scenario-notice\">아래 내용은 실제 {escape(context.official_name)} 학생의 상담 후기나 성적 결과가 아니라 학습 조정 방법을 설명하기 위해 만든 가상 시나리오입니다.</strong> 가상의 학생은 {escape(theme[0])} 문항에서 답을 확인한 뒤에도 풀이 첫 줄을 혼자 재현하지 못한다고 가정합니다.",
-        f"출발 단계에서는 새 문제를 늘리지 않고 {escape(theme[2])}를 남깁니다. 설명 뒤 적용에서는 {escape(method[1])} 원인 비교 단계에서는 도움을 받은 부분을 숨기지 않고 다른 기호로 표시합니다.",
+        f"출발 단계에서는 새 문제를 늘리지 않고 {escape(theme[2])}를 남깁니다. 설명 뒤 적용에서는 {escape(method[1])}. 원인 비교 단계에서는 도움을 받은 부분을 숨기지 않고 다른 기호로 표시합니다.",
         f"독립 재현의 판단 기준은 점수 상승이 아니라 첫 줄 선택, 근거 설명, 검산 중 혼자 수행한 단계가 늘었는지입니다. 변화가 없으면 학생의 노력 부족으로 결론 내리지 않고 과제 크기·설명 방식·선행 개념을 각각 다시 확인합니다.",
     )
     return _section("scenario", f"가상 학습 시나리오: {context.display_name} {theme[0]} 조정", paragraphs, table)
@@ -388,7 +389,7 @@ def _tutor_choice(context: MiddleSchoolMathContext, theme: tuple[str, ...]) -> s
     )
     paragraphs = (
         f"{escape(context.slug)} 과외 후보에게는 모두 같은 최근 시험지 두 장과 일주일 시간표를 보여 주고 답을 비교해야 합니다. 서로 다른 자료를 주면 수업 방식 차이인지 자료 차이인지 판단하기 어렵습니다.",
-        f"첫 상담에서는 {escape(theme[0])}을 예로 들어 학생이 막힌 장면을 어떻게 관찰하고, 선생님의 설명 뒤 학생 혼자 재현하는 시간을 어떻게 확보하는지 묻습니다. 특정 학교의 출제 경향을 근거 없이 단정하는 답은 피합니다.",
+        f"첫 상담에서는 ‘{escape(theme[0])}’ 주제를 예로 들어 학생이 막힌 장면을 어떻게 관찰하고, 선생님의 설명 뒤 학생 혼자 재현하는 시간을 어떻게 확보하는지 묻습니다. 특정 학교의 출제 경향을 근거 없이 단정하는 답은 피합니다.",
         f"수업료·이동·온라인 가능 여부와 함께 취소·보강·자료비·보호자 피드백 주기를 서면으로 확인합니다. 선택 뒤에는 정기 점검일을 미리 정하고 유지·변경·중단 조건을 학생과 함께 기록합니다.",
     )
     return _section("tutor-choice", f"{context.display_name} 수학과외 비교 질문", paragraphs, table)
@@ -406,7 +407,7 @@ def _feedback(context: MiddleSchoolMathContext, method: tuple[str, ...]) -> str:
     )
     paragraphs = (
         f"{escape(context.display_name)} 보호자 피드백은 매일 감시하는 표가 아니라 학생과 선생님이 합의한 기준을 정기적으로 확인하는 장치입니다. 정답률, 공부 시간, 문제 수를 한꺼번에 목표로 두지 않고 이번 학습 주기의 행동 하나를 고릅니다.",
-        f"{escape(method[2])} 이 기록에서 학생이 도움을 요청한 시점은 실패가 아니라 혼자 해결 가능한 범위를 알려 주는 자료입니다. 보호자는 정답을 다시 검사하기보다 다음 수업에서 묻고 싶은 질문이 남았는지 확인합니다.",
+        f"{escape(method[2])}. 이 기록에서 학생이 도움을 요청한 시점은 실패가 아니라 혼자 해결 가능한 범위를 알려 주는 자료입니다. 보호자는 정답을 다시 검사하기보다 다음 수업에서 묻고 싶은 질문이 남았는지 확인합니다.",
         f"간격을 둔 뒤에도 같은 위치에서 멈추면 횟수를 곧바로 늘리기 전에 과제 난도, 선행 개념, 수업 언어, 생활 시간대를 나눠 검토합니다. {escape(context.slug)} 페이지는 이 의사결정을 돕는 정보이며 개인 상담이나 성과 보장을 대신하지 않습니다.",
     )
     return _section("feedback", f"{context.display_name} 학부모 누적 피드백", paragraphs, table)
@@ -437,7 +438,7 @@ def _next_cycle(context: MiddleSchoolMathContext, theme: tuple[str, ...], method
     )
     paragraphs = (
         f"{escape(context.display_name)} 학습 계획은 시험이 끝날 때마다 전부 새로 만드는 것이 아니라 유지할 행동, 수정할 행동, 중단할 행동을 구분해 이어 갑니다. 학생이 혼자 설명할 수 있는 부분까지 계속 반복하면 필요한 빈틈에 쓸 시간이 줄어듭니다.",
-        f"다음 학습 주기의 핵심 질문은 {escape(theme[0])} 문항을 더 많이 풀었는지가 아니라 처음 보는 조건에서도 {escape(theme[3])}를 수행하는지입니다. 필요한 도움의 양과 위치가 줄었는지도 함께 봅니다.",
+        f"다음 학습 주기의 핵심 질문은 {escape(theme[0])} 문항을 더 많이 풀었는지가 아닙니다. 처음 보는 조건에서도 ‘{escape(theme[3])}’라는 행동을 수행하는지와 필요한 도움의 양과 위치가 줄었는지를 함께 봅니다.",
         f"{escape(context.slug)} 점검일에는 학생·보호자·선생님이 같은 기록을 보고 한 가지 결정을 남깁니다. 목표가 달성되면 난도를 조금 높이고, 일부만 가능하면 간격을 유지하며, 부담이 누적되면 과제 크기부터 줄입니다.",
     )
     return _section("next-cycle", f"{context.display_name} 다음 학습 주기 조정 기준", paragraphs, table)
@@ -472,9 +473,9 @@ def _contextualize_shared_paragraphs(
         f"{context.display_name} 적용 시에는 {context.town} 일정과 {theme[0]} 풀이 흔적에 맞춰 이 기준을 조정합니다.",
         f"{context.official_name} 계획에서는 {method[0]} 기록으로 이 행동이 실제로 재현되는지 대조합니다.",
         f"{context.slug} 상담에서는 같은 원칙을 최근 학교 자료와 학생의 귀가 시각에 맞춰 구체화합니다.",
-        f"{context.display_name}의 다음 점검에서는 {theme[2]}와 {method[2]}을 나란히 놓고 변화를 확인합니다.",
+        f"{context.display_name}의 다음 점검에서는 두 기록 사이의 변화를 확인합니다. 첫 기록은 ‘{theme[2]}’, 둘째 기록은 ‘{method[2]}’입니다.",
         f"{context.town}에서 수업을 정할 때도 {context.display_name} 학생의 현재 과제량을 먼저 반영합니다.",
-        f"{context.official_name} 학생에게는 {theme[0]} 진단 뒤 {method[3]}",
+        f"{context.official_name} 학생에게는 {theme[0]} 진단 뒤 다음 기준을 적용합니다. {method[3]}.",
     )
     index = 0
 
@@ -500,7 +501,7 @@ def build_middle_school_math_body(slug: str, source_body: str = "") -> str:
         f'<h2>{escape(context.slug)}: {escape(context.official_name)} 중등 수학 학습 설계</h2>'
         f'<p>{escape(context.slug)}는 <strong>{escape(theme[0])}</strong> 진단과 <strong>{escape(method[0])}</strong> 복습을 중심으로 구성한 학교별 정보 페이지입니다. 학교명을 검색한 학생과 보호자가 확인 가능한 학교 자료, 현재 풀이 증거, 과외 비교 질문을 한 흐름으로 볼 수 있게 했습니다.</p>'
         f'<p>{escape(context.official_name)}의 {escape(context.town)} 소재와 학년별 학생 수는 공식 통계에서 확인했지만, 시험 난도나 특정 교사의 출제 방식은 추정하지 않습니다. 실제 계획은 학생이 받은 최신 시험 범위·학습지·수행평가 안내로 조정해야 합니다.</p>'
-        f'<p>현재 점수만으로 진도를 정하지 않고 최근 풀이에서 {escape(theme[1])}인지 먼저 관찰합니다. 이후 {escape(theme[2])}와 {escape(method[2])}을 남겨 설명을 들은 직후와 스스로 다시 푼 뒤의 차이를 비교합니다.</p>'
+        f'<p>현재 점수만으로 진도를 정하지 않고 최근 풀이에서 {escape(theme[1])}인지 먼저 관찰합니다. 이후 두 기록을 남깁니다. 첫 기록에는 ‘{escape(theme[2])}’라는 내용을 남기고, 둘째 기록에는 ‘{escape(method[2])}’라는 내용을 적습니다. 두 자료로 설명을 들은 직후와 스스로 다시 푼 뒤의 차이를 비교합니다.</p>'
     )
     sections = (
         _school_profile(context),

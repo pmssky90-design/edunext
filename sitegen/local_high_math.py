@@ -685,8 +685,9 @@ def _faq(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
         f"{location}에서 {focus} 계획을 세울 때 자주 묻는 질문",
     )
     return (
+        f'<section class="high-math-faq-section">'
         f'<h2 class="{FAQ_MARKER}" data-faq-focus="{escape(focus)}">'
-        f"{escape(_pick(heading_frames, slug, 'faq-heading'))}</h2>{''.join(pairs)}"
+        f"{escape(_pick(heading_frames, slug, 'faq-heading'))}</h2>{''.join(pairs)}</section>"
     )
 
 
@@ -711,8 +712,6 @@ def _individualize_headings(body: str, location: str, focus: str) -> str:
         additions: list[str] = []
         if location not in text:
             additions.append(location)
-        if focus not in text:
-            additions.append(focus)
         if not additions:
             return match.group(0)
         suffix = " · ".join(additions)
@@ -732,9 +731,7 @@ def _individualize_paragraphs(body: str, location: str, focus: str) -> str:
         text = _plain_text(inner)
         if location in text or focus in text:
             return match.group(0)
-        addition = (
-            f" {escape(location)}의 {escape(focus)} 기록에서는 같은 질문을 학생의 첫 시도와 재시도에 각각 적용합니다."
-        )
+        addition = f" {escape(location)} 학생의 실제 풀이 기록에서는 같은 질문을 첫 시도와 재시도에 각각 적용합니다."
         return f"{opening}{inner}{addition}{closing}"
 
     return re.sub(r"(<p\b[^>]*>)(.*?)(</p>)", replace, body, flags=re.I | re.S)

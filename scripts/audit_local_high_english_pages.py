@@ -190,8 +190,8 @@ def audit_errors(pages: dict[str, dict[str, object]]) -> list[str]:
 
         for heading in article.select("h2,h3"):
             text = heading.get_text(" ", strip=True)
-            if location not in text or focus not in text:
-                errors.append(f"{slug}: heading lacks local focus: {text}")
+            if location not in text:
+                errors.append(f"{slug}: heading lacks local context: {text}")
         for paragraph in article.select("p"):
             text = paragraph.get_text(" ", strip=True)
             if location not in text and focus not in text:

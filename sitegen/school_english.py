@@ -247,7 +247,8 @@ def school_english_focus(slug: str) -> str:
 def build_school_english_meta(slug: str, body: str = "") -> tuple[str, str]:
     context = school_english_contexts()[slug]
     focus = school_english_focus(slug)
-    title = f"{slug} | {focus} 점검"
+    title_focus = focus if focus.endswith("점검") else f"{focus} 점검"
+    title = f"{slug} | {title_focus}"
     description = (
         f"{slug}는 {context.official_name}의 실제 학교 자료를 확인하며 {_object(focus)} 중심으로 "
         "고1·고2·고3 영어 내신, 서술형, 수행평가와 모의고사 학습 순서를 구체적으로 정리합니다."
