@@ -1,0 +1,1276 @@
+{
+  "source": {
+    "workbook": "2025년 유초중등 학교별 학년별 학생수 학급수 입학 졸업 교원 직원 면적_260206W.xlsx",
+    "sheet": "학교별 주요통계",
+    "header_row": 17,
+    "school_level": "중학교"
+  },
+  "pages": {
+    "구미고아읍중등영어과외": {
+      "city": "구미",
+      "town": "고아읍",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미형곡동중등영어과외",
+        "구미남통동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "현일중학교",
+          "homepage": "http://school.gyo6.net/hyunilms"
+        }
+      ]
+    },
+    "구미남통동중등영어과외": {
+      "city": "구미",
+      "town": "남통동",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미고아읍중등영어과외",
+        "구미사곡동중등영어과외"
+      ],
+      "schools": []
+    },
+    "구미사곡동중등영어과외": {
+      "city": "구미",
+      "town": "사곡동",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미남통동중등영어과외",
+        "구미산동읍중등영어과외"
+      ],
+      "schools": []
+    },
+    "구미산동읍중등영어과외": {
+      "city": "구미",
+      "town": "산동읍",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미사곡동중등영어과외",
+        "구미송정동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "구미인덕중학교",
+          "homepage": "https://school.gyo6.net/Indeok"
+        },
+        {
+          "school_name": "산동중학교",
+          "homepage": "http://school.gyo6.net/san-dongms"
+        }
+      ]
+    },
+    "구미송정동중등영어과외": {
+      "city": "구미",
+      "town": "송정동",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미산동읍중등영어과외",
+        "구미옥계동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "송정여자중학교",
+          "homepage": "https://school.gyo6.net/songjeong"
+        }
+      ]
+    },
+    "구미옥계동중등영어과외": {
+      "city": "구미",
+      "town": "옥계동",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미송정동중등영어과외",
+        "구미원평동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "옥계동부중학교",
+          "homepage": "https://school.gyo6.net/ogdbms"
+        },
+        {
+          "school_name": "해마루중학교",
+          "homepage": "http://school.gyo6.net/haemarums"
+        }
+      ]
+    },
+    "구미원평동중등영어과외": {
+      "city": "구미",
+      "town": "원평동",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미옥계동중등영어과외",
+        "구미형곡동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "구미여자중학교",
+          "homepage": "https://school.gyo6.net/gumigirls"
+        }
+      ]
+    },
+    "구미형곡동중등영어과외": {
+      "city": "구미",
+      "town": "형곡동",
+      "parent_slug": "구미중등영어과외",
+      "peer_slugs": [
+        "구미원평동중등영어과외",
+        "구미고아읍중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "형곡중학교",
+          "homepage": "http://school.gyo6.net/hyeonggokms"
+        },
+        {
+          "school_name": "형남중학교",
+          "homepage": "http://school.gyo6.net/hyeongnam"
+        }
+      ]
+    },
+    "부산가야동중등영어과외": {
+      "city": "부산",
+      "town": "가야동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산초읍동중등영어과외",
+        "부산개금동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "가야여자중학교",
+          "homepage": "http://gaya-gm.ms.kr"
+        },
+        {
+          "school_name": "부산개성중학교",
+          "homepage": "http://kaesung.ms.kr"
+        }
+      ]
+    },
+    "부산감전동중등영어과외": {
+      "city": "부산",
+      "town": "감전동",
+      "parent_slug": "부산사상구중등영어과외",
+      "peer_slugs": [
+        "부산학장동중등영어과외",
+        "부산덕포동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산개금동중등영어과외": {
+      "city": "부산",
+      "town": "개금동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산가야동중등영어과외",
+        "부산당감동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "개림중학교",
+          "homepage": "http://www.gaerim.ms.kr"
+        },
+        {
+          "school_name": "광무여자중학교",
+          "homepage": "http://www.kwangmu-g.ms.kr/"
+        }
+      ]
+    },
+    "부산거제동중등영어과외": {
+      "city": "부산",
+      "town": "거제동",
+      "parent_slug": "부산연제구중등영어과외",
+      "peer_slugs": [
+        "부산연산동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "거성중학교",
+          "homepage": "http://www.geosung.ms.kr"
+        },
+        {
+          "school_name": "거제여자중학교",
+          "homepage": "http://www.keo-je.ms.kr"
+        },
+        {
+          "school_name": "이사벨중학교",
+          "homepage": "http://www.isabel.ms.kr"
+        }
+      ]
+    },
+    "부산광안동중등영어과외": {
+      "city": "부산",
+      "town": "광안동",
+      "parent_slug": "부산수영구중등영어과외",
+      "peer_slugs": [
+        "부산민락동중등영어과외",
+        "부산남천동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "광안중학교",
+          "homepage": "http://gwangan.ms.kr"
+        },
+        {
+          "school_name": "동수영중학교",
+          "homepage": "http://dsuyoung.ms.kr"
+        },
+        {
+          "school_name": "동아중학교",
+          "homepage": "http://school.busanedu.net/dong-a-m"
+        },
+        {
+          "school_name": "부산수영중학교",
+          "homepage": "http://www.suyeong.ms.kr"
+        },
+        {
+          "school_name": "한바다중학교",
+          "homepage": "http://hanbada.ms.kr"
+        }
+      ]
+    },
+    "부산구서동중등영어과외": {
+      "city": "부산",
+      "town": "구서동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산장전동중등영어과외",
+        "부산금사동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "구서여자중학교",
+          "homepage": "http://www.guseo.ms.kr"
+        },
+        {
+          "school_name": "동래여자중학교",
+          "homepage": "http://dongnae-g.ms.kr"
+        },
+        {
+          "school_name": "부산예술중학교",
+          "homepage": "http://pusanarts.ms.kr"
+        },
+        {
+          "school_name": "브니엘예술중학교",
+          "homepage": "http://peniel.ms.kr"
+        }
+      ]
+    },
+    "부산구포동중등영어과외": {
+      "city": "부산",
+      "town": "구포동",
+      "parent_slug": "부산북구중등영어과외",
+      "peer_slugs": [
+        "부산화명동중등영어과외",
+        "부산덕천동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "가람중학교",
+          "homepage": "http://www.garam.ms.kr"
+        },
+        {
+          "school_name": "구남중학교",
+          "homepage": "http://www.gunam.ms.kr"
+        },
+        {
+          "school_name": "구포중학교",
+          "homepage": "http://gupo.ms.kr"
+        },
+        {
+          "school_name": "양덕여자중학교",
+          "homepage": "http://www.yangduk.ms.kr"
+        }
+      ]
+    },
+    "부산금사동중등영어과외": {
+      "city": "부산",
+      "town": "금사동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산구서동중등영어과외",
+        "부산금성동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산금성동중등영어과외": {
+      "city": "부산",
+      "town": "금성동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산금사동중등영어과외",
+        "부산남산동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산기장읍중등영어과외": {
+      "city": "부산",
+      "town": "기장읍",
+      "parent_slug": "부산기장군중등영어과외",
+      "peer_slugs": [
+        "부산철마면중등영어과외",
+        "부산장안읍중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "기장중학교",
+          "homepage": "http://www.gijang.ms.kr"
+        },
+        {
+          "school_name": "대청중학교",
+          "homepage": "https://school.busanedu.net/daicheong-m/main.do"
+        }
+      ]
+    },
+    "부산낙민동중등영어과외": {
+      "city": "부산",
+      "town": "낙민동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산온천동중등영어과외",
+        "부산명륜동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산남산동중등영어과외": {
+      "city": "부산",
+      "town": "남산동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산금성동중등영어과외",
+        "부산노포동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "금정중학교",
+          "homepage": "http://kumjung.ms.kr"
+        },
+        {
+          "school_name": "남산중학교",
+          "homepage": "http://www.p-namsan.ms.kr"
+        }
+      ]
+    },
+    "부산남천동중등영어과외": {
+      "city": "부산",
+      "town": "남천동",
+      "parent_slug": "부산수영구중등영어과외",
+      "peer_slugs": [
+        "부산광안동중등영어과외",
+        "부산망미동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산노포동중등영어과외": {
+      "city": "부산",
+      "town": "노포동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산남산동중등영어과외",
+        "부산두구동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산당감동중등영어과외": {
+      "city": "부산",
+      "town": "당감동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산개금동중등영어과외",
+        "부산부암동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "개금여자중학교",
+          "homepage": "http://www.gaegum.ms.kr"
+        },
+        {
+          "school_name": "부산국제중학교",
+          "homepage": "http://www.gukje.ms.kr"
+        }
+      ]
+    },
+    "부산대연동중등영어과외": {
+      "city": "부산",
+      "town": "대연동",
+      "parent_slug": "부산남구중등영어과외",
+      "peer_slugs": [
+        "부산용호동중등영어과외",
+        "부산용당동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "남천중학교",
+          "homepage": ""
+        },
+        {
+          "school_name": "대연중학교",
+          "homepage": "https://school.busanedu.net/daeyeon-m"
+        },
+        {
+          "school_name": "대천중학교",
+          "homepage": "http://www.daecheon.ms.kr"
+        },
+        {
+          "school_name": "해연중학교",
+          "homepage": "http://www.haeyeon.ms.kr"
+        }
+      ]
+    },
+    "부산덕천동중등영어과외": {
+      "city": "부산",
+      "town": "덕천동",
+      "parent_slug": "부산북구중등영어과외",
+      "peer_slugs": [
+        "부산구포동중등영어과외",
+        "부산만덕동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "덕천중학교",
+          "homepage": "http://deokcheon.ms.kr"
+        }
+      ]
+    },
+    "부산덕포동중등영어과외": {
+      "city": "부산",
+      "town": "덕포동",
+      "parent_slug": "부산사상구중등영어과외",
+      "peer_slugs": [
+        "부산감전동중등영어과외",
+        "부산모라동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "덕포여자중학교",
+          "homepage": "http://duckpo.ms.kr"
+        },
+        {
+          "school_name": "신라중학교",
+          "homepage": "http://busansilla.ms.kr"
+        }
+      ]
+    },
+    "부산두구동중등영어과외": {
+      "city": "부산",
+      "town": "두구동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산노포동중등영어과외",
+        "부산부곡동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산만덕동중등영어과외": {
+      "city": "부산",
+      "town": "만덕동",
+      "parent_slug": "부산북구중등영어과외",
+      "peer_slugs": [
+        "부산덕천동중등영어과외",
+        "부산화명동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "만덕중학교",
+          "homepage": "http://www.mandeok.ms.kr/"
+        },
+        {
+          "school_name": "백양중학교",
+          "homepage": "http://www.paekyang.ms.kr"
+        },
+        {
+          "school_name": "신덕중학교",
+          "homepage": "http://www.shindeok.ms.kr"
+        }
+      ]
+    },
+    "부산망미동중등영어과외": {
+      "city": "부산",
+      "town": "망미동",
+      "parent_slug": "부산수영구중등영어과외",
+      "peer_slugs": [
+        "부산남천동중등영어과외",
+        "부산민락동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "망미중학교",
+          "homepage": "http://www.mangmi.ms.kr"
+        }
+      ]
+    },
+    "부산명륜동중등영어과외": {
+      "city": "부산",
+      "town": "명륜동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산낙민동중등영어과외",
+        "부산명장동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "동래중학교",
+          "homepage": "http://www.dongnae.ms.kr"
+        },
+        {
+          "school_name": "동해중학교",
+          "homepage": "http://www.psdonghae.ms.kr"
+        }
+      ]
+    },
+    "부산명장동중등영어과외": {
+      "city": "부산",
+      "town": "명장동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산명륜동중등영어과외",
+        "부산사직동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "동신중학교",
+          "homepage": "http://dongshin.ms.kr"
+        },
+        {
+          "school_name": "충렬중학교",
+          "homepage": "http://www.choongryul.ms.kr"
+        },
+        {
+          "school_name": "학산여자중학교",
+          "homepage": "http://www.h-s.ms.kr"
+        },
+        {
+          "school_name": "혜화여자중학교",
+          "homepage": "http://www.hyehwa.ms.kr"
+        }
+      ]
+    },
+    "부산모라동중등영어과외": {
+      "city": "부산",
+      "town": "모라동",
+      "parent_slug": "부산사상구중등영어과외",
+      "peer_slugs": [
+        "부산덕포동중등영어과외",
+        "부산주례동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "모동중학교",
+          "homepage": "http://modong.ms.kr"
+        },
+        {
+          "school_name": "모라중학교",
+          "homepage": "http://school.busanedu.net/mora-m/main.do"
+        }
+      ]
+    },
+    "부산민락동중등영어과외": {
+      "city": "부산",
+      "town": "민락동",
+      "parent_slug": "부산수영구중등영어과외",
+      "peer_slugs": [
+        "부산망미동중등영어과외",
+        "부산광안동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산반송동중등영어과외": {
+      "city": "부산",
+      "town": "반송동",
+      "parent_slug": "부산해운대구중등영어과외",
+      "peer_slugs": [
+        "부산중동중등영어과외",
+        "부산반여동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "반송여자중학교",
+          "homepage": "http://www.bansongg.ms.kr"
+        },
+        {
+          "school_name": "반송중학교",
+          "homepage": "http://bansong.ms.kr"
+        }
+      ]
+    },
+    "부산반여동중등영어과외": {
+      "city": "부산",
+      "town": "반여동",
+      "parent_slug": "부산해운대구중등영어과외",
+      "peer_slugs": [
+        "부산반송동중등영어과외",
+        "부산우동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "반안중학교",
+          "homepage": "http://school.busanedu.net/banan-m/"
+        },
+        {
+          "school_name": "반여중학교",
+          "homepage": "http://www.banyo.ms.kr"
+        },
+        {
+          "school_name": "인지중학교",
+          "homepage": "http://www.inji.ms.kr"
+        },
+        {
+          "school_name": "장산중학교",
+          "homepage": "http://bjangsan.ms.kr"
+        }
+      ]
+    },
+    "부산부곡동중등영어과외": {
+      "city": "부산",
+      "town": "부곡동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산두구동중등영어과외",
+        "부산서동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "금양중학교",
+          "homepage": "http://geumyang.ms.kr"
+        },
+        {
+          "school_name": "동현중학교",
+          "homepage": "http://www.donghyeon.ms.kr"
+        },
+        {
+          "school_name": "부곡여자중학교",
+          "homepage": "http://bugok-g.ms.kr"
+        },
+        {
+          "school_name": "부곡중학교",
+          "homepage": "http://www.pugok.ms.kr/"
+        }
+      ]
+    },
+    "부산부암동중등영어과외": {
+      "city": "부산",
+      "town": "부암동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산당감동중등영어과외",
+        "부산부전동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "동양중학교",
+          "homepage": "http://dyj.ms.kr"
+        },
+        {
+          "school_name": "동평여자중학교",
+          "homepage": "http://dong-pyung.ms.kr/"
+        },
+        {
+          "school_name": "동평중학교",
+          "homepage": "http://www.dongpyeong.ms.kr"
+        },
+        {
+          "school_name": "서면중학교",
+          "homepage": "http://somyon.ms.kr/"
+        }
+      ]
+    },
+    "부산부전동중등영어과외": {
+      "city": "부산",
+      "town": "부전동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산부암동중등영어과외",
+        "부산양정동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산사직동중등영어과외": {
+      "city": "부산",
+      "town": "사직동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산명장동중등영어과외",
+        "부산수안동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "사직여자중학교",
+          "homepage": "http://www.sajik-g.ms.kr"
+        },
+        {
+          "school_name": "사직중학교",
+          "homepage": "http://sajik.ms.kr"
+        },
+        {
+          "school_name": "여명중학교",
+          "homepage": "http://www.yomng.ms.kr"
+        }
+      ]
+    },
+    "부산서동중등영어과외": {
+      "city": "부산",
+      "town": "서동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산부곡동중등영어과외",
+        "부산선동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "금사중학교",
+          "homepage": "http://www.geumsa.ms.kr"
+        }
+      ]
+    },
+    "부산선동중등영어과외": {
+      "city": "부산",
+      "town": "선동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산서동중등영어과외",
+        "부산오륜동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산수안동중등영어과외": {
+      "city": "부산",
+      "town": "수안동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산사직동중등영어과외",
+        "부산안락동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산신평동중등영어과외": {
+      "city": "부산",
+      "town": "신평동",
+      "parent_slug": "부산사하구중등영어과외",
+      "peer_slugs": [
+        "부산하단동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "대동중학교",
+          "homepage": "http://dd.ms.kr/"
+        }
+      ]
+    },
+    "부산안락동중등영어과외": {
+      "city": "부산",
+      "town": "안락동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산수안동중등영어과외",
+        "부산온천동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "남일중학교",
+          "homepage": "http://www.namil.ms.kr"
+        }
+      ]
+    },
+    "부산양정동중등영어과외": {
+      "city": "부산",
+      "town": "양정동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산부전동중등영어과외",
+        "부산연지동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "양동여자중학교",
+          "homepage": "http://www.yangdong-gm.ms.kr"
+        }
+      ]
+    },
+    "부산연산동중등영어과외": {
+      "city": "부산",
+      "town": "연산동",
+      "parent_slug": "부산연제구중등영어과외",
+      "peer_slugs": [
+        "부산거제동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "연산중학교",
+          "homepage": "http://www.yonsan.ms.kr"
+        },
+        {
+          "school_name": "연일중학교",
+          "homepage": "http://yeonil.ms.kr/"
+        },
+        {
+          "school_name": "연제중학교",
+          "homepage": "http://www.yeonje.ms.kr"
+        },
+        {
+          "school_name": "연천중학교",
+          "homepage": ""
+        },
+        {
+          "school_name": "토현중학교",
+          "homepage": "http://tohyeon.ms.kr"
+        }
+      ]
+    },
+    "부산연지동중등영어과외": {
+      "city": "부산",
+      "town": "연지동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산양정동중등영어과외",
+        "부산전포동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산오륜동중등영어과외": {
+      "city": "부산",
+      "town": "오륜동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산선동중등영어과외",
+        "부산장전동중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산온천동중등영어과외": {
+      "city": "부산",
+      "town": "온천동",
+      "parent_slug": "부산동래구중등영어과외",
+      "peer_slugs": [
+        "부산안락동중등영어과외",
+        "부산낙민동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "부산내성중학교",
+          "homepage": "http://naesung.ms.kr"
+        },
+        {
+          "school_name": "온천중학교",
+          "homepage": "http://onchun.ms.kr"
+        },
+        {
+          "school_name": "유락여자중학교",
+          "homepage": "http://www.yurak.ms.kr/"
+        }
+      ]
+    },
+    "부산용당동중등영어과외": {
+      "city": "부산",
+      "town": "용당동",
+      "parent_slug": "부산남구중등영어과외",
+      "peer_slugs": [
+        "부산대연동중등영어과외",
+        "부산용호동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "석포여자중학교",
+          "homepage": "http://www.sokpo-gm.ms.kr/"
+        }
+      ]
+    },
+    "부산용호동중등영어과외": {
+      "city": "부산",
+      "town": "용호동",
+      "parent_slug": "부산남구중등영어과외",
+      "peer_slugs": [
+        "부산용당동중등영어과외",
+        "부산대연동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "분포중학교",
+          "homepage": "http://www.boonpo.ms.kr/"
+        },
+        {
+          "school_name": "오륙도중학교",
+          "homepage": "http://ord.ms.kr"
+        },
+        {
+          "school_name": "용문중학교",
+          "homepage": "http://www.yongmoon.ms.kr/"
+        },
+        {
+          "school_name": "용호중학교",
+          "homepage": "http://yongho.ms.kr"
+        }
+      ]
+    },
+    "부산우동중등영어과외": {
+      "city": "부산",
+      "town": "우동",
+      "parent_slug": "부산해운대구중등영어과외",
+      "peer_slugs": [
+        "부산반여동중등영어과외",
+        "부산재송동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "해강중학교",
+          "homepage": "http://www.haegang.ms.kr"
+        },
+        {
+          "school_name": "해운대여자중학교",
+          "homepage": "http://www.haeundaeg.ms.kr/~haeundae/newhome/"
+        },
+        {
+          "school_name": "해운대중학교",
+          "homepage": "http://www.haeundae.ms.kr"
+        }
+      ]
+    },
+    "부산장안읍중등영어과외": {
+      "city": "부산",
+      "town": "장안읍",
+      "parent_slug": "부산기장군중등영어과외",
+      "peer_slugs": [
+        "부산기장읍중등영어과외",
+        "부산철마면중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "장안중학교",
+          "homepage": "http://jang-an.ms.kr"
+        }
+      ]
+    },
+    "부산장전동중등영어과외": {
+      "city": "부산",
+      "town": "장전동",
+      "parent_slug": "부산금정구중등영어과외",
+      "peer_slugs": [
+        "부산오륜동중등영어과외",
+        "부산구서동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "장전중학교",
+          "homepage": "http://jangjeon.ms.kr"
+        }
+      ]
+    },
+    "부산재송동중등영어과외": {
+      "city": "부산",
+      "town": "재송동",
+      "parent_slug": "부산해운대구중등영어과외",
+      "peer_slugs": [
+        "부산우동중등영어과외",
+        "부산좌동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "센텀중학교",
+          "homepage": "http://www.centum.ms.kr"
+        },
+        {
+          "school_name": "재송여자중학교",
+          "homepage": "http://www.jaesonggirl.ms.kr"
+        },
+        {
+          "school_name": "재송중학교",
+          "homepage": "http://www.jaesong.ms.kr"
+        }
+      ]
+    },
+    "부산전포동중등영어과외": {
+      "city": "부산",
+      "town": "전포동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산연지동중등영어과외",
+        "부산초읍동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "덕명여자중학교",
+          "homepage": "http://www.deokmyeong.ms.kr"
+        },
+        {
+          "school_name": "동의중학교",
+          "homepage": "http://www.dongeui.ms.kr"
+        },
+        {
+          "school_name": "부산동중학교",
+          "homepage": "http://www.tong.ms.kr"
+        },
+        {
+          "school_name": "부산진여자중학교",
+          "homepage": "http://busanjingm.ms.kr"
+        },
+        {
+          "school_name": "항도중학교",
+          "homepage": "http://www.hangdo.ms.kr"
+        }
+      ]
+    },
+    "부산좌동중등영어과외": {
+      "city": "부산",
+      "town": "좌동",
+      "parent_slug": "부산해운대구중등영어과외",
+      "peer_slugs": [
+        "부산재송동중등영어과외",
+        "부산중동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "부흥중학교",
+          "homepage": "http://school.busanedu.net/buheung-m"
+        },
+        {
+          "school_name": "상당중학교",
+          "homepage": "http://www.sangdang.ms.kr"
+        },
+        {
+          "school_name": "신곡중학교",
+          "homepage": "http://www.singok.ms.kr"
+        },
+        {
+          "school_name": "신도중학교",
+          "homepage": "http://www.sindo.ms.kr"
+        },
+        {
+          "school_name": "양운중학교",
+          "homepage": "http://school.busanedu.net/yangun-m/main.do"
+        }
+      ]
+    },
+    "부산주례동중등영어과외": {
+      "city": "부산",
+      "town": "주례동",
+      "parent_slug": "부산사상구중등영어과외",
+      "peer_slugs": [
+        "부산모라동중등영어과외",
+        "부산학장동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "동주중학교",
+          "homepage": "http://www.dongju.ms.kr"
+        },
+        {
+          "school_name": "주감중학교",
+          "homepage": "http://www.jugam.ms.kr"
+        },
+        {
+          "school_name": "주례여자중학교",
+          "homepage": "http://www.juryegirls.ms.kr"
+        },
+        {
+          "school_name": "주례중학교",
+          "homepage": "http://jurye.ms.kr"
+        }
+      ]
+    },
+    "부산중동중등영어과외": {
+      "city": "부산",
+      "town": "중동",
+      "parent_slug": "부산해운대구중등영어과외",
+      "peer_slugs": [
+        "부산좌동중등영어과외",
+        "부산반송동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "동백중학교",
+          "homepage": "http://tongbaek.ms.kr"
+        }
+      ]
+    },
+    "부산철마면중등영어과외": {
+      "city": "부산",
+      "town": "철마면",
+      "parent_slug": "부산기장군중등영어과외",
+      "peer_slugs": [
+        "부산장안읍중등영어과외",
+        "부산기장읍중등영어과외"
+      ],
+      "schools": []
+    },
+    "부산초읍동중등영어과외": {
+      "city": "부산",
+      "town": "초읍동",
+      "parent_slug": "부산진구중등영어과외",
+      "peer_slugs": [
+        "부산전포동중등영어과외",
+        "부산가야동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "초연중학교",
+          "homepage": "http://choyeon.ms.kr"
+        },
+        {
+          "school_name": "초읍중학교",
+          "homepage": "http://www.choup.ms.kr/"
+        }
+      ]
+    },
+    "부산하단동중등영어과외": {
+      "city": "부산",
+      "town": "하단동",
+      "parent_slug": "부산사하구중등영어과외",
+      "peer_slugs": [
+        "부산신평동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "건국중학교",
+          "homepage": "http://www.keonkuk.ms.kr"
+        },
+        {
+          "school_name": "하남중학교",
+          "homepage": "http://www.hanam.ms.kr/"
+        },
+        {
+          "school_name": "하단중학교",
+          "homepage": "https://school.busanedu.net/hadan-m/main.do"
+        }
+      ]
+    },
+    "부산학장동중등영어과외": {
+      "city": "부산",
+      "town": "학장동",
+      "parent_slug": "부산사상구중등영어과외",
+      "peer_slugs": [
+        "부산주례동중등영어과외",
+        "부산감전동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "학장중학교",
+          "homepage": "https://school.busanedu.net/hakjang-m/main.do"
+        }
+      ]
+    },
+    "부산화명동중등영어과외": {
+      "city": "부산",
+      "town": "화명동",
+      "parent_slug": "부산북구중등영어과외",
+      "peer_slugs": [
+        "부산만덕동중등영어과외",
+        "부산구포동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "대천리중학교",
+          "homepage": "http://www.daechonli.ms.kr"
+        },
+        {
+          "school_name": "명진중학교",
+          "homepage": "http://www.mjm.ms.kr/"
+        },
+        {
+          "school_name": "용수중학교",
+          "homepage": "http://www.yongsu.ms.kr"
+        },
+        {
+          "school_name": "화명중학교",
+          "homepage": "http://hwamyong.ms.kr/"
+        },
+        {
+          "school_name": "화신중학교",
+          "homepage": "http://www.hwashin.ms.kr"
+        }
+      ]
+    },
+    "양산교동중등영어과외": {
+      "city": "양산",
+      "town": "교동",
+      "parent_slug": "양산중등영어과외",
+      "peer_slugs": [
+        "양산중부동중등영어과외",
+        "양산남부동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "양산여자중학교",
+          "homepage": "http://www.yangsan-g.ms.kr"
+        }
+      ]
+    },
+    "양산남부동중등영어과외": {
+      "city": "양산",
+      "town": "남부동",
+      "parent_slug": "양산중등영어과외",
+      "peer_slugs": [
+        "양산교동중등영어과외",
+        "양산동면중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "양산중앙중학교",
+          "homepage": "http://ysja-m.gne.go.kr"
+        }
+      ]
+    },
+    "양산동면중등영어과외": {
+      "city": "양산",
+      "town": "동면",
+      "parent_slug": "양산중등영어과외",
+      "peer_slugs": [
+        "양산남부동중등영어과외",
+        "양산물금읍중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "금송중학교",
+          "homepage": "https://geumsong-m.gne.go.kr/"
+        },
+        {
+          "school_name": "금오중학교",
+          "homepage": "http://geumo-m.gne.go.kr/"
+        },
+        {
+          "school_name": "사송중학교",
+          "homepage": "http://sasong-m.gne.go.kr"
+        }
+      ]
+    },
+    "양산물금읍중등영어과외": {
+      "city": "양산",
+      "town": "물금읍",
+      "parent_slug": "양산중등영어과외",
+      "peer_slugs": [
+        "양산동면중등영어과외",
+        "양산중부동중등영어과외"
+      ],
+      "schools": [
+        {
+          "school_name": "물금동아중학교",
+          "homepage": "http://mulgeum-donga-m.gne.go.kr"
+        },
+        {
+          "school_name": "물금중학교",
+          "homepage": "http://mulgeum-m.gne.go.kr"
+        },
+        {
+          "school_name": "범어중학교",
+          "homepage": "http://beomeo-m.gne.go.kr/"
+        },
+        {
+          "school_name": "신주중학교",
+          "homepage": "http://sinju-m.gne.go.kr/"
+        },
+        {
+          "school_name": "증산중학교",
+          "homepage": "http://jeungsan-m.gne.go.kr"
+        }
+      ]
+    },
+    "양산중부동중등영어과외": {
+      "city": "양산",
+      "town": "중부동",
+      "parent_slug": "양산중등영어과외",
+      "peer_slugs": [
+        "양산물금읍중등영어과외",
+        "양산교동중등영어과외"
+      ],
+      "schools": []
+    }
+  }
+}

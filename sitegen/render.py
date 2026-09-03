@@ -11,6 +11,11 @@ from urllib.parse import quote
 from config import NAVER_SITE_VERIFICATION, SITE_DESCRIPTION, SITE_NAME, SITE_URL
 from sitegen.models import Page
 from sitegen.secondary_region_content import individualize_secondary_region_body
+from sitegen.local_middle_english import (
+    build_local_middle_english_meta,
+    individualize_local_middle_english_body,
+    is_local_middle_english_slug,
+)
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,7 +75,7 @@ def faq_section_bounds(body: str) -> tuple[int, int, int] | None:
     headings = list(re.finditer(r"<h2\b[^>]*>(.*?)</h2>", body, flags=re.I | re.S))
     for index, heading in enumerate(headings):
         label = plain_text(heading.group(1))
-        if "FAQ" not in label.upper() and "질문" not in label:
+        if "FAQ" not in label.upper() and not ("자주" in label and "질문" in label):
             continue
         section_end = headings[index + 1].start() if index + 1 < len(headings) else len(body)
         section = body[heading.end() : section_end]
@@ -1206,7 +1211,13 @@ def breadcrumbs(page: Page) -> str:
     return '<nav class="breadcrumb" aria-label="breadcrumb"><ol>' + "".join(items) + "</ol></nav>"
 
 
-def schema(page: Page, body: str | None = None) -> str:
+def schema(
+    page: Page,
+    body: str | None = None,
+    *,
+    page_name: str | None = None,
+    page_description: str | None = None,
+) -> str:
     crumbs = [("홈", "/")] + [item for item in page.breadcrumbs if item[1] != "/"]
     data = [
         {"@context": "https://schema.org", "@type": "Organization", "@id": f"{SITE_URL}/#organization", "name": SITE_NAME, "url": SITE_URL + "/"},
@@ -1216,8 +1227,8 @@ def schema(page: Page, body: str | None = None) -> str:
             "@type": "WebPage",
             "@id": absolute_url(page.url) + "#webpage",
             "url": absolute_url(page.url),
-            "name": page.title,
-            "description": page.meta_description,
+            "name": page_name or page.title,
+            "description": page_description or page.meta_description,
             "image": page.search_thumbnail_url,
             "isPartOf": {"@id": f"{SITE_URL}/#website"},
             "inLanguage": "ko-KR",
@@ -1355,6 +1366,7 @@ def render_home_region_detail(page_map: dict[str, Page]) -> str:
 def render_home(page: Page, page_map: dict[str, Page]) -> str:
     canonical = absolute_url(page.url)
     search_title = page.seo_title or page.title
+    meta_description = page.meta_description
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     city_cards = [
@@ -1429,19 +1441,19 @@ def render_home(page: Page, page_map: dict[str, Page]) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="naver-site-verification" content="{escape(NAVER_SITE_VERIFICATION)}" />
   <title>{escape(search_title)}</title>
-  <meta name="description" content="{escape(page.meta_description)}">
+  <meta name="description" content="{escape(meta_description)}">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="{escape(canonical)}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{SITE_NAME}">
   <meta property="og:title" content="{escape(search_title)}">
-  <meta property="og:description" content="{escape(page.meta_description)}">
+  <meta property="og:description" content="{escape(meta_description)}">
   <meta property="og:url" content="{escape(canonical)}">
   <meta property="og:image" content="{escape(page.search_thumbnail_url)}">
   <meta property="og:image:alt" content="{escape(page.title)} 대표 이미지">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{escape(search_title)}">
-  <meta name="twitter:description" content="{escape(page.meta_description)}">
+  <meta name="twitter:description" content="{escape(meta_description)}">
   <meta name="twitter:image" content="{escape(page.search_thumbnail_url)}">
   <link rel="stylesheet" href="/assets/css/style.css?v=20260901-link-quality">
   {schema(page)}
@@ -1471,9 +1483,13 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         return render_home(page, page_map)
     canonical = absolute_url(page.url)
     search_title = page.seo_title or page.title
+    meta_description = page.meta_description
+    if is_local_middle_english_slug(page.slug):
+        search_title, meta_description = build_local_middle_english_meta(page.slug)
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
-    body = individualize_secondary_region_body(page.body, page)
+    body = individualize_local_middle_english_body(page.body, page.slug)
+    body = individualize_secondary_region_body(body, page)
     body = individualize_priority_region_body(body, page)
     body = polish_priority_region_math_body(body, page)
     body = add_contextual_region_links(body, page, page_map)
@@ -1499,22 +1515,22 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(search_title)}</title>
-  <meta name="description" content="{escape(page.meta_description)}">
+  <meta name="description" content="{escape(meta_description)}">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="{escape(canonical)}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{SITE_NAME}">
   <meta property="og:title" content="{escape(search_title)}">
-  <meta property="og:description" content="{escape(page.meta_description)}">
+  <meta property="og:description" content="{escape(meta_description)}">
   <meta property="og:url" content="{escape(canonical)}">
   <meta property="og:image" content="{escape(page.search_thumbnail_url)}">
   <meta property="og:image:alt" content="{escape(page.title)} 대표 이미지">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{escape(search_title)}">
-  <meta name="twitter:description" content="{escape(page.meta_description)}">
+  <meta name="twitter:description" content="{escape(meta_description)}">
   <meta name="twitter:image" content="{escape(page.search_thumbnail_url)}">
   <link rel="stylesheet" href="/assets/css/style.css?v=20260901-link-quality">
-  {schema(page, body)}
+  {schema(page, body, page_name=search_title, page_description=meta_description)}
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -1528,7 +1544,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     <section class="page-hero">
       <p class="eyebrow">부산·양산·구미 과외 정보</p>
       <h1>{escape(page.title)}</h1>
-      <p>{escape(page.meta_description)}</p>
+      <p>{escape(meta_description)}</p>
     </section>
     {render_page_hero_image(page)}
     {render_fixed_images(page)}

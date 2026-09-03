@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 SITE_NAME = "EduNext"
@@ -22,9 +23,25 @@ PREDEPLOY_FINAL_OUTPUT_DIR = PROJECT_ROOT / "output_predeploy_final"
 ASSETS_DIR = PROJECT_ROOT / "assets"
 AUDIT_DIR = PROJECT_ROOT / "audit"
 
-SOURCE_DATA_DIR = Path(r"C:\gptwp\자료")
-REGION_EXCEL = SOURCE_DATA_DIR / "부산 구미 양산 포항 경산 (메인 키워드).xlsx"
-CONTENT_EXCEL = SOURCE_DATA_DIR / "부산_구미_양산 메인허브키워드 학교 포함.xlsx"
+REGION_EXCEL_NAME = "부산 구미 양산 포항 경산 (메인 키워드).xlsx"
+CONTENT_EXCEL_NAME = "부산_구미_양산 메인허브키워드 학교 포함.xlsx"
+
+
+def _resolve_source_data_dir() -> Path:
+    explicit = os.environ.get("EDUNEXT_SOURCE_DATA_DIR")
+    if explicit:
+        return Path(explicit)
+
+    candidates = (Path(r"C:\자료"), Path(r"C:\gptwp\자료"))
+    for candidate in candidates:
+        if (candidate / REGION_EXCEL_NAME).is_file() and (candidate / CONTENT_EXCEL_NAME).is_file():
+            return candidate
+    return candidates[0]
+
+
+SOURCE_DATA_DIR = _resolve_source_data_dir()
+REGION_EXCEL = SOURCE_DATA_DIR / REGION_EXCEL_NAME
+CONTENT_EXCEL = SOURCE_DATA_DIR / CONTENT_EXCEL_NAME
 
 TARGET_CITIES = {"부산", "양산", "구미"}
 CITY_PROVINCE = {
