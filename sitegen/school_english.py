@@ -157,6 +157,36 @@ SECTION_PURPOSES = (
 )
 
 
+def _has_final_consonant(value: str) -> tuple[bool, bool]:
+    """Return whether the last Hangul syllable has batchim and whether it is rieul."""
+    for char in reversed(str(value).strip()):
+        code = ord(char) - 0xAC00
+        if 0 <= code <= 11171:
+            final_index = code % 28
+            return final_index != 0, final_index == 8
+    return False, False
+
+
+def _object(value: str) -> str:
+    has_final, _ = _has_final_consonant(value)
+    return f"{value}{'을' if has_final else '를'}"
+
+
+def _subject(value: str) -> str:
+    has_final, _ = _has_final_consonant(value)
+    return f"{value}{'이' if has_final else '가'}"
+
+
+def _topic(value: str) -> str:
+    has_final, _ = _has_final_consonant(value)
+    return f"{value}{'은' if has_final else '는'}"
+
+
+def _direction(value: str) -> str:
+    has_final, is_rieul = _has_final_consonant(value)
+    return f"{value}{'으로' if has_final and not is_rieul else '로'}"
+
+
 def _load_json(path: Path) -> list[dict[str, object]]:
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, list):
@@ -219,7 +249,7 @@ def build_school_english_meta(slug: str, body: str = "") -> tuple[str, str]:
     focus = school_english_focus(slug)
     title = f"{slug} | {focus} 점검"
     description = (
-        f"{slug}는 {context.official_name}의 실제 학교 자료를 확인하며 {focus}을 중심으로 "
+        f"{slug}는 {context.official_name}의 실제 학교 자료를 확인하며 {_object(focus)} 중심으로 "
         "고1·고2·고3 영어 내신, 서술형, 수행평가와 모의고사 학습 순서를 구체적으로 정리합니다."
     )
     return title, description
@@ -268,9 +298,9 @@ def _standard_section(context: SchoolEnglishContext, section_index: int, label: 
     return f"""
 <section class="school-english-section school-english-section-{section_index + 1}" data-section-focus="{escape(focus)}">
 <h2>{escape(_section_heading(context, section_index, label))}</h2>
-<p>{slug}의 이번 확인 주제는 <strong>{escape(focus)}</strong>입니다. {school} 학생이라고 해서 실제 시험 범위나 자료 구성을 임의로 단정하지 않습니다. 대신 {escape(theme['problem'])}을 관찰 가능한 출발점으로 두고, 학교에서 받은 교과서·학습지·평가 안내 가운데 어떤 자료가 현재 범위에 해당하는지 학생이 직접 구분하도록 합니다.</p>
-<p>{school} 영어 학습에서는 {escape(theme['evidence'])}을 먼저 만듭니다. 이어서 {escape(method['start'])}. {slug} 계획은 공부시간의 총량보다 이 기록이 다음 학습 행동을 바꾸는지를 확인하며, 확인할 수 없는 성적 향상이나 학교별 출제 성향을 사실처럼 제시하지 않습니다.</p>
-<p>{escape(focus)}을 실제 행동으로 바꿀 때는 {escape(theme['action'])}을 사용합니다. {escape(method['record'])}. 이렇게 남긴 자료는 {escape(theme['output'])}으로 이어지고, {school}의 공식 일정이 바뀌면 분량보다 날짜와 우선순위를 먼저 조정하는 근거가 됩니다.</p>
+<p>{slug}의 이번 확인 주제는 <strong>{escape(focus)}</strong>입니다. {school} 학생이라고 해서 실제 시험 범위나 자료 구성을 임의로 단정하지 않습니다. 대신 {escape(_object(theme['problem']))} 관찰 가능한 출발점으로 두고, 학교에서 받은 교과서·학습지·평가 안내 가운데 어떤 자료가 현재 범위에 해당하는지 학생이 직접 구분하도록 합니다.</p>
+<p>{school} 영어 학습에서는 {escape(_object(theme['evidence']))} 먼저 만듭니다. 이어서 {escape(method['start'])}. {slug} 계획은 공부시간의 총량보다 이 기록이 다음 학습 행동을 바꾸는지를 확인하며, 확인할 수 없는 성적 향상이나 학교별 출제 성향을 사실처럼 제시하지 않습니다.</p>
+<p>{escape(_object(focus))} 실제 행동으로 바꿀 때는 {escape(_object(theme['action']))} 사용합니다. {escape(method['record'])}. 이렇게 남긴 자료는 {escape(theme['output'])}으로 이어지고, {school}의 공식 일정이 바뀌면 분량보다 날짜와 우선순위를 먼저 조정하는 근거가 됩니다.</p>
 <p>{slug}의 완료 기준은 한 번 맞힌 정답이 아닙니다. {escape(method['review'])}. 학생이 설명하지 못한 지점은 새 문제로 덮지 않고 다음 수업의 질문으로 옮기며, {escape(focus)} 기록이 누적되면 내신과 모의고사 준비의 역할도 분리해 볼 수 있습니다.</p>
 </section>"""
 
@@ -300,7 +330,7 @@ def _schedule_section(context: SchoolEnglishContext, section_index: int) -> str:
     return f"""
 <section class="school-english-schedule" data-section-focus="{escape(focus)}">
 <h2>{escape(_section_heading(context, section_index, '주간 일정과 복습 간격'))}</h2>
-<p>{slug} 주간표는 매일 같은 분량을 요구하지 않습니다. {school} 학생의 실제 귀가 시각과 제출 마감을 적은 뒤 <strong>{escape(focus)}</strong>을 기준으로 집중일·유지일·회복일을 나눕니다. {escape(theme['problem'])}이 반복되는 날에는 의지 부족으로 결론 내리기 전에 시작 시각과 과제 크기의 조합을 먼저 바꿉니다.</p>
+<p>{slug} 주간표는 매일 같은 분량을 요구하지 않습니다. {school} 학생의 실제 귀가 시각과 제출 마감을 적은 뒤 <strong>{escape(_object(focus))}</strong> 기준으로 집중일·유지일·회복일을 나눕니다. {escape(_subject(theme['problem']))} 반복되는 날에는 의지 부족으로 결론 내리기 전에 시작 시각과 과제 크기의 조합을 먼저 바꿉니다.</p>
 <table>
 <thead><tr><th>구간</th><th>{escape(focus)} 행동</th><th>남길 기록</th></tr></thead>
 <tbody>
@@ -309,7 +339,7 @@ def _schedule_section(context: SchoolEnglishContext, section_index: int) -> str:
 <tr><td>72시간 안</td><td>{escape(method['review'])}.</td><td>{slug} 다음 계획에 넣을 한 가지 행동을 완료량 대신 적습니다.</td></tr>
 </tbody>
 </table>
-<p>{school} 일정이 늦게 공지되거나 다른 과목의 마감과 겹치면 {slug} 표의 순서를 즉시 바꿉니다. 계획을 지우고 새로 쓰기보다 무엇을 줄였고 왜 옮겼는지 남겨야 {escape(focus)}이 단순한 구호가 아니라 다음 주 분량을 결정하는 자료가 됩니다.</p>
+<p>{school} 일정이 늦게 공지되거나 다른 과목의 마감과 겹치면 {slug} 표의 순서를 즉시 바꿉니다. 계획을 지우고 새로 쓰기보다 무엇을 줄였고 왜 옮겼는지 남겨야 {escape(_subject(focus))} 단순한 구호가 아니라 다음 주 분량을 결정하는 자료가 됩니다.</p>
 </section>"""
 
 
@@ -320,7 +350,7 @@ def _case_section(context: SchoolEnglishContext, section_index: int) -> str:
     return f"""
 <section class="school-english-case" data-case-model="composite" data-case-grade="{grade}" data-section-focus="{escape(focus)}">
 <h2>{escape(_section_heading(context, section_index, '합성 사례로 보는 수정 과정'))}</h2>
-<p><strong>아래 내용은 {school}의 실제 학생·성적·수업 결과가 아니라 여러 학습 장면을 합쳐 만든 가상 사례입니다.</strong> {slug}의 {grade} 학생이 {escape(theme['problem'])}을 겪는다고 가정합니다. 처음에는 문제 수만 늘렸지만 실패 원인이 보이지 않았고, 이후 <strong>{escape(focus)}</strong>을 적용해 행동과 기록을 분리했습니다.</p>
+<p><strong>아래 내용은 {school}의 실제 학생·성적·수업 결과가 아니라 여러 학습 장면을 합쳐 만든 가상 사례입니다.</strong> {slug}의 {grade} 학생이 {escape(_object(theme['problem']))} 겪는다고 가정합니다. 처음에는 문제 수만 늘렸지만 실패 원인이 보이지 않았고, 이후 <strong>{escape(_object(focus))}</strong> 적용해 행동과 기록을 분리했습니다.</p>
 <table>
 <thead><tr><th>관찰 시점</th><th>{slug} 가상 학생의 행동</th><th>수정 기준</th></tr></thead>
 <tbody>
@@ -332,9 +362,9 @@ def _case_section(context: SchoolEnglishContext, section_index: int) -> str:
 <ol>
 <li>{school}에서 받은 실제 자료와 이 가상 사례가 다른 부분을 학생이 먼저 표시합니다.</li>
 <li>{slug} 기록에는 점수 예상이 아니라 시작·판단·교정 가운데 바꿀 한 단계를 적습니다.</li>
-<li>{escape(focus)}을 일주일 적용한 뒤 변화가 없으면 학생 탓으로 돌리지 않고 가설과 과제 크기를 바꿉니다.</li>
+<li>{escape(_object(focus))} 일주일 적용한 뒤 변화가 없으면 학생 탓으로 돌리지 않고 가설과 과제 크기를 바꿉니다.</li>
 </ol>
-<p>이 사례는 {school}의 출제 방식이나 특정 학생의 성과를 설명하지 않습니다. {slug}에서 보여 주려는 것은 {escape(focus)}을 통해 관찰 가능한 증거를 만들고, 그 증거가 없을 때는 계획을 수정하는 과정입니다.</p>
+<p>이 사례는 {school}의 출제 방식이나 특정 학생의 성과를 설명하지 않습니다. {slug}에서 보여 주려는 것은 {escape(_object(focus))} 통해 관찰 가능한 증거를 만들고, 그 증거가 없을 때는 계획을 수정하는 과정입니다.</p>
 </section>"""
 
 
@@ -344,11 +374,11 @@ def _decision_section(context: SchoolEnglishContext, section_index: int) -> str:
     return f"""
 <section class="school-english-decision" data-section-focus="{escape(focus)}">
 <h2>{escape(_section_heading(context, section_index, '과외 방식 비교 기준'))}</h2>
-<p>{slug} 과외를 비교할 때는 학교 이름을 안다는 말보다 <strong>{escape(focus)}</strong>을 어떻게 관찰하고 수정할지 답을 들어야 합니다. {school}의 실제 자료를 학생이 제공했을 때 수업 전후에 무엇이 남는지, 설명을 들은 뒤 혼자 재현하는 간격을 어떻게 확인하는지 구체적으로 질문합니다.</p>
+<p>{slug} 과외를 비교할 때는 학교 이름을 안다는 말보다 <strong>{escape(_object(focus))}</strong> 어떻게 관찰하고 수정할지 답을 들어야 합니다. {school}의 실제 자료를 학생이 제공했을 때 수업 전후에 무엇이 남는지, 설명을 들은 뒤 혼자 재현하는 간격을 어떻게 확인하는지 구체적으로 질문합니다.</p>
 <table>
 <thead><tr><th>비교 질문</th><th>확인할 답변</th><th>{slug} 경계 신호</th></tr></thead>
 <tbody>
-<tr><td>{escape(theme['problem'])}은 어떻게 구분하나요?</td><td>{escape(theme['evidence'])}처럼 확인 가능한 증거가 제시되는지 봅니다.</td><td>상담 전부터 점수 상승이나 학교별 경향을 단정하는 답변입니다.</td></tr>
+<tr><td>{escape(_topic(theme['problem']))} 어떻게 구분하나요?</td><td>{escape(theme['evidence'])}처럼 확인 가능한 증거가 제시되는지 봅니다.</td><td>상담 전부터 점수 상승이나 학교별 경향을 단정하는 답변입니다.</td></tr>
 <tr><td>수업 뒤 혼자 할 행동은 무엇인가요?</td><td>{escape(method['start'])}처럼 학생이 재현할 순서가 있는지 봅니다.</td><td>교재 이름과 숙제량만 있고 완료 기준이 없는 답변입니다.</td></tr>
 <tr><td>계획이 실패하면 무엇을 바꾸나요?</td><td>{escape(method['review'])}처럼 수정 시점과 기준이 있는지 봅니다.</td><td>{school} 학생이라는 이유만으로 같은 분량을 계속 요구하는 답변입니다.</td></tr>
 </tbody>
@@ -404,7 +434,7 @@ def _links_section(context: SchoolEnglishContext, section_index: int) -> str:
 <h2>{escape(_section_heading(context, section_index, '공식 정보와 관련 페이지'))}</h2>
 <p>{escape(context.slug)}에서 학교 일정·교육과정·평가 안내처럼 바뀔 수 있는 내용은 <a class="source-link" href="{escape(context.homepage)}" target="_blank" rel="noopener noreferrer external">{escape(context.official_name)} 공식 홈페이지</a>를 직접 확인하십시오. 홈페이지는 학교 정보 확인용 외부 출처이며, EduNext가 해당 학교를 대표하거나 학교와 제휴했다는 뜻이 아닙니다. {escape(place)} 표기는 지역 매핑을 위한 범위일 뿐 통학 시간이나 배정을 보장하지 않습니다.</p>
 <p>{escape(context.slug)}와 같은 학교의 전체 학습 범위는 <a href="/{escape(context.general_slug)}/">{escape(context.general_slug)}</a>, 수학 과목 비교는 <a href="/{escape(context.math_slug)}/">{escape(context.math_slug)}</a>에서 확인할 수 있습니다. 학교 한 곳을 넘어 생활권 영어 정보를 보려면 <a href="/{escape(context.region_english_slug)}/">{escape(context.region_english_slug)}</a>로 이동하십시오. 본문 링크는 이 세 탐색 목적과 공식 홈페이지에만 제한해 키워드 나열을 피했습니다.</p>
-<p>{escape(context.official_name)}의 최신 자료와 학생이 실제로 받은 안내가 다르면 학생 자료를 우선 확인합니다. {escape(focus)}은 학교 정보를 추정하는 문구가 아니라, 확인된 자료를 바탕으로 학습 행동을 나누는 이번 페이지의 고유한 점검 관점입니다.</p>
+<p>{escape(context.official_name)}의 최신 자료와 학생이 실제로 받은 안내가 다르면 학생 자료를 우선 확인합니다. {escape(_topic(focus))} 학교 정보를 추정하는 문구가 아니라, 확인된 자료를 바탕으로 학습 행동을 나누는 이번 페이지의 고유한 점검 관점입니다.</p>
 </section>"""
 
 
@@ -414,20 +444,20 @@ def _faq_section(context: SchoolEnglishContext) -> str:
     method = METHODS[context.method_index]
     questions = (
         (
-            f"{context.slug}에서 {primary}을 가장 먼저 어떻게 확인하나요?",
-            f"{context.official_name}의 실제 교과서·학습지·평가 안내를 먼저 모은 뒤 {theme['evidence']}을 만드십시오. {method['start']}. 처음부터 문제 수를 늘리기보다 학생이 멈춘 위치와 판단 근거를 남기고, 일주일 뒤 같은 순서를 혼자 재현하는지 확인해야 {context.slug}의 출발점이 구체적으로 보입니다.",
+            f"{context.slug}에서 {_object(primary)} 가장 먼저 어떻게 확인하나요?",
+            f"{context.official_name}의 실제 교과서·학습지·평가 안내를 먼저 모은 뒤 {_object(theme['evidence'])} 만드십시오. {method['start']}. 처음부터 문제 수를 늘리기보다 학생이 멈춘 위치와 판단 근거를 남기고, 일주일 뒤 같은 순서를 혼자 재현하는지 확인해야 {context.slug}의 출발점이 구체적으로 보입니다.",
         ),
         (
             f"{context.slug}의 {primary} 계획에서 학교 홈페이지는 왜 확인하나요?",
             f"{context.official_name}의 시험일·행사·교육과정과 평가 안내는 시기에 따라 바뀔 수 있기 때문입니다. EduNext 본문은 확정된 학교 일정을 대신하지 않으므로 공식 홈페이지와 학생이 받은 안내를 대조해야 합니다. 확인 뒤에는 {method['record']}. 이렇게 해야 {context.slug} 계획이 추정 정보가 아니라 현재 자료를 기준으로 움직입니다.",
         ),
         (
-            f"{context.slug}에서 내신과 모의고사를 {primary}으로 함께 준비할 수 있나요?",
+            f"{context.slug}에서 내신과 모의고사를 {_direction(primary)} 함께 준비할 수 있나요?",
             f"역할을 나누면 함께 유지할 수 있습니다. 시험 전에는 {context.official_name}에서 실제로 사용하는 본문과 자료의 어휘·구문·서술형을 우선하고, 짧은 모의고사 독해는 판단 감각을 유지하는 정도로 둡니다. 시험 뒤에는 {theme['action']}을 적용해 학교 자료에서 확인한 개념이 낯선 지문에서도 재현되는지 점검합니다.",
         ),
         (
             f"{context.slug}의 {primary} 과외를 비교할 때 무엇을 질문해야 하나요?",
-            f"교재와 숙제량보다 {theme['problem']}을 어떤 증거로 구분할지 물어보십시오. 수업 뒤 학생이 혼자 할 행동, 기록을 다시 보는 날짜, 계획이 실패했을 때 바꿀 기준까지 답에 포함되어야 합니다. {method['review']}. 이 과정이 설명되지 않으면 {context.slug} 학생에게 맞는 방식인지 판단하기 어렵습니다.",
+            f"교재와 숙제량보다 {_object(theme['problem'])} 어떤 증거로 구분할지 물어보십시오. 수업 뒤 학생이 혼자 할 행동, 기록을 다시 보는 날짜, 계획이 실패했을 때 바꿀 기준까지 답에 포함되어야 합니다. {method['review']}. 이 과정이 설명되지 않으면 {context.slug} 학생에게 맞는 방식인지 판단하기 어렵습니다.",
         ),
         (
             f"학부모는 {context.slug}의 {primary} 진행을 어떻게 확인하면 좋나요?",
@@ -450,8 +480,8 @@ def build_school_english_body(slug: str) -> str:
     intro = f"""
 <section class="school-english-guide" data-content-version="school-english-individual-v1" data-school-english-focus="{escape(focus)}" data-official-school="{escape(context.official_name)}">
 <h2>{escape(context.slug)}: {escape(context.official_name)} 영어 학습의 고유 점검 주제</h2>
-<p>{escape(context.slug)}는 <strong>{escape(focus)}</strong>을 중심으로 구성했습니다. 학교명을 검색한 사용자가 실제로 필요한 것은 확인되지 않은 출제 경향이나 성과 약속이 아니라, {escape(context.official_name)}의 최신 공식 자료와 학생이 가진 수업 자료를 구분하고 현재 학습 행동을 점검하는 순서입니다. 이 페이지는 학교와 제휴하거나 학교를 대표하지 않으며, 특정 학생의 결과를 보장하지 않습니다.</p>
-<p>{escape(context.official_name)} 학생의 영어 계획은 같은 학교 안에서도 학년·과목 담당·귀가 시각·현재 이해도에 따라 달라집니다. {escape(context.slug)}에서는 {escape(focus)}을 하나의 관찰 관점으로 두고 고1·고2·고3, 어휘·문법·구문·독해, 내신·수행평가·모의고사를 서로 다른 역할로 나누어 설명합니다.</p>
+<p>{escape(context.slug)}는 <strong>{escape(_object(focus))}</strong> 중심으로 구성했습니다. 학교명을 검색한 사용자가 실제로 필요한 것은 확인되지 않은 출제 경향이나 성과 약속이 아니라, {escape(context.official_name)}의 최신 공식 자료와 학생이 가진 수업 자료를 구분하고 현재 학습 행동을 점검하는 순서입니다. 이 페이지는 학교와 제휴하거나 학교를 대표하지 않으며, 특정 학생의 결과를 보장하지 않습니다.</p>
+<p>{escape(context.official_name)} 학생의 영어 계획은 같은 학교 안에서도 학년·과목 담당·귀가 시각·현재 이해도에 따라 달라집니다. {escape(context.slug)}에서는 {escape(_object(focus))} 하나의 관찰 관점으로 두고 고1·고2·고3, 어휘·문법·구문·독해, 내신·수행평가·모의고사를 서로 다른 역할로 나누어 설명합니다.</p>
 """
     sections: list[str] = []
     for index, label in enumerate(SECTION_PURPOSES):
