@@ -56,6 +56,11 @@ from sitegen.local_elementary_english import (
     individualize_local_elementary_english_body,
     is_local_elementary_english_slug,
 )
+from sitegen.school_english import (
+    build_school_english_meta,
+    individualize_school_english_body,
+    is_school_english_slug,
+)
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1542,6 +1547,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         search_title, meta_description = build_local_elementary_math_meta(page.slug, page.body)
     if is_local_elementary_english_slug(page.slug):
         search_title, meta_description = build_local_elementary_english_meta(page.slug, page.body)
+    if is_school_english_slug(page.slug):
+        search_title, meta_description = build_school_english_meta(page.slug, page.body)
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     body = individualize_local_middle_english_body(page.body, page.slug)
@@ -1553,6 +1560,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = individualize_local_elementary_general_body(body, page.slug)
     body = individualize_local_elementary_math_body(body, page.slug)
     body = individualize_local_elementary_english_body(body, page.slug)
+    body = individualize_school_english_body(body, page.slug)
     body = individualize_secondary_region_body(body, page)
     body = individualize_priority_region_body(body, page)
     body = polish_priority_region_math_body(body, page)
