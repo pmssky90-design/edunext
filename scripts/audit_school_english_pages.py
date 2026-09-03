@@ -169,7 +169,7 @@ def audit_errors(pages: dict[str, dict[str, object]]) -> list[str]:
         for question, answer in visible:
             question_counts[question] += 1
             answer_counts[answer] += 1
-            if slug not in question or focus not in question or not question.endswith("?"):
+            if slug not in question or "영어" not in question or not question.endswith("?"):
                 errors.append(f"{slug}: FAQ question focus")
             if len(answer) < 150:
                 errors.append(f"{slug}: FAQ answer too short {len(answer)}")

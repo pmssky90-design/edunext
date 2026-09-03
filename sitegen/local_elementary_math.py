@@ -344,8 +344,8 @@ def _concept_map(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
     shift = _stable_index(slug, "concept-order") % 3
     rows = rows[shift:] + rows[:shift]
     content = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 점검 {number}: {escape(label)}</h3>"
-        f"<p>{escape(material)}을 사용합니다. {escape(action)} 이때 {escape(location)} 학생의 첫 풀이와 수정한 풀이를 나란히 보관해 바뀐 판단을 확인합니다.</p>"
+        f"<h3>{escape(location)} {escape(focus)}의 {escape(label)} 점검</h3>"
+        f"<p><strong>먼저 볼 자료와 행동:</strong> {escape(material)} {escape(action)} 이때 {escape(location)} 학생의 첫 풀이와 수정한 풀이를 나란히 보관해 바뀐 판단을 확인합니다.</p>"
         for number, (label, material, action) in enumerate(rows, 1)
     )
     closing = _pick(
@@ -366,7 +366,7 @@ def _concept_map(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
 def _diagnosis(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
     heading = _pick(
         (
-            f"{location}에서 바로 해 볼 {focus} 12분 진단",
+            f"{location}에서 바로 해 볼 {focus} 짧은 진단",
             f"첫 풀이를 지우지 않는 {location} {focus} 관찰 과제",
             f"{location} 학생의 {_obj(focus)} 짧게 확인하는 방법",
             f"설명과 재시도를 함께 보는 {location} {focus} 진단",
@@ -423,10 +423,10 @@ def _weekly_plan(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
         "weekly-intro",
     )
     rows = (
-        ("수업 당일", "8~12분", "교과서 핵심 표현과 첫 예제를 가리고 복원"),
-        ("주중 적용", "15~25분", pack["action"]),
-        ("주말 재시도", "20~30분", pack["check"]),
-        ("다음 주 연결", "5분", "막힌 이유와 다음 과제 한 가지를 학생이 직접 선택"),
+        ("수업 당일", "짧게 시작", "교과서 핵심 표현과 첫 예제를 가리고 복원"),
+        ("주중 적용", "집중 가능한 범위", pack["action"]),
+        ("주말 재시도", "여유 있게 확인", pack["check"]),
+        ("다음 주 연결", "마무리 점검", "막힌 이유와 다음 과제 한 가지를 학생이 직접 선택"),
     )
     row_html = "".join(
         f"<tr><td>{escape(when)}</td><td>{escape(time)}</td><td>{escape(location)}의 {escape(focus)}: {escape(task)}</td></tr>"
@@ -677,7 +677,7 @@ def _error_map(slug: str, location: str, focus: str, pack: dict[str, str]) -> st
     shift = _stable_index(slug, "error-map-order") % len(rows)
     rows = rows[shift:] + rows[:shift]
     content = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 오류 {index}: {escape(label)}</h3>"
+        f"<h3>{escape(location)} {escape(focus)}의 {escape(label)} 오류</h3>"
         f"<p>{escape(observe)} {escape(location)} 학생의 기록에는 ‘{escape(action)}’라는 다음 행동과 재시도 날짜를 함께 남겨 같은 유형의 답만 외우는 일을 피합니다.</p>"
         for index, (label, observe, action) in enumerate(rows, 1)
     )
@@ -699,7 +699,7 @@ def _error_map(slug: str, location: str, focus: str, pack: dict[str, str]) -> st
 def _focus_protocol(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
     heading = _pick(
         (
-            f"{location} {focus} 6회 관찰 프로토콜",
+            f"{location} {focus} 관찰 프로토콜",
             f"여섯 번의 기록으로 구분하는 {location} 학생의 {focus}",
             f"{location}에서 {_obj(focus)} 수업 전후로 확인하는 순서",
             f"한 주 동안 추적하는 {location} {focus} 실행 기록",
@@ -770,9 +770,9 @@ def _focus_protocol(slug: str, location: str, focus: str, pack: dict[str, str]) 
         record = _pick(evidence, slug, f"protocol-evidence-{index}")
         stage = ("첫 풀이", "표현 전환", "조건 변형", "오류 설명", "검산 선택", "간격 재현")[index]
         content.append(
-            f"<h3>{escape(location)} {escape(focus)} 카드 {index + 1}: {escape(stage)} {duration}분</h3>"
-            f"<p>{escape(material)}을 사용해 {duration}분 동안 {escape(action)} {escape(location)}의 {escape(focus)} 카드에는 "
-            f"{escape(record)}을 남기고, {gap}일 뒤 같은 도구 없이 시작할 한 문제와 부모가 줄일 힌트를 정합니다. "
+            f"<h3>{escape(location)} {escape(focus)} {escape(stage)} 카드</h3>"
+            f"<p>{escape(material)}을 사용해 학생이 집중할 수 있는 짧은 시간 동안 {escape(action)} {escape(location)}의 {escape(focus)} 카드에는 "
+            f"{escape(record)}을 남기고, 간격을 둔 뒤 같은 도구 없이 시작할 한 문제와 부모가 줄일 힌트를 정합니다. "
             f"이 카드의 목적은 {escape(focus)} 정답 수가 아니라 {escape(location)} 학생이 자신의 판단을 다시 선택하는지 확인하는 것입니다.</p>"
         )
     return (
@@ -848,11 +848,28 @@ def _closing(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
         slug,
         "closing-paragraph",
     )
-    return f'<section class="elementary-math-block elementary-math-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p></section>'
+    evidence_note = (
+        f"{location}의 {focus} 다음 점검에서는 {pack['signal']}를 실제 풀이에서 다시 확인하고, "
+        "학생이 도움 없이 선택한 첫 표현과 검산 근거를 남겨 새 문제에서도 같은 판단을 꺼내 쓰는지 비교합니다."
+    )
+    specific_note = {
+        "부산재송동초등수학과외": (
+            "부산재송동의 학교 수업 당일 복습은 수업 내용을 그대로 다시 베끼는 활동이 아닙니다. 학생 공책에서 오늘 배운 개념을 고르고, 설명을 덮은 상태에서 "
+            "핵심 뜻과 첫 예제를 자기 말과 식으로 복원한 뒤 원본과 다른 줄을 표시합니다. 맞힌 문제도 오래 걸렸다면 처음 선택한 연산이나 그림을 보존하고, "
+            "간격을 둔 재시도에서는 숫자와 질문 방식이 달라져도 같은 개념을 찾는지 확인합니다. 이렇게 남긴 기록을 학교 안내와 함께 보면 새 진도를 더할지, "
+            "현재 단원의 설명 공백을 먼저 보완할지 근거를 갖고 정할 수 있습니다."
+        ),
+    }.get(slug, "")
+    specific_html = f"<p>{escape(specific_note)}</p>" if specific_note else ""
+    return f'<section class="elementary-math-block elementary-math-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p><p>{escape(evidence_note)}</p>{specific_html}</section>'
 
 
 def _individualize_diction(body: str, slug: str) -> str:
     """Vary recurring instructional vocabulary without changing its educational meaning."""
+    focus = _focus_from_body(body)
+    escaped_focus = escape(focus)
+    placeholder = "EDUNEXT_ELEMENTARY_MATH_FOCUS_PLACEHOLDER"
+    body = body.replace(escaped_focus, placeholder)
     variants: dict[str, tuple[str, ...]] = {
         "첫 풀이": ("최초 풀이", "처음 남긴 풀이", "첫 번째 풀이", "시작 풀이", "도움 전 풀이", "초기 풀이 기록"),
         "다음 과제": ("후속 과제", "이어 할 과제", "다음 학습 행동", "뒤이을 활동", "이후 과제", "다음번 활동"),
@@ -872,7 +889,7 @@ def _individualize_diction(body: str, slug: str) -> str:
     }
     for source in sorted(variants, key=len, reverse=True):
         body = body.replace(source, _pick(variants[source], slug, f"diction-{source}"))
-    return body
+    return body.replace(placeholder, escaped_focus)
 
 
 def build_local_elementary_math_body(slug: str, focus: str) -> str:

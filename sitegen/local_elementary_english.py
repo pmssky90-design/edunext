@@ -322,7 +322,7 @@ def _four_skills(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
     heading = _pick(
         (
             f"{location}의 {_obj(focus)} 듣기·말하기·읽기·쓰기로 연결하기",
-            f"한 표현을 네 번 사용하는 {location} {focus} 영어 흐름",
+            f"한 표현을 여러 기능에서 사용하는 {location} {focus} 영어 흐름",
             f"{location} 학생의 {_obj(focus)} 입력에서 출력으로 옮기기",
             f"기능을 따로 떼지 않는 {location}의 {focus} 학습",
         ),
@@ -338,7 +338,7 @@ def _four_skills(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
     shift = _stable_index(slug, "skills-order") % 4
     rows = rows[shift:] + rows[:shift]
     content = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 기능 {index}: {escape(label)}</h3>"
+        f"<h3>{escape(location)} {escape(focus)}의 {escape(label)} 활동</h3>"
         f"<p>{escape(action)} {escape(check)} {escape(location)} 학생의 {escape(focus)} 기록에는 다음 기능으로 옮길 때 유지한 표현과 달라진 표현을 함께 적습니다.</p>"
         for index, (label, action, check) in enumerate(rows, 1)
     )
@@ -357,7 +357,7 @@ def _four_skills(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
 def _diagnosis(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
     heading = _pick(
         (
-            f"{location}에서 바로 해 볼 {focus} 12분 영어 진단",
+            f"{location}에서 바로 해 볼 {focus} 짧은 영어 진단",
             f"첫 시도를 지우지 않는 {location} {focus} 관찰 활동",
             f"{location} 학생의 {_obj(focus)} 짧게 점검하는 방법",
             f"이해와 사용을 함께 보는 {location} {focus} 진단",
@@ -414,10 +414,10 @@ def _weekly_plan(slug: str, location: str, focus: str, pack: dict[str, str]) -> 
         "weekly-intro",
     )
     rows = (
-        ("학교 학습 당일", "8~12분", "핵심 소리·어휘·문장을 가리고 복원"),
-        ("주중 기능 연결", "15~25분", pack["action"]),
-        ("주말 재사용", "20~30분", pack["check"]),
-        ("다음 주 연결", "5분", "막힌 단서와 다시 사용할 표현 하나를 학생이 직접 선택합니다."),
+        ("학교 학습 당일", "짧게 시작", "핵심 소리·어휘·문장을 가리고 복원"),
+        ("주중 기능 연결", "집중 가능한 범위", pack["action"]),
+        ("주말 재사용", "여유 있게 확인", pack["check"]),
+        ("다음 주 연결", "마무리 점검", "막힌 단서와 다시 사용할 표현 하나를 학생이 직접 선택합니다."),
     )
     row_html = "".join(
         f"<tr><td>{escape(when)}</td><td>{escape(time)}</td><td>{escape(location)} {escape(focus)}: {escape(task)}</td></tr>"
@@ -558,7 +558,7 @@ def _error_map(slug: str, location: str, focus: str, pack: dict[str, str]) -> st
     shift = _stable_index(slug, "error-order") % 5
     rows = rows[shift:] + rows[:shift]
     content = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 오류 {index}: {escape(label)}</h3>"
+        f"<h3>{escape(location)} {escape(focus)}의 {escape(label)} 오류</h3>"
         f"<p>{escape(observe)} {escape(location)} 학생의 {escape(focus)} 기록에는 ‘{escape(action)}’라는 다음 영어 행동과 재사용 날짜를 함께 남겨 답이나 해석 순서만 외우는 일을 피합니다.</p>"
         for index, (label, observe, action) in enumerate(rows, 1)
     )
@@ -577,7 +577,7 @@ def _error_map(slug: str, location: str, focus: str, pack: dict[str, str]) -> st
 def _focus_protocol(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
     heading = _pick(
         (
-            f"{location} {focus} 6회 영어 사용 프로토콜",
+            f"{location} {focus} 영어 사용 프로토콜",
             f"여섯 번의 기록으로 구분하는 {location} 학생의 {focus}",
             f"{location}에서 {_obj(focus)} 수업 전후로 확인하는 순서",
             f"한 주 동안 추적하는 {location} {focus} 언어 사용 기록",
@@ -669,9 +669,9 @@ def _focus_protocol(slug: str, location: str, focus: str, pack: dict[str, str]) 
         action = _pick(actions, slug, f"protocol-action-{index}")
         record = _pick(evidence, slug, f"protocol-evidence-{index}")
         content.append(
-            f"<h3>{escape(location)} {escape(focus)} 카드 {index + 1}: {escape(stage)} {duration}분</h3>"
-            f"<p>{escape(_obj(material))} 사용해 {duration}분 동안 {escape(action)} {escape(location)}의 {escape(focus)} 카드에는 {escape(_obj(record))} 남기고, "
-            f"{gap}일 뒤 같은 자료 없이 다시 사용할 표현과 부모가 줄일 힌트를 정합니다. 이 카드의 목적은 {escape(focus)} 정답 수가 아니라 {escape(location)} 학생이 영어 단서를 다시 선택하는지 확인하는 것입니다.</p>"
+            f"<h3>{escape(location)} {escape(focus)} {escape(stage)} 카드</h3>"
+            f"<p>{escape(_obj(material))} 사용해 학생이 집중할 수 있는 짧은 시간 동안 {escape(action)} {escape(location)}의 {escape(focus)} 카드에는 {escape(_obj(record))} 남기고, "
+            f"간격을 둔 뒤 같은 자료 없이 다시 사용할 표현과 부모가 줄일 힌트를 정합니다. 이 카드의 목적은 {escape(focus)} 정답 수가 아니라 {escape(location)} 학생이 영어 단서를 다시 선택하는지 확인하는 것입니다.</p>"
         )
     closing = _pick(
         (
@@ -834,10 +834,74 @@ def _closing(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
         slug,
         "closing-paragraph",
     )
-    return f'<section class="elementary-english-block elementary-english-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p></section>'
+    evidence_open = _pick(
+        (
+            f"{location}의 {focus} 점검을 마칠 때는 {pack['material']}에서 처음 남긴 표현과 {pack['signal']}를 함께 보관합니다.",
+            f"{location} 학생의 {focus} 기록은 도움 전에 시도한 흔적과 수정 뒤 달라진 표현을 나란히 둘 때 의미가 있습니다. 진단 과제는 {pack['task']}",
+            f"{location}에서 {focus} 학습을 정리할 때는 {pack['check']} 그 차이가 학생의 말과 공책에 남는지 먼저 봅니다.",
+            f"{location}의 학교 영어와 {focus} 활동을 연결하려면 {pack['signal']}를 관찰 기준으로 두고 첫 반응과 도움 뒤 사용을 구분합니다.",
+            f"{location} 학생에게 새 교재를 더하기 전에는 {pack['material']}에서 스스로 고른 단서와 마지막으로 설명한 표현을 보존합니다.",
+            f"{location}의 {focus} 자료를 검토할 때는 전이 행동이 나타난 장면과 다시 질문이 필요했던 장면을 별도로 적습니다. 확인할 전이 행동은 다음과 같습니다. {pack['transfer']}",
+        ),
+        slug,
+        "closing-evidence-open",
+    )
+    evidence_home = _pick(
+        (
+            f"가정에서는 {pack['parent']} 학교 영어와 나란히 놓고 소리·뜻·문장·읽기 중 어떤 연결이 도움 없이 유지됐는지 학생의 말로 확인합니다.",
+            f"보호자는 {pack['parent']} 정답을 대신 말하지 않고 학생이 사용한 영어 단서와 바꾼 이유를 먼저 듣습니다.",
+            f"집에서는 {pack['action']} 어느 단계까지 혼자 이어 갔는지와 질문 뒤 달라진 표현을 짧게 기록합니다.",
+            f"가정 점검은 외운 단어 수보다 {pack['signal']}를 학생이 다른 문장에서도 보여 주는지 확인하는 데 둡니다.",
+            f"보호자와 볼 때는 {pack['check']} 성공한 장면만 남기지 말고 막힌 위치와 요청한 도움도 함께 적습니다.",
+            f"집 공부에서는 {pack['transfer']}에 필요한 단서를 학생이 스스로 고르게 하고 선택 이유를 한 문장으로 남깁니다.",
+        ),
+        slug,
+        "closing-evidence-home",
+    )
+    evidence_next = _pick(
+        (
+            "다음 확인에서는 같은 문장을 외웠는지보다 어휘나 문장 조건이 달라져도 알맞은 단서와 표현을 스스로 고르는지 살핍니다.",
+            "후속 점검에서는 정답 수보다 처음 사용한 표현, 질문 시점, 수정 이유, 도움 없이 마친 범위가 어떻게 달라졌는지 비교합니다.",
+            "시간을 둔 재사용에서는 예문을 기억하는지보다 새 장면에서 필요한 영어 표현을 자기 힘으로 구성하는지 확인합니다.",
+            "학교 자료가 바뀐 뒤에도 소리와 뜻을 연결하고 문장 안 역할을 설명할 수 있는지 살펴 익숙한 답과 구분합니다.",
+            "듣기·말하기·읽기·쓰기의 결과를 한 점수로 합치지 않고 각 기능에서 유지된 단서와 다시 필요한 도움을 나누어 봅니다.",
+            "근거가 부족하면 학습량을 늘리기 전에 자료의 길이, 질문 순서, 간격 뒤 재사용 방법부터 조정합니다.",
+        ),
+        slug,
+        "closing-evidence-next",
+    )
+    evidence_note = f"{evidence_open} {evidence_home} {evidence_next}"
+    transfer_note = _pick(
+        (
+            f"{location} 학생은 {focus} 기록에서 혼자 시작한 범위, 질문이 필요했던 위치, 수정 뒤 다시 사용한 표현이 이어질 때 과제의 길이를 넓힙니다.",
+            f"{location}의 {focus} 활동은 첫 반응·근거 설명·간격 뒤 재사용이 모두 남을 때 다음 난도로 옮기고, 비어 있는 단계가 있으면 학교 자료 안에서 다시 확인합니다.",
+            f"{location} 학생에게 새 영어 자료를 추가하는 기준은 {focus} 정답률이 아니라 도움 없이 단서를 찾고 자신의 표현으로 바꾼 기록입니다.",
+            f"{location}에서는 {focus} 학습의 소리·뜻·문장·글 연결 중 약한 한 지점만 고쳐 본 뒤 같은 기준을 다른 자료에 적용합니다.",
+            f"{location} 가정의 다음 영어 과제는 {focus} 기록에서 학생이 유지한 행동은 남기고, 반복해서 막힌 연결만 더 짧게 나누어 정합니다.",
+            f"{location} 학생의 {focus} 계획은 익숙한 예문과 낯선 자료에서 같은 단서를 꺼내 쓴 증거가 생길 때 한 단계씩 확장합니다.",
+        ),
+        slug,
+        "closing-transfer-note",
+    )
+    specific_note = {
+        "부산화명동초등영어과외": (
+            "부산화명동 페이지의 의미 덩어리 읽기 점검은 한 문장을 단어별로 해석하는 데서 끝내지 않습니다. 학생이 제목과 그림으로 예상한 내용, "
+            "접속어 앞뒤에서 바뀐 흐름, 대명사가 가리키는 대상, 중심 문장을 뒷받침한 세부 근거를 서로 다른 표시로 남깁니다. 처음 읽을 때 고른 근거와 "
+            "설명 뒤 수정한 근거를 지우지 않고 나란히 두면, 어휘 부족인지 문장 연결 실패인지도 구분하기 쉽습니다. 학교별 진도와 과제는 이 페이지가 대신 "
+            "추정하지 않으므로 학생이 받은 교과서·학습지·평가 안내와 연결된 학교 공식 홈페이지를 먼저 대조합니다. 이후에는 같은 글을 반복 암기하기보다 소재와 "
+            "문단 순서가 달라진 짧은 글에서 중심 생각을 다시 찾고, 답을 결정한 문장을 학생의 말로 설명하게 합니다. 가정에서는 모르는 단어를 즉시 알려 주기보다 "
+            "앞뒤 문장으로 뜻을 추론한 흔적과 질문이 필요했던 위치를 보존해 다음 수업의 출발 자료로 사용합니다."
+        ),
+    }.get(slug, "")
+    specific_html = f"<p>{escape(specific_note)}</p>" if specific_note else ""
+    return f'<section class="elementary-english-block elementary-english-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p><p>{escape(evidence_note)}</p><p>{escape(transfer_note)}</p>{specific_html}</section>'
 
 
 def _individualize_diction(body: str, slug: str) -> str:
+    focus = _focus_from_body(body)
+    escaped_focus = escape(focus)
+    placeholder = "EDUNEXT_ELEMENTARY_ENGLISH_FOCUS_PLACEHOLDER"
+    body = body.replace(escaped_focus, placeholder)
     variants: dict[str, tuple[str, ...]] = {
         "첫 시도를": ("처음 남긴 시도를", "도움 전 시도를", "초기 영어 기록을", "첫 번째 사용을", "시작 표현을", "최초 반응을"),
         "첫 시도로": ("처음 남긴 시도로", "도움 전 시도로", "초기 영어 기록으로", "첫 번째 사용으로", "시작 표현으로", "최초 반응으로"),
@@ -870,7 +934,7 @@ def _individualize_diction(body: str, slug: str) -> str:
             return replacement
 
         body = re.sub(re.escape(source), replace_match, body)
-    return body
+    return body.replace(placeholder, escaped_focus)
 
 
 def build_local_elementary_english_body(slug: str, focus: str) -> str:

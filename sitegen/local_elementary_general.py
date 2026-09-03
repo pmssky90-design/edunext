@@ -164,7 +164,7 @@ STUDY_PACKS: tuple[dict[str, object], ...] = (
     {
         "name": "고학년 전환과 중학교 준비",
         "focuses": (
-            "5·6학년 누적 공백을 찾아 보완하기", "교과별 공부 방법을 스스로 구분하기", "중학교 전 과제 관리 언어 익히기",
+            "고학년 누적 공백을 찾아 보완하기", "교과별 공부 방법을 스스로 구분하기", "중학교 전 과제 관리 언어 익히기",
             "선행보다 현재 학년 설명력을 확인하기", "긴 글과 여러 단계 문제를 끝까지 따라가기", "평가 범위와 복습 우선순위를 정하기",
             "교재가 달라도 유지할 학습 기준 만들기", "초등 학습 기록을 중학교 계획으로 옮기기",
         ),
@@ -621,9 +621,9 @@ def _weekly_plan(slug: str, location: str, focus: str, pack: dict[str, object]) 
     shift = _stable_index(slug, "weekly-order") % len(phases)
     phases = phases[shift:] + phases[:shift]
     cards = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 주간 확인 {index}: {escape(name)}</h3><p>{escape(detail)} "
-        f"{escape(location)} 가정에서는 {8 + (_stable_index(slug, f'weekly-minute-{index}') % 13)}분만 진행하고, 끝난 분량보다 학생이 혼자 고른 첫 행동과 다음 시작점을 남깁니다.</p>"
-        for index, (name, detail) in enumerate(phases, 1)
+        f"<h3>{escape(location)} {escape(focus)} 주간 확인: {escape(name)}</h3><p>{escape(detail)} "
+        f"{escape(location)} 가정에서는 학생이 집중할 수 있는 짧은 시간만 진행하고, 끝난 분량보다 학생이 혼자 고른 첫 행동과 다음 시작점을 남깁니다.</p>"
+        for name, detail in phases
     )
     return (
         f'<section class="elementary-general-block elementary-general-weekly" data-weekly-checks="5"><h2>{escape(heading)}</h2>'
@@ -739,7 +739,7 @@ def _student_case(slug: str, location: str, focus: str, pack: dict[str, object])
     steps = (
         f"{pack['material']}에서 {focus} 과정이 드러나는 자료 하나를 고릅니다.",
         "첫 기록을 지우지 않고 도움을 준 말과 학생이 스스로 한 행동을 다른 색으로 표시합니다.",
-        f"{2 + _stable_index(slug, 'case-gap') % 4}일 뒤 자료를 가리고 같은 판단의 첫 단계를 다시 설명하게 합니다.",
+        "간격을 둔 뒤 자료를 가리고 같은 판단의 첫 단계를 다시 설명하게 합니다.",
     )
     return (
         f'<section class="elementary-general-block elementary-general-student-case" data-case-model="composite" data-case-grade="{escape(grade)}"><h2>{escape(heading)}</h2>'
@@ -757,14 +757,14 @@ def _local_experiment(slug: str, location: str, focus: str, pack: dict[str, obje
         (
             f"{location} {focus} 판단을 위한 네 번의 지역 학습 실험",
             f"자료와 시간대를 바꾸어 보는 {location} {focus} 관찰",
-            f"{location}초등과외 전에 {_obj(focus)} 직접 비교하는 4회 기록",
+            f"{location}초등과외 전에 {_obj(focus)} 직접 비교하는 단계별 기록",
             f"{location} 생활 흐름에 맞춘 {focus} 소규모 실험",
         ),
         slug,
         "experiment-heading",
     )
     scenes = (
-        "귀가 뒤 간식과 휴식을 마친 첫 20분", "학교 숙제를 펼치기 직전의 준비 시간", "저녁 식사 전에 남는 짧은 시간",
+        "귀가 뒤 간식과 휴식을 마친 첫 집중 구간", "학교 숙제를 펼치기 직전의 준비 시간", "저녁 식사 전에 남는 짧은 시간",
         "주말 오전에 피로가 적은 시간대", "다른 일정이 끝난 뒤 전환이 필요한 순간", "학교에서 돌아와 가방을 정리한 직후",
         "읽기 활동을 끝내고 수학으로 옮기는 시점", "수학 문제를 마친 뒤 영어를 시작하는 시점", "보호자가 옆에 있지 않은 짧은 구간",
         "평소보다 귀가가 늦어진 날의 최소 학습 시간", "주간 과제를 다시 배치하는 금요일 저녁", "일요일에 다음 주 준비물을 확인하는 시간",
@@ -814,11 +814,10 @@ def _local_experiment(slug: str, location: str, focus: str, pack: dict[str, obje
         action = _pick(actions, slug, f"experiment-action-{index}")
         record = _pick(evidence, slug, f"experiment-evidence-{index}")
         adjustment = _pick(adjustments, slug, f"experiment-adjustment-{index}")
-        minutes = 11 + _stable_index(slug, f"experiment-minutes-{index}") % 13
         cards.append(
-            f"<h3>{escape(location)} {escape(focus)} 실험 {index + 1}: {escape(scene)}</h3>"
+            f"<h3>{escape(location)} {escape(focus)} 관찰: {escape(scene)}</h3>"
             f"<p>{escape(school_reference)}의 공식 정보가 아니라 {escape(location)} 학생의 실제 공책과 생활 기록을 기준으로 합니다. "
-            f"{escape(scene)}에 {escape(material)}을 사용해 {minutes}분 동안 {escape(action)} 관찰표에는 {escape(record)}를 남깁니다. "
+            f"{escape(scene)}에 {escape(material)}을 사용해 학생이 집중할 수 있는 짧은 시간 동안 {escape(action)} 관찰표에는 {escape(record)}를 남깁니다. "
             f"한 번의 결과로 결론 내리지 않고 다음 시도에서는 {escape(adjustment)} 이 차이가 반복되면 {escape(focus)} 과제를 그대로 늘리기보다 "
             "자료 선택, 표현 방법, 도움 시점 가운데 실제로 영향을 준 조건을 하나씩 좁힙니다.</p>"
         )
@@ -848,9 +847,9 @@ def _parent_coaching(slug: str, location: str, focus: str, pack: dict[str, objec
         ("며칠 뒤", "다시 한다면 첫 행동은 무엇이야?", "복습량보다 기억에서 꺼낸 시작 순서와 줄일 힌트를 확인합니다."),
     )
     content = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 대화 {index}: {escape(stage)}</h3><p><strong>{escape(question)}</strong> {escape(detail)} "
+        f"<h3>{escape(location)} {escape(focus)} {escape(stage)} 대화</h3><p><strong>{escape(question)}</strong> {escape(detail)} "
         f"{escape(location)}에서 {escape(focus)} 과정을 살필 때는 {escape(str(pack['home']))} 이 질문은 한 번에 하나만 사용하고 학생의 답을 고쳐 말하지 않은 채 다음 기록에 옮깁니다.</p>"
-        for index, (stage, question, detail) in enumerate(items, 1)
+        for stage, question, detail in items
     )
     return (
         f'<section class="elementary-general-block elementary-general-parent" data-parent-prompts="4"><h2>{escape(heading)}</h2>'
@@ -863,7 +862,7 @@ def _transition(slug: str, location: str, focus: str, pack: dict[str, object]) -
         (
             f"{location} {focus} 기록을 다음 학년과 중학교로 옮기기",
             f"선행 진도보다 먼저 확인할 {location} {focus} 전환 기준",
-            f"{location} 5·6학년의 {_obj(focus)} 과목별 계획으로 바꾸기",
+            f"{location} 고학년의 {_obj(focus)} 과목별 계획으로 바꾸기",
         ),
         slug,
         "transition-heading",
@@ -896,7 +895,7 @@ def _transition(slug: str, location: str, focus: str, pack: dict[str, object]) -
         "새 교재를 시작하기 전에 학교 원본에서 확인한 강점과 공백을 다른 칸에 적고 첫 주 과제를 작게 정합니다.",
     )
     content = "".join(
-        f"<h3>{escape(location)} {escape(focus)} 전환 {index}: {escape(name)}</h3><p>{escape(detail)} "
+        f"<h3>{escape(location)} {escape(focus)} {escape(name)} 전환</h3><p>{escape(detail)} "
         f"{escape(location)}에서는 {escape(_pick(transition_tails, slug, f'transition-tail-{index}'))}</p>"
         for index, (name, detail) in enumerate(items, 1)
     )
@@ -909,7 +908,7 @@ def _transition(slug: str, location: str, focus: str, pack: dict[str, object]) -
 def _protocol(slug: str, location: str, focus: str, pack: dict[str, object]) -> str:
     heading = _pick(
         (
-            f"{location} {focus} 2주 관찰을 위한 여섯 개 학습 카드",
+            f"{location} {focus} 누적 관찰을 위한 여섯 개 학습 카드",
             f"설명과 재시도를 연결하는 {location} {focus} 여섯 단계",
             f"{location}초등과외에서 {_obj(focus)} 직접 시험하는 방법",
         ),
@@ -944,15 +943,15 @@ def _protocol(slug: str, location: str, focus: str, pack: dict[str, object]) -> 
         action = _pick(actions, slug, f"protocol-action-{index}")
         record = _pick(records, slug, f"protocol-record-{index}")
         cards.append(
-            f"<h3>{escape(location)} {escape(focus)} 카드 {index}: {escape(stage)} {minutes}분</h3>"
-            f"<p>{escape(material)}을 사용해 {minutes}분 동안 {escape(action)} {escape(record)}을 학생의 말 그대로 남기고 "
-            f"{gap}일 뒤 같은 도움 없이 다시 시작합니다. 이 카드의 목적은 정답 수가 아니라 {escape(location)} 학생이 "
+            f"<h3>{escape(location)} {escape(focus)} {escape(stage)} 점검</h3>"
+            f"<p>{escape(material)}을 사용해 학생이 집중할 수 있는 짧은 시간 동안 {escape(action)} {escape(record)}을 학생의 말 그대로 남기고 "
+            f"간격을 둔 뒤 같은 도움 없이 다시 시작합니다. 이 점검의 목적은 정답 수가 아니라 {escape(location)} 학생이 "
             f"{escape(focus)} 과정에서 판단과 질문을 다시 선택하는지 확인하는 것입니다.</p>"
         )
     return (
         f'<section class="elementary-general-block elementary-general-protocol" data-protocol-cards="6"><h2>{escape(heading)}</h2>'
-        f"<p>여섯 카드를 한날에 모두 수행하지 않습니다. {escape(location)}의 학교 일정과 피로를 고려해 2주에 나누고, {escape(focus)} 관찰 기준만 유지한 채 자료와 표현을 바꿉니다.</p>"
-        f"{''.join(cards)}<p>마지막 카드 뒤에는 잘한 점 하나, 반복해서 막힌 지점 하나, 다음 주에 시험할 행동 하나만 남깁니다. 변화가 작더라도 학생이 도움을 더 정확히 요청하거나 혼자 시작하는 범위가 넓어졌다면 그 기록을 다음 계획의 근거로 사용합니다.</p></section>"
+        f"<p>모든 점검을 한날에 수행하지 않습니다. {escape(location)}의 학교 일정과 피로를 고려해 여러 날에 나누고, {escape(focus)} 관찰 기준만 유지한 채 자료와 표현을 바꿉니다.</p>"
+        f"{''.join(cards)}<p>마지막 점검 뒤에는 잘한 점 하나, 반복해서 막힌 지점 하나, 다음 주에 시험할 행동 하나만 남깁니다. 변화가 작더라도 학생이 도움을 더 정확히 요청하거나 혼자 시작하는 범위가 넓어졌다면 그 기록을 다음 계획의 근거로 사용합니다.</p></section>"
     )
 
 
@@ -972,11 +971,11 @@ def _context_links(location: str, city: str, focus: str) -> str:
 
 def _faq(slug: str, location: str, focus: str, pack: dict[str, object]) -> str:
     questions = (
-        f"{location}초등과외에서 {_obj(focus)} 몇 학년부터 점검해야 하나요?",
-        f"{location} 가정에서 {_obj(focus)} 수업 전에 어떻게 확인할 수 있나요?",
-        f"{location} 학생의 {_subject(focus)} 흔들리면 공부 시간을 먼저 늘려야 하나요?",
-        f"{location}초등과외와 학교 숙제는 {_obj(focus)} 어떻게 나누어야 하나요?",
-        f"{location} 5·6학년의 {_obj(focus)} 중학교 준비와 어떻게 연결하나요?",
+        f"{location}초등과외는 무엇부터 점검해야 하나요?",
+        f"{location} 가정에서는 수업 전에 무엇을 확인할 수 있나요?",
+        f"{location} 학생의 학습이 흔들리면 공부 시간을 먼저 늘려야 하나요?",
+        f"{location}초등과외와 학교 숙제는 어떻게 나누어야 하나요?",
+        f"{location} 고학년은 중학교 준비를 어떻게 연결하나요?",
     )
     answers = (
         f"{location}에서는 특정 학년부터 일괄 시작하기보다 현재 학교 자료에서 {_obj(focus)} 먼저 확인합니다. 1~2학년은 짧은 행동과 말하기, 3~4학년은 두 표현의 연결, 5~6학년은 조건·근거·재시도 기록을 사용합니다. {pack['signal']}를 학생이 보여 주는 단계에서 과제의 깊이와 도움의 양을 정하는 편이 좋습니다.",
@@ -1014,9 +1013,9 @@ def _faq(slug: str, location: str, focus: str, pack: dict[str, object]) -> str:
     content = "".join(f"<h3>{escape(question)}</h3><p>{escape(answer)}</p>" for question, answer in pairs)
     heading = _pick(
         (
-            f"{location} {focus} 초등 학습에 자주 묻는 질문",
-            f"학년·숙제·가정 점검으로 나눈 {location} {focus} FAQ",
-            f"{location}초등과외와 {focus} 자주 묻는 질문 다섯 가지",
+            f"{location} 초등 학습 FAQ",
+            f"{location}초등과외 자주 묻는 질문",
+            f"{location} 학년·숙제·가정 점검 FAQ",
         ),
         slug,
         "faq-heading",
@@ -1045,7 +1044,11 @@ def _closing(slug: str, location: str, focus: str, pack: dict[str, object]) -> s
         slug,
         "closing-paragraph",
     )
-    return f'<section class="elementary-general-block elementary-general-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p></section>'
+    evidence_note = (
+        f"{location}의 {focus} 점검을 마칠 때는 {pack['signal']}를 다시 읽고, 학생이 고른 자료와 도움 전 첫 행동을 함께 보관합니다. "
+        "다음 확인에서는 같은 답을 기억했는지가 아니라 교과와 과제 조건이 달라져도 시작 순서를 혼자 꺼내 쓰는지 살핍니다. 근거가 부족하면 과제량을 늘리기 전에 관찰 기준과 도움 시점부터 조정합니다."
+    )
+    return f'<section class="elementary-general-block elementary-general-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p><p>{escape(evidence_note)}</p></section>'
 
 
 def _individualize_diction(body: str, slug: str) -> str:

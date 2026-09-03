@@ -181,7 +181,7 @@ def audit(output: Path) -> tuple[list[str], dict[str, object]]:
 
     sitemap = (output / "sitemap.xml").read_text(encoding="utf-8")
     sitemap_urls = re.findall(r"<loc>(.*?)</loc>", sitemap)
-    if len(sitemap_urls) != 1680 or len(sitemap_urls) != len(set(sitemap_urls)):
+    if len(sitemap_urls) != 1898 or len(sitemap_urls) != len(set(sitemap_urls)):
         errors.append(f"sitemap count/uniqueness mismatch: {len(sitemap_urls)}")
     for slug in contexts:
         if sitemap_urls.count(f"{SITE_URL}/{slug}/") != 1:

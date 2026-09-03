@@ -76,6 +76,11 @@ from sitegen.middle_school_math import (
     individualize_middle_school_math_body,
     is_middle_school_math_slug,
 )
+from sitegen.middle_school_english import (
+    build_middle_school_english_meta,
+    individualize_middle_school_english_body,
+    is_middle_school_english_slug,
+)
 from sitegen.utils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1099,8 +1104,9 @@ def school_section(page: Page, page_map: dict[str, Page], seen: set[str] | None 
     if not school_slugs:
         return ""
     seen = seen if seen is not None else set()
-    is_middle = page.category == "중등수학과외"
-    title = "고등학교별 과외 찾기" if page.page_type == "home" else "관련 중학교 수학 학습 페이지" if is_middle else "관련 고등학교 학습 페이지"
+    is_middle = page.category in {"중등수학과외", "중등영어과외"}
+    middle_title = "관련 중학교 영어 학습 페이지" if page.category == "중등영어과외" else "관련 중학교 수학 학습 페이지"
+    title = "고등학교별 과외 찾기" if page.page_type == "home" else middle_title if is_middle else "관련 고등학교 학습 페이지"
     section_id = "middle-schools" if is_middle else "high-schools"
     groups: dict[str, list[Page]] = {}
     for slug in school_slugs:
@@ -1339,7 +1345,7 @@ def home_link_list(items: list[tuple[str, str]], page_map: dict[str, Page]) -> s
     return '<ul class="home-link-grid">' + "".join(links) + "</ul>" if links else ""
 
 
-def primary_nav(page_map: dict[str, Page]) -> str:
+def primary_nav(page_map: dict[str, Page], current_url: str = "") -> str:
     """Render the same compact global navigation on every page."""
     links = []
     for slug, label in [
@@ -1349,7 +1355,10 @@ def primary_nav(page_map: dict[str, Page]) -> str:
     ]:
         item = page_map.get(slug)
         if item:
-            links.append(f'<a href="{escape(item.url)}">{escape(label)}</a>')
+            if item.url == current_url:
+                links.append(f'<span aria-current="page">{escape(label)}</span>')
+            else:
+                links.append(f'<a href="{escape(item.url)}">{escape(label)}</a>')
     links.append('<a href="/#high-schools">고등학교별 과외</a>')
     return "".join(links)
 
@@ -1572,6 +1581,8 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
         search_title, meta_description = build_school_math_meta(page.slug, page.body)
     if is_middle_school_math_slug(page.slug):
         search_title, meta_description = build_middle_school_math_meta(page.slug, page.body)
+    if is_middle_school_english_slug(page.slug):
+        search_title, meta_description = build_middle_school_english_meta(page.slug, page.body)
     if not page.search_thumbnail_url:
         page.search_thumbnail, page.search_thumbnail_url, page.search_thumbnail_hash = select_stable_search_thumbnail(page)
     body = individualize_local_middle_english_body(page.body, page.slug)
@@ -1587,6 +1598,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     body = individualize_school_english_body(body, page.slug)
     body = individualize_school_math_body(body, page.slug)
     body = individualize_middle_school_math_body(body, page.slug)
+    body = individualize_middle_school_english_body(body, page.slug)
     body = individualize_secondary_region_body(body, page)
     body = individualize_priority_region_body(body, page)
     body = polish_priority_region_math_body(body, page)
@@ -1605,7 +1617,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
     )
     if page.page_type != "home":
         nav += '<a href="/#high-schools">고등학교별 과외</a>'
-    nav = primary_nav(page_map)
+    nav = primary_nav(page_map, page.url)
     brand = '<span class="brand" aria-current="page">EduNext</span>' if page.url == "/" else '<a class="brand" href="/">EduNext</a>'
     return f"""<!doctype html>
 <html lang="ko">
@@ -1644,7 +1656,7 @@ def render_page(page: Page, page_map: dict[str, Page]) -> str:
       <h1>{escape(page.title)}</h1>
       <p>{escape(meta_description)}</p>
     </section>
-    {render_page_hero_image(page)}
+{render_page_hero_image(page)}
     {render_fixed_images(page)}
     {toc}
     <article class="content-body">{enhanced_body}</article>

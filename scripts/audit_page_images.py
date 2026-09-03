@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 
 from config import SITE_URL
 
-OUTPUT = ROOT / os.environ.get("EDUNEXT_IMAGE_AUDIT_OUTPUT", "output_image_fixed")
+OUTPUT = ROOT / os.environ.get("EDUNEXT_IMAGE_AUDIT_OUTPUT", "output")
 AUDIT = ROOT / "audit"
 DATA = ROOT / "data"
 

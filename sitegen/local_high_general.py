@@ -30,7 +30,7 @@ def _parts(slug: str) -> tuple[str, str, str]:
 STUDY_PACKS: tuple[dict[str, object], ...] = (
     {
         "focuses": (
-            "고1 첫 시험 뒤 과목별 복습 전환",
+            "고등학교 첫 시험 뒤 과목별 복습 전환",
             "교과서 진도와 누적 취약점의 분리",
             "학교 수업 당일의 짧은 복원",
             "선행보다 먼저 확인하는 선수 학습",
@@ -454,10 +454,10 @@ def _weekly_plan(slug: str, location: str, focus: str, pack: dict[str, object]) 
         "general-weekly-intro",
     )
     rows = (
-        ("학교 수업 당일", "15~25분", "교과서·공책의 핵심 개념과 문장을 가리고 복원"),
-        ("주중 과목 적용", "30~50분", str(pack["task"])),
-        ("주말 평가 연결", "40~70분", str(pack["transfer"])),
-        ("다음 주 시작점", "10분", "막힌 원인과 다시 사용할 자료, 완료 행동을 학생이 직접 정합니다."),
+        ("학교 수업 당일", "짧게 시작", "교과서·공책의 핵심 개념과 문장을 가리고 복원"),
+        ("주중 과목 적용", "집중 가능한 범위", str(pack["task"])),
+        ("주말 평가 연결", "여유 있게 확인", str(pack["transfer"])),
+        ("다음 주 시작점", "마무리 점검", "막힌 원인과 다시 사용할 자료, 완료 행동을 학생이 직접 정합니다."),
     )
     row_html = "".join(
         f"<tr><td>{escape(when)}</td><td>{escape(duration)}</td><td>{escape(location)} {escape(focus)}: {escape(task)}</td></tr>"
@@ -618,7 +618,7 @@ def _error_map(slug: str, location: str, focus: str) -> str:
             f"general-error-note-{index}",
         )
         error_content.append(
-            f"<h3>{escape(location)} {escape(focus)} 오류 {index + 1}: {escape(name)}</h3><p>{escape(check)} {escape(note)}</p>"
+            f"<h3>{escape(location)} {escape(focus)}의 {escape(name)} 오류</h3><p>{escape(check)} {escape(note)}</p>"
         )
     content = "".join(error_content)
     closing = _pick(
@@ -636,7 +636,7 @@ def _error_map(slug: str, location: str, focus: str) -> str:
 def _protocol(slug: str, location: str, focus: str, pack: dict[str, object]) -> str:
     heading = _pick(
         (
-            f"{location} {focus} 6회 의사결정 프로토콜",
+            f"{location} {focus} 의사결정 프로토콜",
             f"여섯 번의 기록으로 구분하는 {location} 학생의 {focus}",
             f"수업 전후와 간격 뒤를 잇는 {location} {focus} 카드",
             f"한 주 동안 추적하는 {location} 고등 학습 기록",
@@ -708,12 +708,12 @@ def _protocol(slug: str, location: str, focus: str, pack: dict[str, object]) -> 
         record = _pick(evidence, slug, f"general-evidence-{index}")
         note = _pick(
             (
-                f"{location}의 카드에는 {_obj(record)} 남기고 {gap}일 뒤 같은 도움 없이 재시작합니다.",
-                f"{gap}일 뒤 {location} 학생이 같은 기준을 꺼내는지 보려고 {_obj(record)} 보존합니다.",
-                f"{location} 기록에서 {_obj(record)} 확인한 다음 {gap}일 간격의 새 자료로 옮깁니다.",
-                f"{_obj(record)} 적어 둔 뒤 {location} 학생에게 {gap}일 뒤 첫 판단을 다시 설명하게 합니다.",
-                f"{location}에서는 {_obj(record)} 비교하고 {gap}일 뒤 필요한 힌트를 한 단계 줄입니다.",
-                f"{gap}일 뒤의 독립 재현을 위해 {location} 카드에 {_obj(record)} 따로 남깁니다.",
+                f"{location}의 카드에는 {_obj(record)} 남기고 간격을 둔 뒤 같은 도움 없이 재시작합니다.",
+                f"간격을 둔 뒤 {location} 학생이 같은 기준을 꺼내는지 보려고 {_obj(record)} 보존합니다.",
+                f"{location} 기록에서 {_obj(record)} 확인한 다음 충분한 간격을 둔 새 자료로 옮깁니다.",
+                f"{_obj(record)} 적어 둔 뒤 {location} 학생에게 간격을 두고 첫 판단을 다시 설명하게 합니다.",
+                f"{location}에서는 {_obj(record)} 비교하고 다음 확인에서 필요한 힌트를 한 단계 줄입니다.",
+                f"독립 재현을 위해 {location} 카드에 {_obj(record)} 따로 남기고 간격 뒤 다시 확인합니다.",
             ),
             slug,
             f"general-protocol-note-{index}",
@@ -731,8 +731,8 @@ def _protocol(slug: str, location: str, focus: str, pack: dict[str, object]) -> 
             f"general-protocol-purpose-{index}",
         )
         cards.append(
-            f"<h3>{escape(location)} {escape(focus)} 카드 {index + 1}: {escape(stage)} {duration}분</h3>"
-            f"<p>{escape(_obj(material))} 사용해 {duration}분 동안 {escape(action)} {escape(note)} {escape(purpose)}</p>"
+            f"<h3>{escape(location)} {escape(focus)} {escape(stage)} 카드</h3>"
+            f"<p>{escape(_obj(material))} 사용해 학생이 집중할 수 있는 짧은 시간 동안 {escape(action)} {escape(note)} {escape(purpose)}</p>"
         )
     closing = _pick(
         (
@@ -788,10 +788,10 @@ def _local_experiment(slug: str, location: str, focus: str) -> str:
         record = _pick(evidence, slug, f"general-experiment-evidence-{index}")
         gap = 1 + _stable_index(slug, f"general-experiment-gap-{index}") % 4
         cards.append(
-            f"<h3>{escape(location)} {_with(focus)} 연결한 점검 {index + 1}: {escape(label)}</h3>"
-            f"<p>가상 일정은 {escape(day)} {hour:02d}:{minute:02d}, {duration}분으로 둡니다. "
+            f"<h3>{escape(location)} {_with(focus)} 연결한 {escape(label)} 점검</h3>"
+            f"<p>가상 일정은 {escape(day)}의 집중 가능한 시간대로 둡니다. "
             f"{escape(_obj(material))} 사용해 {escape(action)}. {escape(location)} 기록에는 {escape(_obj(record))} 남기고 "
-            f"{gap}일 뒤 같은 설명 없이 다시 시작합니다. 이 시각과 분량은 실제 학생의 일정이 아니라 "
+            f"충분한 간격을 둔 뒤 같은 설명 없이 다시 시작합니다. 이 시각과 분량은 실제 학생의 일정이 아니라 "
             f"{escape(_obj(focus))} 관찰할 때 한 번에 한 조건만 바꾸는 방법을 보여 주는 예시입니다.</p>"
         )
     intro = (
@@ -804,7 +804,7 @@ def _local_experiment(slug: str, location: str, focus: str) -> str:
     )
     return (
         '<section class="high-general-block high-general-local-experiment" data-experiment-sessions="4">'
-        f"<h2>{escape(location)} {escape(focus)} 4회 미니 점검</h2><p>{escape(intro)}</p>"
+        f"<h2>{escape(location)} {escape(focus)} 단계별 미니 점검</h2><p>{escape(intro)}</p>"
         f'{"".join(cards)}<p>{escape(closing)}</p></section>'
     )
 
@@ -903,23 +903,23 @@ def _context_links(location: str, city: str, focus: str) -> str:
 def _faq(slug: str, location: str, focus: str, pack: dict[str, object]) -> str:
     pairs = [
         (
-            f"{location}에서 {_topic(focus)} 고1·고2·고3 중 언제부터 확인해야 하나요?",
+            f"{location} 고등 학습은 언제부터 점검해야 하나요?",
             f"{location}에서는 특정 학년까지 기다리지 않고 현재 학교 자료와 일주일 기록으로 {_obj(focus)} 확인합니다. 고1은 수업 당일 복원, 고2는 선택과목과 누적 공백의 연결, 고3은 실전 루틴과 취약 영역의 우선순위를 보며 학생이 혼자 시작할 수 있는 단계에서 과제 길이를 정합니다.",
         ),
         (
-            f"{location}고등과외를 찾기 전에 {_obj(focus)} 집에서 어떻게 진단하나요?",
+            f"{location}고등과외를 찾기 전에 집에서 무엇을 확인하나요?",
             f"{location} 가정에서는 {str(pack['task'])} 활동을 30~40분 안에 진행하고 첫 답안을 지우지 않습니다. {focus}의 정답만 보지 말고 사용한 자료, 첫 근거, 막힌 위치, 질문 뒤 바뀐 판단을 적은 다음 이틀 뒤 같은 도움 없이 다시 시작하게 합니다.",
         ),
         (
-            f"{location} 학생의 {_subject(focus)} 흔들리면 공부시간부터 늘려야 하나요?",
+            f"{location} 학생의 학습이 흔들리면 공부시간부터 늘려야 하나요?",
             f"{location} 학생의 {_subject(focus)} 약하다고 전체 공부시간과 교재부터 늘리면 실제 공백을 가릴 수 있습니다. {str(pack['signal'])}를 살핀 뒤 자료 선택, 이해, 표현·풀이, 시간 판단, 독립 재현 가운데 막힌 한 지점을 고르고 그 행동과 연결된 짧은 과제를 먼저 반복합니다.",
         ),
         (
-            f"{location}의 {focus}에서 영어와 수학은 어떻게 나누나요?",
+            f"{location} 고등 학습에서 영어와 수학은 어떻게 나누나요?",
             f"{location}에서는 {str(pack['english'])} {str(pack['math'])} 두 과목 시간을 같게 만드는 대신 현재 학교 범위와 시험 목적에서 가장 약한 연결에 시간을 더 주고 강점 과목은 간격 복습으로 유지합니다.",
         ),
         (
-            f"{location} 가정에서 {_obj(focus)} 부모가 어디까지 도와야 하나요?",
+            f"{location} 가정에서 부모는 어디까지 도와야 하나요?",
             f"{location}에서 부모는 영어 답이나 수학 풀이를 대신하지 않습니다. {str(pack['parent'])} 질문 하나를 한 뒤 학생이 자료와 근거를 고르게 하고 도움을 준 위치와 이후 혼자 이어 간 단계를 구분해 다음 재시도에서 힌트를 줄입니다.",
         ),
     ]
@@ -930,7 +930,7 @@ def _faq(slug: str, location: str, focus: str, pack: dict[str, object]) -> str:
         (
             f"{location} {focus} 고등 학습에 자주 묻는 질문",
             f"{location}고등과외와 {focus} FAQ",
-            f"학년·과목·시험으로 나눈 {location} {focus} 질문",
+            f"학년·과목·시험으로 나눈 {location} {focus} FAQ",
         ),
         slug,
         "general-faq-heading",
@@ -958,7 +958,52 @@ def _closing(slug: str, location: str, focus: str, pack: dict[str, object]) -> s
         slug,
         "general-closing-paragraph",
     )
-    return f'<section class="high-general-block high-general-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p></section>'
+    evidence_open = _pick(
+        (
+            f"{location}의 {focus} 점검을 마칠 때는 {str(pack['signal'])}를 다시 읽고 학생이 고른 자료와 도움 전 첫 행동을 함께 보관합니다.",
+            f"{location} 학생의 {focus} 기록은 {str(pack['task'])}에서 처음 남긴 판단과 수정 뒤 달라진 근거를 나란히 둘 때 의미가 있습니다.",
+            f"{location}에서 {focus} 계획을 정리할 때는 다음 전이 행동이 실제 답안과 학습 기록에서 확인되는지 먼저 봅니다. 확인할 행동은 다음과 같습니다. {str(pack['transfer'])}",
+            f"{location}의 학교 일정과 {focus} 학습을 연결하려면 {str(pack['signal'])}를 관찰 기준으로 두고 첫 시도와 도움 뒤 행동을 구분합니다.",
+            f"{location} 학생에게 새 교재를 더하기 전에는 {str(pack['task'])}의 시작 위치와 마지막으로 혼자 설명한 근거를 보존합니다.",
+            f"{location}의 {focus} 자료를 검토할 때는 {str(pack['signal'])}가 반복되는 장면과 그렇지 않은 장면을 별도로 기록합니다.",
+        ),
+        slug,
+        "closing-evidence-open",
+    )
+    evidence_compare = _pick(
+        (
+            "다음 확인에서는 같은 답을 외웠는지보다 학교 일정과 과목이 달라져도 판단 순서를 스스로 꺼내 쓰는지 살핍니다.",
+            "후속 점검에서는 정답 수보다 자료 선택, 첫 근거, 질문 시점, 도움 없이 마친 범위가 어떻게 달라졌는지 비교합니다.",
+            "시간을 둔 재시도에서는 해설을 기억하는지보다 새 조건에서 필요한 자료와 첫 행동을 혼자 고르는지 확인합니다.",
+            "시험 전후 기록은 점수만 비교하지 않고 시작 지연, 근거 설명, 수정 행동, 독립 재현의 변화를 같은 기준으로 읽습니다.",
+            "학교 자료가 바뀐 뒤에도 학생이 과제 목적을 말하고 완료 기준을 정할 수 있는지 살펴 이전 성공과 구분합니다.",
+            "영어와 수학의 결과를 한 점수로 합치지 않고 각 과목에서 유지된 판단과 다시 도움이 필요한 위치를 나누어 봅니다.",
+        ),
+        slug,
+        "closing-evidence-compare",
+    )
+    evidence_adjust = _pick(
+        (
+            "근거가 부족하면 분량보다 관찰 기준과 도움 시점부터 고칩니다.",
+            "변화가 보이지 않으면 학생을 압박하지 않고 과제 크기와 자료 순서를 먼저 조정합니다.",
+            "독립 수행이 이어지지 않으면 새 진도를 더하기 전에 질문 방식과 재확인 간격을 바꿉니다.",
+            "판단 흔적이 남지 않으면 공부 시간을 늘리기보다 기록 방법과 완료 조건을 더 분명하게 정합니다.",
+            "한 장면의 성공만으로 결론 내리지 않고 다른 과목과 자료에서도 같은 행동이 재현되는지 다시 봅니다.",
+            "다음 계획은 보호자의 기대가 아니라 학생이 실제로 남긴 근거와 학교 일정에 맞춰 줄이거나 넓힙니다.",
+        ),
+        slug,
+        "closing-evidence-adjust",
+    )
+    evidence_note = f"{evidence_open} {evidence_compare} {evidence_adjust}"
+    specific_note = {
+        "부산전포동고등과외": (
+            "부산전포동 페이지의 첫 내신 준비는 영어와 수학을 한 시간표에 섞기보다 학교 원본과 누적 공백의 역할을 먼저 나눕니다. 영어는 범위 안 문장의 "
+            "근거와 서술 조건을, 수학은 조건 표시와 첫 식·검산을 별도 기록으로 남깁니다. 모의고사 자료는 학교 범위를 대신하지 않고 낯선 자료에서 판단 순서를 "
+            "유지하는 확인용으로 둡니다. 시험 뒤에는 점수만 비교하지 않고 도움 전에 시작한 위치, 수정 이유, 간격 뒤 다시 설명한 범위를 대조해 다음 과목 배분을 정합니다."
+        ),
+    }.get(slug, "")
+    specific_html = f"<p>{escape(specific_note)}</p>" if specific_note else ""
+    return f'<section class="high-general-block high-general-closing"><h2>{escape(heading)}</h2><p>{escape(paragraph)}</p><p>{escape(evidence_note)}</p>{specific_html}</section>'
 
 
 def build_local_high_general_body(slug: str, focus: str) -> str:

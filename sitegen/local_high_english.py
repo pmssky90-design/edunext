@@ -281,7 +281,7 @@ def _search_intent_section(slug: str, location: str, focus: str, pack: dict[str,
     intro_frames = (
         f"{location}고등영어과외를 찾는 이유가 학교 내신인지 모의고사인지에 따라 같은 {focus} 활동도 확인 순서가 달라집니다. 시작 자료는 {pack['material']}이며 확인되지 않은 학교별 난도나 출제 경향을 지역명으로 단정하지 않습니다.",
         f"검색어가 같아도 필요한 도움은 다를 수 있습니다. {location} 학생의 {focus} 계획은 {pack['signal']}를 첫 기준으로 삼고 실제 시험 범위와 남은 날짜에 맞춰 자료와 분량을 정합니다.",
-        f"{focus} 문제 수보다 자료의 역할을 먼저 구분합니다. {location}에서는 {pack['material']}을 나란히 놓고 내신의 범위 적합성, 모의고사의 판단 과정, 장기 복습의 재현 여부를 따로 기록합니다.",
+        f"{focus} 문제 수보다 자료의 역할을 먼저 구분합니다. {location}에서는 {_with_particle(pack['material'], '을', '를')} 나란히 놓고 내신의 범위 적합성, 모의고사의 판단 과정, 장기 복습의 재현 여부를 따로 기록합니다.",
     )
     rows = (
         ("학교 내신", "교과서·학교 유인물·서술형 범위", "표현과 근거를 학교 자료에서 정확히 찾는지"),
@@ -728,7 +728,7 @@ def _faq(slug: str, location: str, focus: str, pack: dict[str, str]) -> str:
         f"{location}에서 {focus} 다음 유형으로 넘어가는 기준은 무엇인가요?",
     )
     answers = (
-        f"{pack['material']}을 나란히 놓고 {pack['signal']}를 먼저 확인합니다. {location} 학생의 {focus} 첫 시도를 지우지 않은 채 {pack['action']} 하루 이상 뒤에는 해설 없이 같은 판단을 다시 시작하고 필요한 도움의 양을 비교합니다.",
+        f"{_with_particle(pack['material'], '을', '를')} 나란히 놓고 {pack['signal']}를 먼저 확인합니다. {location} 학생의 {focus} 첫 시도를 지우지 않은 채 {pack['action']} 하루 이상 뒤에는 해설 없이 같은 판단을 다시 시작하고 필요한 도움의 양을 비교합니다.",
         f"{grade}이라고 정해진 문제 수를 일괄 적용하지 않습니다. {location}의 {focus} 기록에서 혼자 가능한 단계, 짧은 질문 뒤 가능한 단계, 자료를 다시 확인해야 하는 단계를 나누고 시험일까지 남은 날짜에 맞춰 한 번에 바꿀 행동을 하나만 정합니다.",
         f"내신은 실제 교과서와 학교 범위, 서술형 조건을 먼저 보고 모의고사는 틀린 문항뿐 아니라 오래 걸린 정답도 확인합니다. {location}의 {focus} 기록에서는 두 평가의 오류를 어휘·구문·논리·표현·시간으로 같은 방식으로 분류하되 자료의 목적은 섞지 않습니다.",
         f"이해했다는 말은 출발점으로만 봅니다. {location} 학생에게 {pack['transfer']} 이어 {pack['check']} {focus} 정답이 같더라도 필요한 힌트가 줄었는지와 판단 근거를 혼자 설명했는지를 각각 기록합니다.",

@@ -136,11 +136,11 @@ THEMES = (
 
 
 METHODS = (
-    {"label": "3일 풀이 복원", "start": "첫날에는 풀이를 보며 오류 위치를 표시하고, 둘째 날에는 첫 줄만 남겨 다시 풀며, 셋째 날에는 조건을 바꾼 문제에 같은 판단을 적용합니다", "record": "세 번의 풀이에서 도움을 받은 줄과 혼자 이어 간 줄을 다른 기호로 남깁니다", "review": "셋째 날에도 같은 위치에서 멈추면 문제 수보다 선행 개념과 첫 판단을 다시 확인합니다"},
+    {"label": "단계별 풀이 복원", "start": "첫 시도에는 오류 위치를 표시하고, 간격을 둔 시도에는 첫 줄만 남겨 다시 풀며, 다음에는 조건을 바꾼 문제에 같은 판단을 적용합니다", "record": "여러 번의 풀이에서 도움을 받은 줄과 혼자 이어 간 줄을 다른 기호로 남깁니다", "review": "간격을 둔 뒤에도 같은 위치에서 멈추면 문제 수보다 선행 개념과 첫 판단을 다시 확인합니다"},
     {"label": "빈 풀이 재현", "start": "정답을 확인한 뒤 풀이를 덮고 빈 종이에 조건, 첫 식, 핵심 변형, 검산 순서만 다시 씁니다", "record": "기억으로 재현한 내용과 원문을 보고 보완한 내용을 지우지 않고 두 색으로 구분합니다", "review": "하루 뒤 핵심 네 단계가 순서대로 재현될 때 해당 문제를 완료로 처리합니다"},
     {"label": "오류 코드 장부", "start": "오답을 개념·조건·전략·계산·시간의 다섯 코드 가운데 하나로 먼저 분류합니다", "record": "코드 옆에는 틀린 이유보다 다음에 가장 먼저 확인할 신호를 한 문장으로 적습니다", "review": "같은 코드가 세 번 나오면 새 유형을 추가하지 않고 판단 순서를 짧게 다시 연습합니다"},
     {"label": "학교자료 우선표", "start": "교과서와 학교 학습지, 평가 안내를 먼저 모으고 개인 문제집은 빈틈을 확인하는 순서로 배치합니다", "record": "자료마다 현재 시험 범위인지, 완료 기준이 무엇인지, 다시 볼 날짜가 언제인지 표시합니다", "review": "시험 뒤에는 많이 푼 자료보다 실제 판단 근거가 된 자료를 남겨 다음 계획에 반영합니다"},
-    {"label": "24·72시간 확인", "start": "수업 뒤 하루 안에는 핵심 개념과 첫 식을 회상하고 사흘 안에는 조건을 바꾼 문제로 적용합니다", "record": "첫날의 기억, 사흘 뒤 적용, 일주일 뒤 재현을 한 줄씩 이어 적습니다", "review": "잊은 항목은 처음부터 반복하지 않고 설명이 끊긴 단계로 돌아가 복습 간격을 다시 정합니다"},
+    {"label": "간격 확인", "start": "수업 뒤에는 핵심 개념과 첫 식을 회상하고 간격을 둔 뒤 조건을 바꾼 문제로 적용합니다", "record": "첫 기억과 후속 적용, 독립 재현에서 달라진 부분을 한 줄씩 이어 적습니다", "review": "잊은 항목은 처음부터 반복하지 않고 설명이 끊긴 단계로 돌아가 복습 간격을 다시 정합니다"},
     {"label": "두 풀이 비교", "start": "같은 문제를 식 중심 풀이와 그래프·도형 중심 풀이로 나누어 공통 조건과 다른 선택을 찾습니다", "record": "풀이 길이보다 각 방식에서 먼저 보인 조건과 검산이 쉬웠던 지점을 비교표에 남깁니다", "review": "새 문제에서 두 방식 가운데 하나를 스스로 선택하고 그 이유를 말할 수 있는지 확인합니다"},
     {"label": "다음 한 줄 설명", "start": "각 계산 줄을 쓰기 전에 다음에 할 행동과 사용할 근거를 먼저 소리 내어 설명합니다", "record": "설명이 막힌 줄, 계산만 가능했던 줄, 근거까지 설명한 줄을 서로 다른 표시로 구분합니다", "review": "답을 맞혀도 다음 한 줄의 이유를 설명하지 못하면 완료 대신 재확인 항목으로 남깁니다"},
     {"label": "시간 상한 기록", "start": "유형별 목표 시간을 정하고 시간이 지나면 현재까지 확인한 조건과 막힌 위치를 표시한 뒤 보류합니다", "record": "전체 시간뿐 아니라 읽기·첫 식·계산·검토에 사용한 시간을 짧게 나누어 적습니다", "review": "느린 원인이 개념인지 계산인지 판단한 뒤에만 다음 주 목표 시간을 조정합니다"},
@@ -369,8 +369,8 @@ def _schedule_section(context: SchoolMathContext, section_index: int, source_foc
 <thead><tr><th>구간</th><th>{escape(source_focus)} 행동</th><th>{escape(focus)} 기록</th></tr></thead>
 <tbody>
 <tr><td>수업 당일</td><td>{escape(method['start'])}.</td><td>{slug} 첫 풀이에서 비어 있던 조건과 도움받은 줄을 지우지 않습니다.</td></tr>
-<tr><td>24시간 안</td><td>{escape(theme['action'])}.</td><td>{school} 자료를 보지 않고 재현한 범위와 확인 뒤 보완한 범위를 구분합니다.</td></tr>
-<tr><td>72시간 안</td><td>{escape(method['review'])}.</td><td>{slug} 다음 계획에 넣을 한 가지 판단 행동을 완료 문제 수 대신 적습니다.</td></tr>
+<tr><td>다음 복습</td><td>{escape(theme['action'])}.</td><td>{school} 자료를 보지 않고 재현한 범위와 확인 뒤 보완한 범위를 구분합니다.</td></tr>
+<tr><td>간격 후 재확인</td><td>{escape(method['review'])}.</td><td>{slug} 다음 계획에 넣을 한 가지 판단 행동을 완료 문제 수 대신 적습니다.</td></tr>
 </tbody>
 </table>
 <p>{school} 일정이 늦게 공지되거나 다른 과목의 마감과 겹치면 {slug} 표의 순서를 바꿉니다. 계획을 지우고 새로 쓰기보다 무엇을 줄였고 왜 옮겼는지 남겨야 {escape(_subject(focus))} 구호가 아니라 다음 주 분량을 결정하는 자료가 됩니다. {escape(source_focus)} 예시는 실제 시험 범위와 다르면 현재 학교 자료로 교체합니다.</p>
@@ -408,7 +408,7 @@ def _decision_section(context: SchoolMathContext, section_index: int, source_foc
     return f"""
 <section class="school-math-decision" data-section-focus="{escape(focus)}">
 <h2>{escape(_section_heading(context, section_index, '과외 방식 비교 기준'))}</h2>
-<p>{slug} 과외를 비교할 때는 학교 이름을 안다는 말보다 <strong>{escape(_object(focus))}</strong> 어떻게 관찰하고 수정할지 답을 들어야 합니다. {school}의 실제 자료를 학생이 제공했을 때 수업 전후에 어떤 풀이가 남는지, 설명을 들은 뒤 {escape(source_focus)} 판단을 혼자 재현하는 간격을 어떻게 확인하는지 질문합니다.</p>
+<p>{escape(_object(slug))} 비교할 때는 학교 이름을 안다는 말보다 <strong>{escape(_object(focus))}</strong> 어떻게 관찰하고 수정할지 답을 들어야 합니다. {school}의 실제 자료를 학생이 제공했을 때 수업 전후에 어떤 풀이가 남는지, 설명을 들은 뒤 {escape(source_focus)} 판단을 혼자 재현하는 간격을 어떻게 확인하는지 질문합니다.</p>
 <table>
 <thead><tr><th>비교 질문</th><th>확인할 답변</th><th>{slug} 경계 신호</th></tr></thead>
 <tbody>
@@ -423,22 +423,56 @@ def _decision_section(context: SchoolMathContext, section_index: int, source_foc
 
 def _feedback_tracker_section(context: SchoolMathContext, section_index: int, source_focus: str) -> str:
     _, _, focus = _variant(context, section_index)
+    moments = (
+        "학교 자료 확인", "도움 전 첫 풀이", "조건과 질문 분리", "첫 식의 근거 설명",
+        "풀이 과정 검토", "조건을 바꾼 적용", "오류 원인 분류", "간격 뒤 복원",
+        "서술형 근거 보완", "학교 자료 재대조", "독립 검산 점검", "다음 과제 결정",
+        "과제 목적 확인", "교과서 예제 대조", "개념 정의 회상", "조건 표시 선택",
+        "힌트 사용 위치", "수정 전후 풀이 비교", "새 문항 적용", "학교 과제 연결",
+        "수행평가 준비", "시험 범위 확인", "풀이 노트 재구성", "오답 재설명",
+        "귀가 후 첫 식", "마감 전 자기검산", "보호자 질문 기록", "다음 수업 준비",
+    )
     phases = ("조건관찰", "풀이적용", "표현비교", "독립복원")
     rows: list[str] = []
-    for day in range(1, 29):
-        theme, method, daily_focus = _variant(context, section_index + day)
-        phase = phases[(day - 1) // 7]
+    for offset, moment in enumerate(moments):
+        theme, method, daily_focus = _variant(context, section_index + offset + 1)
+        phase = phases[offset // 7]
+        row_variants = (
+            (
+                f"{context.slug}에서 {source_focus}와 {theme['label']}의 {phase} 행동을 도움 전에 시도합니다.",
+                f"{context.official_name} 자료와 {method['label']} 기록을 대조해 첫 판단, 수정 근거, 검산 결과를 남깁니다.",
+                f"{focus}와 {daily_focus} 가운데 유지할 풀이 행동과 줄일 도움을 구분합니다.",
+            ),
+            (
+                f"{context.official_name} 수학 자료에서 {phase}에 필요한 조건과 {theme['label']} 전략을 학생이 먼저 고릅니다.",
+                f"{context.slug} 기록에는 {method['label']} 전후의 첫 식과 바뀐 풀이 이유를 나란히 둡니다.",
+                f"다음에는 {daily_focus}를 조건이 다른 문항에 적용하고 필요한 힌트만 남깁니다.",
+            ),
+            (
+                f"도움 없이 {source_focus} 풀이를 시작한 줄과 {theme['label']} 판단을 {context.slug} 공책에 표시합니다.",
+                f"{method['label']} 과정에서 수정한 식과 {context.official_name} 원본의 조건을 함께 검산합니다.",
+                f"{focus}가 유지되면 문항을 바꾸고, 흔들리면 과제 크기와 설명 시점을 조정합니다.",
+            ),
+            (
+                f"{phase} 장면에서는 {context.official_name} 자료의 {source_focus}를 학생 풀이로 다시 구성합니다.",
+                f"첫 조건 표시, 질문 위치, {method['label']} 뒤 달라진 검산을 {context.slug} 기록에 남깁니다.",
+                f"후속 점검은 {daily_focus}의 독립 재현 여부에 따라 유지하거나 더 작은 단계로 나눕니다.",
+            ),
+        )
+        start_text, evidence_text, decision_text = row_variants[
+            hashlib.sha256(f"{context.slug}:math-tracker:{offset}".encode("utf-8")).digest()[0] % len(row_variants)
+        ]
         rows.append(
             "<tr>"
-            f"<td>{escape(context.slug)}·{day}일</td>"
-            f"<td>{escape(source_focus.replace(' ', '·'))} {escape(theme['label'].replace(' ', '·'))} {phase}·시작</td>"
-            f"<td>{escape(context.official_name)} {escape(method['label'].replace(' ', '·'))} 근거·기록</td>"
-            f"<td>{escape(focus.replace(' ', '·'))} {escape(daily_focus.replace(' ', '·'))} {phase}·확인</td>"
+            f"<td>{escape(moment)}</td>"
+            f"<td>{escape(start_text)}</td>"
+            f"<td>{escape(evidence_text)}</td>"
+            f"<td>{escape(decision_text)}</td>"
             "</tr>"
         )
     return f"""
 <section class="school-math-feedback-tracker" data-section-focus="{escape(focus)}">
-<h2>{escape(_section_heading(context, section_index, '학부모 피드백과 28일 풀이 기록표'))}</h2>
+<h2>{escape(_section_heading(context, section_index, '학부모 피드백과 누적 풀이 기록표'))}</h2>
 <p>{escape(context.slug)}의 학부모 피드백은 매일 정답 수나 진도만 확인하기보다 <strong>{escape(focus)}</strong>의 증거를 주 1회 함께 읽는 방식으로 진행합니다. {escape(context.official_name)} 학생이 직접 적은 조건과 수정 행동을 먼저 듣고, 보호자는 완료되지 않은 이유를 개념·전략·계산·시간 가운데 어느 쪽인지 질문합니다.</p>
 <ul>
 <li>{escape(context.slug)} 기록에는 정확한 집 주소나 불필요한 개인정보를 적지 않습니다.</li>
@@ -448,12 +482,12 @@ def _feedback_tracker_section(context: SchoolMathContext, section_index: int, so
 <li>{escape(context.official_name)} 일정이 바뀌면 문제 수보다 마감과 복습 순서를 먼저 고칩니다.</li>
 <li>{escape(focus)} 기록은 보관 목적과 공유 범위를 확인한 뒤 전달합니다.</li>
 </ul>
-<p>아래 표는 {escape(context.slug)}에서 4주 동안 조건관찰·풀이적용·표현비교·독립복원을 구분하기 위한 짧은 기록지입니다. 하루에 긴 공부 일지를 쓰는 대신 해당되는 행동 한 줄만 남깁니다. {escape(context.official_name)}의 실제 시험 기간에는 학교 자료를 우선하고 표의 날짜와 순서를 바꾸어 사용합니다.</p>
-<table class="school-math-28day-tracker">
-<thead><tr><th>날짜</th><th>오늘의 시작</th><th>남길 증거</th><th>주간 확인</th></tr></thead>
+<p>아래 표는 {escape(context.slug)}에서 조건관찰·풀이적용·표현비교·독립복원을 구분하기 위한 누적 기록지입니다. 날짜를 기계적으로 채우지 않고 현재 시험 일정과 오답 상태에 맞는 장면을 선택하며, 각 칸에는 도움 전 풀이와 수정 근거를 남깁니다. {escape(context.official_name)}의 실제 시험 기간에는 학교 자료를 우선하고 표의 순서를 바꾸어 사용합니다.</p>
+<table class="school-math-evidence-tracker">
+<thead><tr><th>점검 장면</th><th>학생의 시작</th><th>남길 증거</th><th>다음 결정</th></tr></thead>
 <tbody>{''.join(rows)}</tbody>
 </table>
-<p>{escape(context.slug)}의 28일 표는 학습 성과를 보장하는 프로그램이 아닙니다. 첫째 주와 넷째 주에 같은 짧은 {escape(source_focus)} 과제를 수행해 첫 식, 근거 설명, 혼자 검산한 범위를 비교하는 도구입니다. {escape(focus)} 변화가 보이지 않으면 학생을 압박하기보다 과제 크기와 도움 시점을 먼저 수정합니다.</p>
+<p>{escape(context.slug)}의 누적 표는 학습 성과를 보장하는 프로그램이 아닙니다. 출발 시점과 간격을 둔 시점에 같은 짧은 {escape(source_focus)} 과제를 수행해 첫 식, 근거 설명, 혼자 검산한 범위를 비교하는 도구입니다. {escape(focus)} 변화가 보이지 않으면 학생을 압박하기보다 과제 크기와 도움 시점을 먼저 수정합니다.</p>
 </section>"""
 
 
@@ -477,30 +511,30 @@ def _faq_section(context: SchoolMathContext, source_body: str) -> str:
     primary = f"{source_focus}·{theme['label']}·{method['label']}"
     questions = (
         (
-            f"{context.slug}에서 {_object(primary)} 가장 먼저 어떻게 확인하나요?",
+            f"{context.slug}에서는 수학 학습을 무엇부터 확인하나요?",
             f"{context.official_name}의 실제 교과서·학습지·평가 안내를 먼저 모은 뒤 {_object(theme['evidence'])} 만드십시오. {method['start']}. 처음부터 문제 수를 늘리기보다 학생이 멈춘 조건과 마지막으로 확신한 줄을 남기고, 일주일 뒤 같은 판단을 혼자 재현하는지 확인해야 {context.slug}의 출발점이 구체적으로 보입니다.",
         ),
         (
-            f"{context.slug}의 {primary} 기준에서 학교 홈페이지는 왜 확인하나요?",
+            f"{context.slug}에서 학교 홈페이지는 왜 확인해야 하나요?",
             f"{context.official_name}의 시험일·행사·교육과정과 평가 안내는 시기에 따라 바뀔 수 있기 때문입니다. EduNext 본문은 확정된 학교 일정을 대신하지 않으므로 공식 홈페이지와 학생이 받은 안내를 대조해야 합니다. 확인 뒤에는 {method['record']}. 이렇게 해야 {context.slug} 계획이 추정 정보가 아니라 현재 자료를 기준으로 움직입니다.",
         ),
         (
-            f"{context.slug}에서 내신과 모의고사를 {_direction(primary)} 함께 준비할 수 있나요?",
+            f"{context.slug}에서 내신과 모의고사를 함께 준비할 수 있나요?",
             f"역할을 나누면 함께 유지할 수 있습니다. 시험 전에는 {context.official_name}에서 실제로 사용하는 교과서와 학교 자료의 개념·대표 유형·서술형을 우선하고, 짧은 실전 문제는 판단 감각을 유지하는 정도로 둡니다. 시험 뒤에는 {theme['action']}을 적용해 {source_focus}에서 확인한 판단이 낯선 조건에서도 재현되는지 점검합니다.",
         ),
         (
-            f"{context.slug}의 {primary} 과외를 비교할 때 무엇을 질문해야 하나요?",
+            f"{_object(context.slug)} 비교할 때 무엇을 질문해야 하나요?",
             f"교재와 숙제량보다 {_object(theme['problem'])} 어떤 풀이 증거로 구분할지 물어보십시오. 수업 뒤 학생이 혼자 할 행동, 기록을 다시 보는 날짜, 계획이 실패했을 때 바꿀 기준까지 답에 포함되어야 합니다. {method['review']}. 이 과정이 설명되지 않으면 {context.slug} 학생에게 맞는 방식인지 판단하기 어렵습니다.",
         ),
         (
-            f"학부모는 {context.slug}의 {primary} 진행을 어떻게 확인하면 좋나요?",
+            f"학부모는 {context.slug} 진행을 어떻게 확인하면 좋나요?",
             f"점수 예상이나 푼 문제 수를 매일 묻기보다 주 1회 첫 식, 반복 오류, 검산 행동을 확인하십시오. 정확한 주소나 불필요한 개인정보를 먼저 공유할 필요는 없습니다. {context.official_name}, 학년, 실제 귀가 시각, 최근 학교 자료와 {theme['output']}만으로 시작하고, {context.slug} 기록의 변화가 없으면 분량보다 진단 가설을 고칩니다.",
         ),
     )
     items = "\n".join(f"<h3>{escape(question)}</h3>\n<p>{escape(answer)}</p>" for question, answer in questions)
     return f"""
 <section class="school-math-faq-section" data-faq-focus="{escape(primary)}">
-<h2 class="school-math-faq">{escape(context.slug)} {escape(primary)} FAQ</h2>
+<h2 class="school-math-faq">{escape(context.slug)} 수학 학습 FAQ</h2>
 {items}
 </section>"""
 

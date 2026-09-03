@@ -89,7 +89,7 @@ def main() -> int:
                 domain_errors.append({"page": url, "href": href})
             if "/index.html" in href:
                 index_links.append({"page": url, "href": href})
-            if target == url:
+            if target == url and not urlparse(href).fragment:
                 self_links.append({"page": url, "href": href})
             elif target not in pages:
                 broken.append({"page": url, "href": href, "reason": "missing page"})
@@ -147,6 +147,7 @@ def main() -> int:
     sitemap_errors.extend({"url": url, "reason": "not generated"} for url in sorted(extra_in_sitemap))
 
     write_csv("broken-links.csv", broken, ["page", "href", "reason"])
+    write_csv("self-links.csv", self_links, ["page", "href"])
     write_csv("orphan-pages.csv", orphans, ["url"])
     write_csv("crawl-depth.csv", [{"depth": k, "pages": v} for k, v in sorted(depth_counts.items())], ["depth", "pages"])
     write_csv("duplicate-titles.csv", duplicate_titles, ["value", "count"])

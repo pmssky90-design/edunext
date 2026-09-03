@@ -8,7 +8,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / os.environ.get("EDUNEXT_STRUCTURE_OUTPUT", "output_structure_fixed")
+OUTPUT = ROOT / os.environ.get("EDUNEXT_STRUCTURE_OUTPUT", "output")
 BASELINE = ROOT / os.environ.get("EDUNEXT_STRUCTURE_BASELINE", "output")
 AUDIT = ROOT / "audit"
 TYPE_LABELS = {"region", "subject", "grade", "subject_grade", "school", "school_tutoring", "school_subject_math", "school_subject_english"}
@@ -119,7 +119,7 @@ def main() -> int:
                 target = normalize_href(href)
                 if not path_for_url(target).exists():
                     breadcrumb_errors.append({"page": url, "href": target, "label": strip_tags(body), "reason": "missing_target"})
-        else:
+        elif url != "/":
             breadcrumb_errors.append({"page": url, "href": "", "label": "", "reason": "missing_breadcrumb"})
         page_city = city_of_url(url)
         checked_links = []

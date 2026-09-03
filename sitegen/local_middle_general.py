@@ -94,7 +94,7 @@ STUDY_PACKS: tuple[dict[str, object], ...] = (
             "학교 시험 범위를 원본 자료부터 나누기",
             "수행평가와 지필평가 준비를 충돌 없이 운영하기",
             "과목별 마감일을 실제 행동 순서로 바꾸기",
-            "시험 3주 전부터 복습 밀도를 단계적으로 높이기",
+            "시험 준비 기간에 복습 밀도를 단계적으로 높이기",
             "학교 유인물과 교과서의 역할을 구분하기",
             "평가 뒤 오답을 다음 단원 출발점으로 옮기기",
             "평일 복습과 주말 누적 점검의 역할을 나누기",
@@ -477,23 +477,23 @@ def _faq(
     first, second, third, fourth, fifth = packs[:5]
     pairs = (
         (
-            f"{location}중등과외에서 {_object_form(focus)} 가장 먼저 어떻게 확인하나요?",
+            f"{location}중등과외에서는 무엇을 먼저 확인하나요?",
             f"{location} 학생의 교과서·공책·학교 유인물 가운데 최근 자료 하나를 고르고 {first['evidence']}를 확인합니다. {first['assessment']} {lenses[0]['question']} 처음부터 공부시간과 문제 수를 늘리지 말고 일주일 동안 한 행동만 바꾸어 도움 전후 기록을 비교해야 현재 문제와 조정할 행동이 섞이지 않습니다.",
         ),
         (
-            f"{location} 중1·중2·중3은 {focus} 계획을 똑같이 적용해도 되나요?",
+            f"{location} 중학생은 학년별로 계획이 어떻게 달라지나요?",
             f"같은 {focus} 주제라도 학년별 책임을 다르게 봅니다. {second['grade1']} {second['grade2']} {second['grade3']} {lenses[1]['question']} {location} 학생의 학년명만으로 난도를 정하지 않고 현재 교과서에서 자료 없이 설명 가능한 범위와 도움의 양을 먼저 확인합니다.",
         ),
         (
-            f"{location}중등과외와 학교 숙제는 {focus} 과정에서 어떻게 나누나요?",
+            f"{location}중등과외와 학교 숙제는 어떻게 나누나요?",
             f"학교 숙제는 당일 수업과 평가 요구를 보여 주는 원본으로 사용합니다. {third['korean']} {third['math']} {location} 학생은 학교 자료에서 막힌 첫 위치를 다음 질문으로 옮기고, {lenses[2]['record']} 별도 학습은 설명·변형 적용·간격 재현을 확인하는 보완 활동으로 두며 두 활동의 목적이 겹치면 분량보다 역할을 먼저 줄입니다.",
         ),
         (
-            f"{location} 학부모는 {focus} 점검 때 어떤 말을 줄여야 하나요?",
+            f"{location} 학부모는 어떤 질문을 줄여야 하나요?",
             f"{location}의 {focus} 대화에서 ‘왜 아직 안 했니’나 ‘몇 문제 했니’처럼 결과와 속도만 묻는 말은 {fourth['risk']}을 강화할 수 있습니다. {fourth['case']} 이런 장면을 피하려면 사용할 자료, 첫 행동, 멈춘 지점, 다음 재시도 시각을 학생이 설명하게 합니다. {lenses[3]['parent']} 정확한 주소나 성적 전체를 공유하지 않아도 최근 학교 자료와 일주일 행동 기록으로 먼저 비교할 수 있습니다.",
         ),
         (
-            f"{location} 중학생의 {_object_form(focus)} 고등학교 준비와 언제 연결하나요?",
+            f"{location} 중학생은 고등학교 준비를 언제 연결하나요?",
             f"현재 교과서의 핵심 내용을 자료 없이 설명하고 과목에 맞는 복습 방법을 학생이 고를 수 있을 때 다음 난도를 조금씩 넓힙니다. {fifth['english']} {fifth['transition']} {lenses[4]['question']} {location}에서는 특정 학교의 진도나 평가 방식을 지역명만으로 추정하지 않고 실제 학교 공지와 학생 기록을 대조하며, 선행량이 아니라 독립적으로 다시 시작하고 수정한 행동을 전환 기준으로 사용합니다.",
         ),
     )
@@ -657,14 +657,14 @@ def build_local_middle_general_body(slug: str) -> str:
         + "</section>"
     )
     assessment_steps = (
-        ("평가 3주 전", "학교 범위와 제출물을 한곳에 모으고 아직 설명하지 못하는 단원을 표시합니다."),
-        ("평가 2주 전", "과목별 핵심 개념과 학교 원본을 연결하고 서술형·자료 해석·풀이의 빈칸을 찾습니다."),
-        ("평가 1주 전", "새 자료를 줄이고 오류 분류와 간격 재현 결과에서 남은 항목만 좁혀 확인합니다."),
+        ("평가 범위 확인", "학교 범위와 제출물을 한곳에 모으고 아직 설명하지 못하는 단원을 표시합니다."),
+        ("핵심 개념 연결", "과목별 핵심 개념과 학교 원본을 연결하고 서술형·자료 해석·풀이의 빈칸을 찾습니다."),
+        ("마무리 점검", "새 자료를 줄이고 오류 분류와 간격 재현 결과에서 남은 항목만 좁혀 확인합니다."),
         ("평가 이후", "점수와 오답을 다음 단원에 필요한 개념·조건·전략·실행 기록으로 옮깁니다."),
     )
     assessment = (
         '<section class="middle-general-assessment" data-assessment-stages="4">'
-        f'<h2>{escape(location)} 학교 평가와 {escape(_object_form(focus))} 연결하는 네 시점</h2>'
+        f'<h2>{escape(location)} 학교 평가와 {escape(_object_form(focus))} 연결하는 준비 흐름</h2>'
         f'<p>{escape(str(assessment_packs[8]["assessment"]))} {escape(location)}에서는 학교별 시험일과 수행평가를 추정하지 않고 실제 공지를 기준으로 날짜를 바꿉니다.</p>'
         '<table><thead><tr><th>시점</th><th>학교 원본</th><th>학생 행동</th></tr></thead><tbody>'
         f'<tr><td>시작</td><td>범위표·조건표·교과서</td><td>{escape(focus)}의 완료 기준을 한 문장으로 정하기</td></tr>'
@@ -702,20 +702,20 @@ def build_local_middle_general_body(slug: str) -> str:
         f'<h2>{escape(location)} {escape(_object_form(focus))} 실행하는 여섯 단계</h2>'
         f'<p>{escape(label)} 계획은 한 번에 완성하지 않습니다. {escape(location)} 학생은 {escape(lens["label"])} 관점으로 시작·설명·수정·재현을 한 단계씩 남겨 도움을 줄여도 유지되는 행동을 찾습니다.</p>'
         + "".join(
-            f'<h3>{escape(location)} {number}단계: {escape(name)}</h3><p>{escape(str(protocol_packs[number - 1][("grade1", "grade2", "grade3", "korean", "math", "english")[number - 1]]))} {escape(str(protocol_packs[number - 1]["assessment"]))} {escape(_with_form(focus))} 관련해서는 {escape(str(protocol_packs[number - 1]["evidence"]))}를 확인하고, 기록이 없으면 결과를 추정하지 않습니다.</p>'
+            f'<h3>{escape(location)} {escape(name)} 단계</h3><p>{escape(str(protocol_packs[number - 1][("grade1", "grade2", "grade3", "korean", "math", "english")[number - 1]]))} {escape(str(protocol_packs[number - 1]["assessment"]))} {escape(_with_form(focus))} 관련해서는 {escape(str(protocol_packs[number - 1]["evidence"]))}를 확인하고, 기록이 없으면 결과를 추정하지 않습니다.</p>'
             for number, (name, text) in enumerate(protocol_rows, start=1)
         )
         + "</section>"
     )
     experiment_rows = (
-        ("1회차", "자료 선택", "학생이 최근 학교 원본 하나와 가장 먼저 고칠 행동 하나를 선택합니다."),
-        ("2회차", "표현 바꾸기", "같은 개념을 말·글·표·식 가운데 다른 표현으로 바꾸어 빠진 조건을 찾습니다."),
-        ("3회차", "도움 줄이기", "지난번 사용한 힌트를 하나 가리고 멈춘 위치에서 구체적인 질문을 만듭니다."),
-        ("4회차", "간격 비교", "첫 기록과 독립 재현을 나란히 두고 유지할 행동과 줄일 도움을 정합니다."),
+        ("출발 관찰", "자료 선택", "학생이 최근 학교 원본 하나와 가장 먼저 고칠 행동 하나를 선택합니다."),
+        ("표현 전환", "표현 바꾸기", "같은 개념을 말·글·표·식 가운데 다른 표현으로 바꾸어 빠진 조건을 찾습니다."),
+        ("도움 조정", "도움 줄이기", "지난번 사용한 힌트를 하나 가리고 멈춘 위치에서 구체적인 질문을 만듭니다."),
+        ("독립 재현", "간격 비교", "첫 기록과 독립 재현을 나란히 두고 유지할 행동과 줄일 도움을 정합니다."),
     )
     experiment = (
         '<section class="middle-general-local-experiment" data-experiment-sessions="4">'
-        f'<h2>{escape(location)}에서 해 볼 {escape(focus)} 4회 점검</h2>'
+        f'<h2>{escape(location)}에서 해 볼 {escape(focus)} 단계별 점검</h2>'
         f'<p>아래 활동은 수업 성과를 약속하는 프로그램이 아니라 {escape(location)} 학생의 현재 과정을 짧게 비교하는 교육용 점검입니다. {escape(str(experiment_packs[0]["risk"]))}을 피하고 매회 같은 자료와 판단 기준을 사용합니다.</p>'
         + "".join(
             f'<h3>{escape(location)} {session} {escape(name)}</h3><p>{escape(str(experiment_packs[position]["case"]))} {escape(str(experiment_packs[position]["assessment"]))} {escape(experiment_lenses[position]["record"])} {escape(focus)}의 변화는 정답 수가 아니라 도움 없이 다시 시작하고 설명한 범위로 봅니다.</p>'
@@ -755,10 +755,47 @@ def build_local_middle_general_body(slug: str) -> str:
     )
     links = _context_links(location, city, focus)
     faq = _faq(slug, location, focus, faq_packs, faq_lenses)
+    closing_open = _pick(
+        (
+            f"{location}의 {focus} 점검을 마칠 때는 {material}에서 학생이 먼저 고른 자료와 도움 전 행동을 함께 보관합니다.",
+            f"{location} 학생의 {focus} 기록은 {lens['record']} 그 결과를 첫 시도와 수정 뒤 행동으로 나누어 볼 때 의미가 있습니다.",
+            f"{location}에서 {focus} 계획을 정리할 때는 다음 전환 행동이 실제 학교 자료에서 확인되는지 먼저 봅니다. 확인할 행동은 다음과 같습니다. {transition_packs[5]['transition']}",
+            f"{location}의 학교 일정과 {focus} 활동을 연결하려면 {transition_packs[6]['evidence']}를 관찰 기준으로 삼습니다.",
+            f"{location} 학생에게 새 과제를 더하기 전에는 {transition_packs[7]['assessment']}의 시작 위치와 마지막 독립 행동을 보존합니다.",
+            f"{location}의 {focus} 자료를 검토할 때는 {transition_packs[8]['risk']}을 피하고 도움 전후 기록을 따로 둡니다.",
+        ),
+        slug,
+        "closing-evidence-open",
+    )
+    closing_compare = _pick(
+        (
+            "다음 확인에서는 같은 답을 기억했는지보다 과목과 자료가 달라져도 시작 순서를 스스로 꺼내 쓰는지 살핍니다.",
+            "후속 점검에서는 공부 시간보다 자료 선택, 첫 행동, 질문 위치, 도움 없이 마친 범위가 어떻게 달라졌는지 비교합니다.",
+            "간격을 둔 재시도에서는 해설을 외웠는지보다 새 조건에서 필요한 원본과 완료 기준을 혼자 고르는지 확인합니다.",
+            "학교 일정이 바뀐 뒤에도 학생이 과제 목적을 말하고 다음 재확인 시점을 정할 수 있는지 이전 기록과 대조합니다.",
+            "국어·영어·수학의 결과를 한 점수로 합치지 않고 각 과목에서 유지된 판단과 다시 필요한 도움을 구분합니다.",
+            "평가 전후 기록은 점수만 보지 않고 시작 지연, 근거 설명, 수정 행동, 독립 재현의 변화를 같은 기준으로 읽습니다.",
+        ),
+        slug,
+        "closing-evidence-compare",
+    )
+    closing_adjust = _pick(
+        (
+            "근거가 부족하면 분량보다 자료 선택과 도움 시점부터 고칩니다.",
+            "변화가 보이지 않으면 학생을 압박하지 않고 과제 크기와 질문 범위를 먼저 조정합니다.",
+            "독립 수행이 이어지지 않으면 새 진도를 더하기 전에 기록 방법과 완료 문장을 분명하게 만듭니다.",
+            "판단 흔적이 남지 않으면 공부 시간을 늘리기보다 학교 원본과 재시도 순서를 다시 정합니다.",
+            "한 장면의 성공만으로 결론 내리지 않고 다른 과목에서도 같은 행동이 재현되는지 확인합니다.",
+            "다음 계획은 보호자의 기대가 아니라 학생이 실제로 남긴 근거와 학교 일정에 맞춰 바꿉니다.",
+        ),
+        slug,
+        "closing-evidence-adjust",
+    )
     closing = (
         '<section class="middle-general-closing">'
         f'<h2>{escape(location)} 학생이 {escape(_object_form(focus))} 혼자 이어 갈 때까지</h2>'
-        f'<p>이 페이지의 학교 정보와 {escape(focus)} 계획은 상담 결과나 성취를 보장하지 않습니다. {escape(str(transition_packs[5]["transition"]))} {escape(location)} 학생의 실제 교과서·공책·학교 공지·생활시간을 함께 확인하고 한 번에 하나의 행동만 바꾸어 같은 기준으로 다시 관찰하는 교육용 안내입니다.</p></section>'
+        f'<p>이 페이지의 학교 정보와 {escape(focus)} 계획은 상담 결과나 성취를 보장하지 않습니다. {escape(str(transition_packs[5]["transition"]))} {escape(location)} 학생의 실제 교과서·공책·학교 공지·생활시간을 함께 확인하고 한 번에 하나의 행동만 바꾸어 같은 기준으로 다시 관찰하는 교육용 안내입니다.</p>'
+        f'<p>{escape(closing_open)} {escape(closing_compare)} {escape(closing_adjust)}</p></section>'
     )
     return opening + local_notes + search + grades + subjects + assessment + school + case + protocol + experiment + parent + transition + links + faq + closing
 

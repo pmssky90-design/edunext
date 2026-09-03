@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import Counter
 import os
+import re
 
 from config import CATEGORIES, GRADE_CATEGORIES, SUBJECT_CATEGORIES, SUBJECT_GRADE_CATEGORIES
 from sitegen.content_builder import (
@@ -17,9 +18,93 @@ from sitegen.middle_school_math import (
     is_middle_school_math_slug,
     middle_school_math_contexts,
 )
+from sitegen.middle_school_english import (
+    build_middle_school_english_body,
+    build_middle_school_english_meta,
+    is_middle_school_english_slug,
+    middle_school_english_contexts,
+)
 from sitegen.render import individualize_priority_region_body, individualize_secondary_region_body
 from sitegen.title_rules import HOME_SEO_TITLE, build_page_title
-from sitegen.utils import excerpt, page_slug, region_meta_description
+from sitegen.utils import excerpt, page_slug, region_meta_description, strip_tags
+
+
+def normalize_source_body(body: str) -> str:
+    """Repair a narrow legacy timing phrase before it reaches generated pages."""
+    return body.replace(
+        "학습 방식은 해설을 덮고 세 줄 요약을 쓴 뒤 24시간 후 다시 풀었다로 조정했다.",
+        "학습 방식은 해설을 덮고 세 줄 요약을 쓴 뒤, 간격을 두고 다시 푸는 방식으로 조정했다.",
+    )
+
+
+REGIONAL_AUDIT_NOTES = {
+    "부산명륜동과외": (
+        "부산명륜동과외 계획을 실제 학생에게 적용할 때는 지역명만으로 학교 진도나 이동 시간을 추정하지 않습니다. 학생이 받은 교과서·학습지·평가 안내와 "
+        "재학 학교의 최신 공지를 먼저 대조하고, 영어는 근거 문장과 수정 표현을, 수학은 조건 표시와 첫 식·검산을 서로 다른 기록으로 남깁니다. 수업 직후의 "
+        "정답과 간격을 둔 뒤 혼자 다시 시작한 결과도 분리해야 설명을 기억한 상태와 실제 독립 수행을 구분할 수 있습니다. 과외 방식을 비교할 때는 교재 이름이나 "
+        "학습량보다 도움 전에 학생이 무엇을 시작하는지, 막힌 위치를 어떻게 기록하는지, 계획이 맞지 않을 때 어떤 기준으로 과제를 줄이는지 질문합니다."
+    ),
+    "부산중동과외": (
+        "부산중동과외 정보를 학생의 계획으로 바꿀 때는 학교·학년·과목·귀가 뒤 사용 가능한 시간을 먼저 나눕니다. 최근 학교 원본에서 마감이 있는 과제와 "
+        "누적 복습을 구분하고, 학생이 도움 없이 펼친 자료와 처음 고른 행동을 지우지 않은 채 보관합니다. 영어 답안은 단어 수보다 문장 근거와 표현 수정 이유를, "
+        "수학 풀이는 정답보다 조건을 읽은 순서와 첫 전략·검산을 확인합니다. 다음 점검에서는 같은 문제를 기억하는지보다 자료나 조건이 달라져도 판단 순서를 "
+        "다시 꺼내 쓰는지 살피며, 변화가 없으면 공부시간을 늘리기 전에 과제 크기와 질문 시점을 조정합니다."
+    ),
+    "부산북구과외": "부산북구과외의 구 단위 정보는 개별 학교 일정을 대신하지 않습니다. 학생이 받은 최신 자료와 공식 공지를 확인한 뒤 과목별 첫 행동·멈춘 위치·다음 재시도를 기록해 실제 생활권 계획으로 좁힙니다.",
+    "부산동래구과외": "부산동래구과외를 비교할 때는 지역 평균보다 학생의 학교 원본과 현재 답안을 먼저 봅니다. 영어 근거와 수학 첫 식을 따로 보존하고, 도움 뒤 혼자 이어 간 범위를 다음 과제의 기준으로 사용합니다.",
+    "부산금정구과외": "부산금정구과외 페이지의 범위는 탐색을 돕기 위한 것이며 학교별 진도나 성취를 뜻하지 않습니다. 실제 교과서·과제 안내·첫 답안을 대조해 유지할 행동과 줄일 도움을 한 항목씩 정합니다.",
+    "부산사상구과외": "부산사상구과외 계획은 학교 마감과 누적 복습을 같은 분량으로 배치하지 않습니다. 학생이 받은 안내를 기준으로 우선순위를 정하고, 간격 뒤에도 혼자 재현한 행동을 다음 학습에 유지합니다.",
+    "부산수영구과외": "부산수영구과외 정보를 볼 때는 통학이나 학교 일정을 지역명으로 단정하지 않습니다. 현재 학교 자료와 학생 기록을 확인해 과목별 질문 위치, 수정 근거, 독립 재시도를 구체적인 비교 항목으로 삼습니다.",
+    "부산진구과외": "부산진구과외의 다음 행동은 새 교재보다 최근 학교 자료에서 정합니다. 도움 전 시도와 수정 뒤 답안을 나란히 두고, 다른 조건에서도 같은 판단을 사용했는지 확인한 뒤 과제 범위를 넓힙니다.",
+    "부산해운대구과외": "부산해운대구과외 페이지는 구 안의 학생에게 같은 계획을 권하지 않습니다. 학교·학년·과목·생활시간을 확인하고, 학생이 실제로 남긴 첫 행동과 수정 이유를 기준으로 필요한 학습만 좁혀 봅니다.",
+    "부산연제구과외": "부산연제구과외를 상담 질문으로 바꿀 때는 점수 약속보다 수업 전후에 남는 기록을 확인합니다. 학교 원본, 도움 전 시작, 오류를 고친 이유, 간격 뒤 독립 수행을 설명할 수 있는지 비교합니다.",
+    "부산기장군과외": "부산기장군과외 정보는 넓은 지역 범위를 하나의 학습 환경으로 일반화하지 않습니다. 학생의 실제 학교 안내와 이동·귀가 시간을 확인한 뒤, 과목별 완료 기준과 다시 볼 자료를 현실적으로 배치합니다.",
+}
+
+
+def add_regional_audit_note(body: str, slug: str) -> str:
+    note = REGIONAL_AUDIT_NOTES.get(slug)
+    if not note:
+        return body
+    return (
+        body
+        + f'<section class="regional-audit-note"><h2>{slug} 자료를 읽을 때 남길 확인 기록</h2>'
+        + f"<p>{note}</p></section>"
+    )
+
+
+def individualize_repeated_region_subject_paragraphs(pages: dict[str, Page]) -> None:
+    """Add local application context only to long paragraphs shared by 3+ region subject pages."""
+    paragraph_pattern = re.compile(r"(<p\b[^>]*>)(.*?)(</p>)", flags=re.I | re.S)
+    candidates = [
+        page
+        for page in pages.values()
+        if page.page_type == "subject" and page.category in {"영어과외", "수학과외"}
+    ]
+    owners: dict[str, set[str]] = {}
+    for page in candidates:
+        for match in paragraph_pattern.finditer(page.body):
+            text = strip_tags(match.group(2))
+            if len(text) >= 80:
+                owners.setdefault(text, set()).add(page.slug)
+    repeated = {text for text, slugs in owners.items() if len(slugs) >= 3}
+    if not repeated:
+        return
+
+    for page in candidates:
+        location = page.slug.removesuffix(page.category)
+        subject = "영어" if page.category == "영어과외" else "수학"
+
+        def add_context(match: re.Match[str]) -> str:
+            inner = match.group(2)
+            if strip_tags(inner) not in repeated:
+                return match.group(0)
+            note = (
+                f" {location}에서는 이 기준을 학생이 받은 {subject} 자료와 도움 전 첫 시도 기록에 대조해 적용한다."
+            )
+            return f"{match.group(1)}{inner}{note}{match.group(3)}"
+
+        page.body = paragraph_pattern.sub(add_context, page.body)
 
 
 def page_type_for(category: str, region: Region | None = None, school: bool = False) -> str:
@@ -113,7 +198,7 @@ def build_pages(
                     if item != region.key
                 ]
             related = [page_slug(None if region.level == "national" else region.slug, item) for item in CATEGORIES if item != category]
-            body = content.get(slug, "")
+            body = normalize_source_body(content.get(slug, ""))
             seo_title, _ = build_page_title(slug, content_sources.get(slug))
             meta_description = (
                 region_meta_description(slug, body)
@@ -144,6 +229,7 @@ def build_pages(
                 page.meta_description = SPECIAL_SUBJECT_HUB_META_DESCRIPTIONS[slug]
             page.body = individualize_secondary_region_body(page.body, page)
             page.body = individualize_priority_region_body(page.body, page)
+            page.body = add_regional_audit_note(page.body, slug)
             if category == "과외" and region.level not in {"national", "province"}:
                 page.meta_description = region_meta_description(slug, page.body)
             pages[slug] = page
@@ -184,7 +270,7 @@ def build_pages(
             related_slugs=[item for item in related if item and item != slug],
             school_display_name=info.get("school_display_name", base.removeprefix(city)),
             official_school_name=info.get("official_school_name", ""),
-            body=content.get(slug, "") or school_intro(slug),
+            body=normalize_source_body(content.get(slug, "")) or school_intro(slug),
             meta_description=excerpt(content.get(slug, "")) or f"{slug} 학교별 내신과 고등 학습 준비를 정리한 EduNext 과외 정보입니다.",
         )
         pages[slug] = page
@@ -210,13 +296,33 @@ def build_pages(
         )
         stats["school"] += 1
 
+    for slug, context in middle_school_english_contexts().items():
+        if slug in pages:
+            stats["duplicate_slugs"] += 1
+            continue
+        seo_title, meta_description = build_middle_school_english_meta(slug)
+        pages[slug] = Page(
+            slug=slug,
+            title=slug,
+            page_type="school",
+            category="중등영어과외",
+            seo_title=seo_title,
+            parent_slug=context.parent_slug,
+            related_slugs=list(context.internal_links),
+            school_display_name=context.display_name,
+            official_school_name=context.official_name,
+            body=build_middle_school_english_body(slug),
+            meta_description=meta_description,
+        )
+        stats["school"] += 1
+
     for page in list(pages.values()):
         if page.page_type != "school" or not page.parent_slug or page.parent_slug not in pages:
             continue
         parent = pages[page.parent_slug]
         if page.slug not in parent.child_slugs:
             parent.child_slugs.append(page.slug)
-        if is_middle_school_math_slug(page.slug):
+        if is_middle_school_math_slug(page.slug) or is_middle_school_english_slug(page.slug):
             if page.slug not in parent.school_slugs:
                 parent.school_slugs.append(page.slug)
             continue
@@ -262,6 +368,8 @@ def build_pages(
         allowed = set(content) | {"index"}
         pages = {slug: page for slug, page in pages.items() if slug in allowed}
         stats["strict_source_pages"] = len(pages)
+
+    individualize_repeated_region_subject_paragraphs(pages)
 
     for page in pages.values():
         page.child_slugs = [item for item in page.child_slugs if item in pages and item != page.slug]

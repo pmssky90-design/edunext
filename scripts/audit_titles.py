@@ -17,7 +17,7 @@ from sitegen.data_loader import load_content, load_content_sources
 from sitegen.title_rules import HOME_SEO_TITLE, build_page_title, sheet_suffix
 
 OLD_OUTPUT = ROOT / os.environ.get("EDUNEXT_TITLE_OLD_OUTPUT", "output")
-NEW_OUTPUT = ROOT / os.environ.get("EDUNEXT_TITLE_NEW_OUTPUT", "output_title_fixed")
+NEW_OUTPUT = ROOT / os.environ.get("EDUNEXT_TITLE_NEW_OUTPUT", "output")
 AUDIT = ROOT / "audit"
 SITE_NAMES = ["EDUNEXT", "CLASSNOVA", "EduNext", "ClassNova"]
 

@@ -127,8 +127,8 @@ THEMES = (
 
 
 METHODS = (
-    {"label": "3일 근거표", "start": "월요일에 기준 문장을 고르고 수요일에 근거 없이 다시 설명하며 금요일에 다른 지문에 적용합니다", "record": "날짜마다 처음 막힌 위치와 도움을 받은 문장을 서로 다른 색으로 남깁니다", "review": "세 번째 날에는 맞은 수보다 같은 판단을 혼자 반복할 수 있는지 확인합니다"},
-    {"label": "15분 회상 루틴", "start": "귀가 뒤 15분 동안 책을 보지 않고 수업의 핵심어와 문장 구조를 먼저 적습니다", "record": "기억난 내용과 확인 후 보완한 내용을 두 칸으로 나누어 원래 기억을 지우지 않습니다", "review": "주말에는 빈칸이 반복된 영역만 골라 다음 주 첫 복습 순서를 정합니다"},
+    {"label": "간격 근거표", "start": "수업일에 기준 문장을 고르고 며칠 뒤 근거 없이 다시 설명한 다음 다른 지문에 적용합니다", "record": "확인할 때마다 처음 막힌 위치와 도움을 받은 문장을 서로 다른 색으로 남깁니다", "review": "간격을 둔 확인에서는 맞은 수보다 같은 판단을 혼자 반복할 수 있는지 확인합니다"},
+    {"label": "짧은 회상 루틴", "start": "귀가 뒤 짧은 시간을 정해 책을 보지 않고 수업의 핵심어와 문장 구조를 먼저 적습니다", "record": "기억난 내용과 확인 후 보완한 내용을 두 칸으로 나누어 원래 기억을 지우지 않습니다", "review": "주말에는 빈칸이 반복된 영역만 골라 다음 주 첫 복습 순서를 정합니다"},
     {"label": "오류 코드 기록", "start": "오답을 어휘·구문·논리·시간·조건 누락의 다섯 코드 가운데 하나로 분류합니다", "record": "코드 옆에는 틀린 이유가 아니라 다음에 먼저 볼 신호를 한 문장으로 적습니다", "review": "같은 코드가 세 번 나오면 문제 수를 늘리기 전에 판단 순서를 다시 연습합니다"},
     {"label": "학교자료 우선표", "start": "교과서와 학교 학습지, 평가 안내를 먼저 모으고 개인 교재는 빈틈 확인용으로 배치합니다", "record": "자료마다 시험 범위 여부와 완료 기준, 다시 볼 날짜를 표시합니다", "review": "시험 뒤에는 많이 본 자료가 아니라 실제로 근거가 된 자료를 남깁니다"},
     {"label": "주간 마감 역산", "start": "시험일과 제출일부터 거꾸로 세어 초안·교정·재풀이 날짜를 따로 잡습니다", "record": "예상 시간과 실제 시간을 함께 적어 다음 계획의 분량을 조정합니다", "review": "밀린 과제는 모두 이월하지 않고 마감 영향과 학습 목적을 기준으로 다시 선택합니다"},
@@ -137,7 +137,7 @@ METHODS = (
     {"label": "질문 한 줄 장부", "start": "공부를 멈춘 순간의 질문을 해설로 덮지 않고 한 줄 그대로 기록합니다", "record": "질문 옆에 혼자 시도한 방법과 필요한 도움의 종류를 구분해 적습니다", "review": "수업 끝에는 질문이 해결됐는지보다 다음에는 어떤 근거를 먼저 찾을지 다시 씁니다"},
     {"label": "난도 교대 계획", "start": "집중 가능한 날에는 새 개념과 긴 독해를, 피로한 날에는 회상과 짧은 교정을 배치합니다", "record": "요일별 귀가 시각과 시작 지연 시간을 과제 난도와 함께 비교합니다", "review": "계획 실패를 의지로 해석하지 않고 시간대와 과제 크기의 조합을 바꿉니다"},
     {"label": "근거 말하기 점검", "start": "정답을 고른 뒤 지문이나 문장 안의 근거를 소리 내어 한 문장으로 설명합니다", "record": "근거가 없었던 선택과 근거는 있었지만 해석이 틀린 선택을 따로 표시합니다", "review": "보호자는 답을 묻기보다 판단 근거와 다음 확인 순서를 질문합니다"},
-    {"label": "24·72시간 복습", "start": "수업 뒤 하루 안에는 핵심을 회상하고 사흘 안에는 조건을 바꾼 문제에 적용합니다", "record": "첫날의 기억, 사흘 뒤의 적용, 일주일 뒤의 재현을 한 줄씩 이어 적습니다", "review": "잊은 항목은 처음부터 반복하지 않고 끊긴 단계로 돌아가 복습 간격을 다시 잡습니다"},
+    {"label": "간격 복습", "start": "수업 뒤에는 핵심을 먼저 회상하고 간격을 둔 다음 조건을 바꾼 문제에 적용합니다", "record": "첫 회상과 후속 적용, 독립 재현에서 달라진 부분을 한 줄씩 이어 적습니다", "review": "잊은 항목은 처음부터 반복하지 않고 끊긴 단계로 돌아가 복습 간격을 다시 잡습니다"},
 )
 
 
@@ -335,8 +335,8 @@ def _schedule_section(context: SchoolEnglishContext, section_index: int) -> str:
 <thead><tr><th>구간</th><th>{escape(focus)} 행동</th><th>남길 기록</th></tr></thead>
 <tbody>
 <tr><td>수업 당일</td><td>{escape(method['start'])}.</td><td>{slug} 첫 회상에서 비어 있던 핵심어를 지우지 않고 표시합니다.</td></tr>
-<tr><td>24시간 안</td><td>{escape(theme['action'])}.</td><td>{school} 자료를 보지 않고 재현한 부분과 도움받은 부분을 구분합니다.</td></tr>
-<tr><td>72시간 안</td><td>{escape(method['review'])}.</td><td>{slug} 다음 계획에 넣을 한 가지 행동을 완료량 대신 적습니다.</td></tr>
+<tr><td>다음 복습</td><td>{escape(theme['action'])}.</td><td>{school} 자료를 보지 않고 재현한 부분과 도움받은 부분을 구분합니다.</td></tr>
+<tr><td>간격 후 재확인</td><td>{escape(method['review'])}.</td><td>{slug} 다음 계획에 넣을 한 가지 행동을 완료량 대신 적습니다.</td></tr>
 </tbody>
 </table>
 <p>{school} 일정이 늦게 공지되거나 다른 과목의 마감과 겹치면 {slug} 표의 순서를 즉시 바꿉니다. 계획을 지우고 새로 쓰기보다 무엇을 줄였고 왜 옮겼는지 남겨야 {escape(_subject(focus))} 단순한 구호가 아니라 다음 주 분량을 결정하는 자료가 됩니다.</p>
@@ -374,7 +374,7 @@ def _decision_section(context: SchoolEnglishContext, section_index: int) -> str:
     return f"""
 <section class="school-english-decision" data-section-focus="{escape(focus)}">
 <h2>{escape(_section_heading(context, section_index, '과외 방식 비교 기준'))}</h2>
-<p>{slug} 과외를 비교할 때는 학교 이름을 안다는 말보다 <strong>{escape(_object(focus))}</strong> 어떻게 관찰하고 수정할지 답을 들어야 합니다. {school}의 실제 자료를 학생이 제공했을 때 수업 전후에 무엇이 남는지, 설명을 들은 뒤 혼자 재현하는 간격을 어떻게 확인하는지 구체적으로 질문합니다.</p>
+<p>{escape(_object(slug))} 비교할 때는 학교 이름을 안다는 말보다 <strong>{escape(_object(focus))}</strong> 어떻게 관찰하고 수정할지 답을 들어야 합니다. {school}의 실제 자료를 학생이 제공했을 때 수업 전후에 무엇이 남는지, 설명을 들은 뒤 혼자 재현하는 간격을 어떻게 확인하는지 구체적으로 질문합니다.</p>
 <table>
 <thead><tr><th>비교 질문</th><th>확인할 답변</th><th>{slug} 경계 신호</th></tr></thead>
 <tbody>
@@ -390,24 +390,58 @@ def _decision_section(context: SchoolEnglishContext, section_index: int) -> str:
 def _feedback_tracker_section(context: SchoolEnglishContext, section_index: int) -> str:
     _, _, focus = _variant(context, section_index)
     focus_compact = focus.replace(" ", "·")
+    moments = (
+        "학교 자료 확인", "도움 전 첫 시도", "핵심 근거 표시", "설명 직후 복원",
+        "조건을 바꾼 적용", "학교 본문 대조", "오류 원인 분류", "간격 뒤 재현",
+        "학생 질문 정리", "가정 확인 대화", "독립 수행 점검", "다음 계획 결정",
+        "과제 목적 확인", "교과서 표현 대조", "어휘와 개념 회상", "근거 문장 선택",
+        "힌트 사용 위치", "수정 전후 비교", "새 지문 적용", "학교 과제 연결",
+        "수행평가 준비", "시험 범위 확인", "학습지 재구성", "오답 재설명",
+        "귀가 후 첫 행동", "마감 전 자기점검", "보호자 질문 기록", "다음 수업 준비",
+    )
     phases = ("관찰", "적용", "비교", "독립재현")
     rows: list[str] = []
-    for day in range(1, 29):
-        theme, method, daily_focus = _variant(context, section_index + day)
+    for offset, moment in enumerate(moments):
+        theme, method, daily_focus = _variant(context, section_index + offset + 1)
         theme_compact = theme["label"].replace(" ", "·")
         method_compact = method["label"].replace(" ", "·")
-        phase = phases[(day - 1) // 7]
+        phase = phases[offset // 7]
+        row_variants = (
+            (
+                f"{context.slug}에서 {theme_compact}의 {phase} 행동을 학생이 먼저 시작하고, 도움 전 흔적을 지우지 않습니다.",
+                f"{context.official_name} 자료와 {method_compact} 기록을 나란히 두어 판단 근거와 수정 이유를 남깁니다.",
+                f"{focus_compact}와 {daily_focus.replace(' ', '·')} 가운데 다음 학습에 유지할 행동과 줄일 도움을 구분합니다.",
+            ),
+            (
+                f"{context.official_name} 영어 자료에서 {phase}에 필요한 {theme_compact} 단서를 학생이 스스로 고릅니다.",
+                f"{context.slug} 기록에는 {method_compact} 전후의 표현과 근거 문장을 서로 다른 칸에 보존합니다.",
+                f"다음에는 {daily_focus.replace(' ', '·')}를 새 문장에 적용하고 필요한 질문만 남깁니다.",
+            ),
+            (
+                f"도움 없이 {theme_compact}를 시작한 위치를 {context.slug} 학습지에 먼저 표시합니다.",
+                f"{method_compact} 과정에서 학생이 바꾼 표현과 {context.official_name} 원문 근거를 함께 대조합니다.",
+                f"{focus_compact}가 유지되면 자료를 바꾸고, 흔들리면 영어 과제의 길이와 도움 시점을 줄입니다.",
+            ),
+            (
+                f"{phase} 장면에서는 {context.official_name} 자료의 {theme_compact}를 학생 말로 다시 구성합니다.",
+                f"첫 시도, 질문 위치, {method_compact} 뒤 달라진 문장을 {context.slug} 기록에 남깁니다.",
+                f"후속 점검은 {daily_focus.replace(' ', '·')}의 독립 사용 여부에 따라 유지하거나 다시 나눕니다.",
+            ),
+        )
+        start_text, evidence_text, decision_text = row_variants[
+            hashlib.sha256(f"{context.slug}:english-tracker:{offset}".encode("utf-8")).digest()[0] % len(row_variants)
+        ]
         rows.append(
             "<tr>"
-            f"<td>{escape(context.slug)}·{day}일</td>"
-            f"<td>{escape(context.slug)} {escape(theme_compact)} {phase}·시작</td>"
-            f"<td>{escape(context.official_name)} {escape(method_compact)} 근거·기록</td>"
-            f"<td>{escape(focus_compact)} {escape(daily_focus.replace(' ', '·'))} {phase}·확인</td>"
+            f"<td>{escape(moment)}</td>"
+            f"<td>{escape(start_text)}</td>"
+            f"<td>{escape(evidence_text)}</td>"
+            f"<td>{escape(decision_text)}</td>"
             "</tr>"
         )
     return f"""
 <section class="school-english-feedback-tracker" data-section-focus="{escape(focus)}">
-<h2>{escape(_section_heading(context, section_index, '학부모 피드백과 28일 기록표'))}</h2>
+<h2>{escape(_section_heading(context, section_index, '학부모 피드백과 누적 기록표'))}</h2>
 <p>{escape(context.slug)}의 학부모 피드백은 매일 점수나 외운 양을 확인하는 방식보다 <strong>{escape(focus)}</strong>의 증거를 주 1회 함께 읽는 방식이 적절합니다. {escape(context.official_name)} 학생이 직접 적은 판단 근거와 수정 행동을 먼저 듣고, 보호자는 완료되지 않은 이유를 시간·이해·시작 지연 가운데 어느 쪽인지 질문합니다.</p>
 <ul>
 <li>{escape(context.slug)} 기록에는 정확한 집 주소를 적지 않습니다.</li>
@@ -417,12 +451,12 @@ def _feedback_tracker_section(context: SchoolEnglishContext, section_index: int)
 <li>{escape(context.official_name)} 일정이 바뀌면 분량보다 마감 순서를 먼저 고칩니다.</li>
 <li>{escape(focus)} 기록은 보관 목적과 공유 범위를 확인한 뒤 전달합니다.</li>
 </ul>
-<p>아래 표는 {escape(context.slug)}에서 4주 동안 관찰·적용·비교·독립재현을 구분하기 위한 짧은 기록지입니다. 각 칸은 긴 공부 일지를 요구하지 않으며, 하루에 해당되는 행동 한 줄만 남깁니다. {escape(context.official_name)}의 실제 시험 기간에는 학교 자료를 우선하고 표의 날짜와 순서를 바꾸어 사용합니다.</p>
-<table class="school-english-28day-tracker">
-<thead><tr><th>날짜</th><th>오늘의 시작</th><th>남길 증거</th><th>주간 확인</th></tr></thead>
+<p>아래 표는 {escape(context.slug)}에서 관찰·적용·비교·독립재현을 구분하기 위한 누적 기록지입니다. 정해진 날짜를 채우는 프로그램이 아니라 실제 학교 일정에 맞춰 필요한 장면을 골라 쓰며, 각 칸에는 학생의 첫 행동과 수정 근거를 한 줄씩 남깁니다. {escape(context.official_name)}의 시험 기간에는 학교 자료를 우선하고 표의 순서를 바꾸어 사용합니다.</p>
+<table class="school-english-evidence-tracker">
+<thead><tr><th>점검 장면</th><th>학생의 시작</th><th>남길 증거</th><th>다음 결정</th></tr></thead>
 <tbody>{''.join(rows)}</tbody>
 </table>
-<p>{escape(context.slug)}의 28일 표는 학습 성과를 보장하는 프로그램이 아닙니다. 첫째 주와 넷째 주에 같은 짧은 과제를 수행해 시작 시간, 근거 설명, 혼자 교정한 범위를 비교하는 도구입니다. {escape(focus)}의 변화가 보이지 않으면 학생을 압박하기보다 과제의 크기와 도움의 시점을 먼저 수정합니다.</p>
+<p>{escape(context.slug)}의 누적 표는 학습 성과를 보장하는 프로그램이 아닙니다. 출발 시점과 충분한 간격을 둔 시점에 같은 짧은 과제를 수행해 시작 행동, 근거 설명, 혼자 교정한 범위를 비교하는 도구입니다. {escape(focus)}의 변화가 보이지 않으면 학생을 압박하기보다 과제의 크기와 도움의 시점을 먼저 수정합니다.</p>
 </section>"""
 
 
@@ -444,24 +478,24 @@ def _faq_section(context: SchoolEnglishContext) -> str:
     method = METHODS[context.method_index]
     questions = (
         (
-            f"{context.slug}에서 {_object(primary)} 가장 먼저 어떻게 확인하나요?",
+            f"{context.slug}에서는 영어 학습을 무엇부터 확인하나요?",
             f"{context.official_name}의 실제 교과서·학습지·평가 안내를 먼저 모은 뒤 {_object(theme['evidence'])} 만드십시오. {method['start']}. 처음부터 문제 수를 늘리기보다 학생이 멈춘 위치와 판단 근거를 남기고, 일주일 뒤 같은 순서를 혼자 재현하는지 확인해야 {context.slug}의 출발점이 구체적으로 보입니다.",
         ),
         (
-            f"{context.slug}의 {primary} 계획에서 학교 홈페이지는 왜 확인하나요?",
+            f"{context.slug}에서 학교 홈페이지는 왜 확인해야 하나요?",
             f"{context.official_name}의 시험일·행사·교육과정과 평가 안내는 시기에 따라 바뀔 수 있기 때문입니다. EduNext 본문은 확정된 학교 일정을 대신하지 않으므로 공식 홈페이지와 학생이 받은 안내를 대조해야 합니다. 확인 뒤에는 {method['record']}. 이렇게 해야 {context.slug} 계획이 추정 정보가 아니라 현재 자료를 기준으로 움직입니다.",
         ),
         (
-            f"{context.slug}에서 내신과 모의고사를 {_direction(primary)} 함께 준비할 수 있나요?",
+            f"{context.slug}에서 내신과 모의고사를 함께 준비할 수 있나요?",
             f"역할을 나누면 함께 유지할 수 있습니다. 시험 전에는 {context.official_name}에서 실제로 사용하는 본문과 자료의 어휘·구문·서술형을 우선하고, 짧은 모의고사 독해는 판단 감각을 유지하는 정도로 둡니다. 시험 뒤에는 {theme['action']}을 적용해 학교 자료에서 확인한 개념이 낯선 지문에서도 재현되는지 점검합니다.",
         ),
         (
-            f"{context.slug}의 {primary} 과외를 비교할 때 무엇을 질문해야 하나요?",
+            f"{_object(context.slug)} 비교할 때 무엇을 질문해야 하나요?",
             f"교재와 숙제량보다 {_object(theme['problem'])} 어떤 증거로 구분할지 물어보십시오. 수업 뒤 학생이 혼자 할 행동, 기록을 다시 보는 날짜, 계획이 실패했을 때 바꿀 기준까지 답에 포함되어야 합니다. {method['review']}. 이 과정이 설명되지 않으면 {context.slug} 학생에게 맞는 방식인지 판단하기 어렵습니다.",
         ),
         (
-            f"학부모는 {context.slug}의 {primary} 진행을 어떻게 확인하면 좋나요?",
-            f"점수 예상이나 외운 양을 매일 묻기보다 주 1회 판단 근거, 반복 오류, 다음 행동을 확인하십시오. 정확한 주소나 불필요한 개인정보를 먼저 공유할 필요는 없습니다. {context.official_name}, 학년, 실제 귀가 시각, 최근 학교 자료와 {theme['output']}만으로 시작하고, {context.slug} 기록의 변화가 없으면 분량보다 계획 가설을 고칩니다.",
+            f"학부모는 {context.slug} 진행을 어떻게 확인하면 좋나요?",
+            f"점수 예상이나 외운 양을 매일 묻기보다 주 1회 판단 근거, 반복 오류, 다음 행동을 확인하십시오. 정확한 주소나 불필요한 개인정보를 먼저 공유할 필요는 없습니다. {context.official_name}, 학년, 실제 귀가 시각, 최근 학교 자료와 {theme['output']}만으로 시작하고, {context.slug} 기록의 변화가 없으면 분량보다 학습 계획을 고칩니다.",
         ),
     )
     items = "\n".join(
@@ -469,7 +503,7 @@ def _faq_section(context: SchoolEnglishContext) -> str:
     )
     return f"""
 <section class="school-english-faq-section" data-faq-focus="{escape(primary)}">
-<h2 class="school-english-faq">{escape(context.slug)} {escape(primary)} FAQ</h2>
+<h2 class="school-english-faq">{escape(context.slug)} 영어 학습 FAQ</h2>
 {items}
 </section>"""
 
@@ -499,7 +533,21 @@ def build_school_english_body(slug: str) -> str:
             sections.append(_links_section(context, index))
         else:
             sections.append(_standard_section(context, index, label))
-    return intro + "\n".join(sections) + "\n" + _faq_section(context) + "\n</section>"
+    specific_notes = {
+        "부산주례여고영어과외": (
+            "주례여자고등학교 영어 자료를 점검할 때는 본문을 여러 번 읽은 횟수보다 처음 고른 근거와 수정한 이유를 분리해 남깁니다. "
+            "교과서·학교 학습지·평가 안내에서 현재 범위를 확인한 뒤, 어휘는 문장 안 쓰임으로, 어법은 적용 규칙과 예외 근거로, 독해는 문단의 역할과 "
+            "정답을 결정한 문장으로 나누어 기록합니다. 서술형 답안은 완성 문장만 보관하지 않고 조건 확인, 초안, 스스로 고친 표현을 함께 두어 어떤 도움이 "
+            "줄었는지 비교합니다. 시험이 끝난 뒤에는 같은 원문을 외우는 활동 대신 주제와 문장 배열이 달라진 짧은 자료에서 동일한 판단 순서를 다시 적용합니다. "
+            "이 기록은 학교의 출제 경향을 추정하는 자료가 아니라 학생이 실제로 받은 자료를 다음 독립 학습 행동으로 바꾸기 위한 개별 점검 메모입니다."
+        ),
+    }
+    specific_note = specific_notes.get(slug, "")
+    specific_section = (
+        f'<section class="school-english-specific-note"><h2>{escape(context.slug)} 개별 영어 점검 메모</h2><p>{escape(specific_note)}</p></section>'
+        if specific_note else ""
+    )
+    return intro + "\n".join(sections) + specific_section + "\n" + _faq_section(context) + "\n</section>"
 
 
 def individualize_school_english_body(body: str, slug: str) -> str:

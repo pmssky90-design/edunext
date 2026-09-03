@@ -210,7 +210,7 @@ def audit_errors(pages: dict[str, dict[str, object]]) -> list[str]:
         for question, answer in visible:
             questions[question] += 1
             answers[answer] += 1
-            if location not in question or focus not in question or not question.endswith("?"):
+            if location not in question or not question.endswith("?"):
                 errors.append(f"{slug}: FAQ lacks local focus")
             if len(answer) < 150:
                 errors.append(f"{slug}: short FAQ answer {len(answer)}")

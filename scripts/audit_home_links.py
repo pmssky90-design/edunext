@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from sitegen.data_loader import load_content, load_school_region_map
 
 
-OUTPUT = ROOT / os.environ.get("EDUNEXT_HOME_AUDIT_OUTPUT", "output_home_fixed")
+OUTPUT = ROOT / os.environ.get("EDUNEXT_HOME_AUDIT_OUTPUT", "output")
 AUDIT = ROOT / "audit"
 
 
